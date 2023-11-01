@@ -1,0 +1,47 @@
+package week10;
+import java.io.*;
+
+public class Question2 {
+    public static void main(String[] args) {
+        try {
+            
+            RandomAccessFile raf = new RandomAccessFile("data.txt", "rw");
+
+            
+            int intValue = 42;
+            double doubleValue = 3.14;
+            long longValue = 1234567890L;
+
+            raf.writeInt(intValue);
+            raf.writeDouble(doubleValue);
+            raf.writeLong(longValue);
+
+            
+            raf.seek(raf.length());
+
+            
+            String appendString = "This is an appended string.";
+            raf.writeUTF(appendString);
+
+            
+            raf.seek(0);
+            int readInt = raf.readInt();
+            double readDouble = raf.readDouble();
+            long readLong = raf.readLong();
+
+            
+            raf.seek(raf.length() - appendString.length());
+            String readString = raf.readUTF();
+
+            System.out.println("Int: " + readInt);
+            System.out.println("Double: " + readDouble);
+            System.out.println("Long: " + readLong);
+            System.out.println("String: " + readString);
+
+            raf.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+

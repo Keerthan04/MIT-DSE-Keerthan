@@ -1,0 +1,107 @@
+package week10;
+
+import java.io.*;
+import java.util.Scanner;
+
+class empdetails {
+    String name, add;
+    String empno;
+    String salary;
+
+    empdetails(String na, String ad, String no, String sa) {
+        name = na;
+        add = ad;
+        empno = no;
+        salary = sa;
+    }
+}
+
+class filecheck {
+
+    void store(empdetails e[]) throws IOException {
+        File f = new File("dir/employee.txt");
+        Writer w = new FileWriter(f);
+        BufferedWriter bw = new BufferedWriter(w);
+
+        for (int i = 0; i < e.length; i++) {
+            bw.write(e[i].name + "\n");
+            bw.write(e[i].add + "\n");
+            bw.write(e[i].empno + "\n");
+            bw.write(e[i].salary + "\n");
+            bw.write("\n");
+        }
+
+        bw.close();
+        w.close();
+    }
+
+    void sortstore(empdetails e[]) throws IOException {
+        File f = new File("dir/newemployee.txt");
+        Writer w = new FileWriter(f);
+        BufferedWriter bw = new BufferedWriter(w);
+
+        String[] s = new String[e.length];
+        for (int i = 0; i < e.length; i++) {
+            s[i] = e[i].name;
+        }
+
+        String check;
+        for (int i = 0; i < (s.length - 1); i++) {
+            for (int j = 0; j < (s.length - i - 1); j++) {
+                if ((s[j].compareToIgnoreCase(s[j + 1])) >= 0) {
+                    check = s[j + 1];
+                    s[j + 1] = s[j];
+                    s[j] = check;
+                }
+            }
+        }
+
+        for (int i = 0; i < e.length; i++) {
+            for (int j = 0; j < s.length; j++) {
+                if (e[i].name.equals(s[j])) {
+                    bw.write(e[i].name + "\n");
+                    bw.write(e[i].add + "\n");
+                    bw.write(e[i].empno + "\n");
+                    bw.write(e[i].salary + "\n");
+                    bw.write("\n");
+                }
+            }
+        }
+
+        bw.close();
+        w.close();
+    }
+}
+
+public class Question4 {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Please enter number of employees");
+        int n = sc.nextInt();
+        empdetails[] e = new empdetails[n];
+
+        sc.nextLine(); 
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("Please enter details of employee " + (i + 1));
+            System.out.println("Name");
+            String na = sc.nextLine();
+            System.out.println("Address");
+            String ad = sc.nextLine();
+            System.out.println("Employee number");
+            String no = sc.nextLine();
+            System.out.println("Salary");
+            String sal = sc.nextLine();
+            e[i] = new empdetails(na, ad, no, sal);
+        }
+
+        filecheck ob = new filecheck();
+        try {
+            ob.store(e);
+            ob.sortstore(e);
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+    }
+}

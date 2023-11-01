@@ -1,0 +1,39 @@
+package week10;
+import java.util.Scanner;
+import java.io.*;
+
+public class Question5 {
+
+	static void filedir(String name)
+	{
+		File f1=new File(name);
+		if(f1.isDirectory())
+		{
+			System.out.println("Directory name is: "+name);
+			String[] s=f1.list();
+			for(int i=0;i<s.length;i++)
+			{
+				File f=new File(name+"/"+s[i]);
+				if(f.isDirectory())
+				{
+					System.out.println(s[i]+" is a directory");
+				}
+				else
+				{
+					System.out.println(s[i]+" is a file");
+				}
+			}
+		}
+		else {
+			System.out.println(name+"is not directory");
+		}
+	}
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Please enter the directory name u need to see");
+		String dir=sc.nextLine();
+		filedir(dir);
+
+	}
+
+}

@@ -1,0 +1,94 @@
+package week10;
+
+import java.io.*;
+import java.util.Scanner;
+
+class Filereadandwrite {
+    Scanner sc = new Scanner(System.in);
+
+    void FileRead(String name) throws IOException {
+        File f = new File(name);
+        Reader fr = new FileReader(f);
+        BufferedReader br = new BufferedReader(fr);
+        System.out.println("The data read from the file is");
+        String data;
+        while ((data = br.readLine()) != null) {
+            System.out.println(data);
+        }
+        br.close();
+        fr.close();
+    }
+
+    void FileWrite(String name) throws IOException {
+        File f = new File(name);
+        Writer fr = new FileWriter(f);
+        System.out.println("Please Enter the data to write onto the file");
+        sc.nextLine();
+        String data = sc.nextLine();
+        fr.write(data);
+        System.out.println("Data Written Successfully");
+        fr.close();
+    }
+
+    void copyfile(String name1, String name2) throws IOException {
+        File f = new File(name1);
+        InputStream fr = new FileInputStream(f);
+        File ff = new File(name2);
+        OutputStream frr = new FileOutputStream(ff);
+        System.out.println("Please enter number of bytes to copy");
+        int n=sc.nextInt();
+        byte[] b = new byte[n];
+        System.out.println("Copying data from " + name1 + " to " + name2);
+        while ((n = fr.read(b)) != -1) {
+            frr.write(b, 0, n);
+        }
+        System.out.println("Data copied successfully from " + name1 + " to " + name2);
+        frr.close();
+        fr.close();
+    }
+}
+
+public class Question1 {
+    public static void main(String[] args) throws IOException {
+        Scanner sc = new Scanner(System.in);
+        Filereadandwrite ob = new Filereadandwrite();
+        while (true) {
+            System.out.println("1. Write to a file");
+            System.out.println("2. Read from a file");
+            System.out.println("3. Copy bytes from one file to another");
+            System.out.println("4. Exit");
+            System.out.print("Enter your choice: ");
+            int n = sc.nextInt();
+            sc.nextLine();
+            switch (n) {
+                case 1: {
+                    System.out.println("Please enter the path of the file where you need to write");
+                    String w = sc.nextLine();
+                    ob.FileWrite(w);
+                    break;
+                }
+                case 2: {
+                    System.out.println("Please enter the path of the file to read from");
+                    String wr = sc.nextLine();
+                    ob.FileRead(wr);
+                    break;
+                }
+                case 3: {
+                    System.out.println("Please enter the path of the file to read from");
+                    String rr = sc.nextLine();
+                    System.out.println("Please enter the path of the file where you need to write");
+                    String ww = sc.nextLine();
+                    ob.copyfile(rr, ww);
+                    break;
+                }
+                case 4: {
+                    System.exit(0);
+                    break;
+                }
+                default:
+                    System.out.println("Invalid choice");
+            }
+        }
+    }
+}
+

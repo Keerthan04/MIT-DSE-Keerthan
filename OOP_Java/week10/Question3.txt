@@ -1,0 +1,72 @@
+package week10;
+
+import java.io.*;
+import java.util.Scanner;
+
+class Counting {
+    int count = 0;
+
+    void Fileread(String name) throws IOException {
+        File f = new File(name);
+        Reader fr = new FileReader(f);
+        char[] a = new char[(int) f.length()];
+        fr.read(a);
+        charcounts(a);
+        wordcounts(a);
+        vowelcounts(a);
+        linecounts(a);
+        fr.close();
+    }
+
+    void charcounts(char[] exp) {
+        count = 0;
+        for (char c : exp) {
+            if (c != ' ' && c!='\n')
+                count++;
+        }
+        System.out.println("Number of characters are: " + count);
+    }
+
+    void wordcounts(char[] words) {
+        count = 0;
+        for (char i : words) {
+            if (i == ' ')
+                count++;
+        }
+        System.out.println("Number of words are: " + count);
+    }
+
+    void vowelcounts(char[] exp) {
+        count = 0;
+        char[] vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
+        for (char c : exp) {
+            for (char ch : vowels) {
+                if (c == ch) {
+                    count++;
+                    break; 
+                }
+            }
+        }
+        System.out.println("Number of vowels are: " + count);
+    }
+
+    void linecounts(char[] content) {
+        count = 0;
+        for (char c : content) {
+            if (c == '\n') {
+                count++;
+            }
+        }
+        System.out.println("Number of lines are: " + (count + 1)); 
+    }
+}
+
+public class Question3 {
+    public static void main(String[] args) throws IOException {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Please enter the path of the file");
+        String data = sc.nextLine();
+        Counting ob = new Counting();
+        ob.Fileread(data);
+    }
+}
