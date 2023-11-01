@@ -1,0 +1,55 @@
+package week5;
+import java.util.Scanner;
+class complex
+{
+	int add(int in,int rcomplex)
+	{
+		int result=in+rcomplex;
+		return result;
+	}
+	void add(int in1,int complex1,int in2,int complex2)
+	{
+		int rresult=in1+in2;
+		int cresult=complex1+complex2;
+		System.out.println("The result is: "+rresult+"+"+cresult+"i");
+	}
+}
+
+public class quetsion3 {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		complex cpx=new complex();
+		System.out.println("please enter real part of complex number");
+		int r=sc.nextInt();
+		System.out.println("please enter imaginary part of complex number");
+		int i=sc.nextInt();
+		System.out.println("The complex number is: "+r+"+"+i+"i");
+		System.out.println("please enter choice");
+		System.out.println("1. add integer to your complex number");
+		System.out.println("2. add another complex number to your complex number");
+		int ch=sc.nextInt();
+		switch(ch)
+		{
+			case 1:{
+				System.out.println("Please enter the integer to add");
+				int a=sc.nextInt();
+				int result=cpx.add(a,r);
+				System.out.println("The result is: "+result+"+"+i+"i");
+				break;
+			}
+			case 2:
+			{
+				System.out.println("Please enter the real part of another complex number");
+				int rr=sc.nextInt();
+				System.out.println("please enter imaginary part of complex number");
+				int ii=sc.nextInt();
+				System.out.println("The complex number is: "+rr+"+"+ii+"i");
+				cpx.add(rr,ii,r,i);
+				break;
+			}
+		}
+
+	}
+
+}

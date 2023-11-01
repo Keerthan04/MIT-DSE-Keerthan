@@ -1,0 +1,91 @@
+package Solidquestions;
+
+
+import java.util.Scanner;
+
+
+class time
+{
+    int hours, minutes, seconds;
+
+    time()
+    {
+        hours = 0;
+        minutes = 0;
+        seconds = 0;
+    }
+
+    time(int h, int m, int s)
+    {
+        hours = h;
+        minutes = m;
+        seconds = s;
+    }
+
+    void display()
+    {
+        System.out.println("The time is:");
+        System.out.printf("%02d:%02d:%02d%n", hours, minutes, seconds);
+    }
+
+    void add(time ob1, time ob2)
+    {
+        ob1.display();
+        ob2.display();
+        int sumhours = ob1.hours + ob2.hours;
+        int summinutes = ob1.minutes + ob2.minutes;
+        int sumseconds = ob1.seconds + ob2.seconds;
+
+        if (sumseconds >= 60)
+        {
+            summinutes += sumseconds / 60;
+            sumseconds %= 60;
+        }
+        if (summinutes >= 60)
+        {
+            sumhours += summinutes / 60;
+            summinutes %= 60;
+        }
+
+        
+        if (sumhours > 12)
+            System.out.println("Wrong inputs for time");
+        else
+        {
+            System.out.println("The time is:");
+            System.out.printf("%02d:%02d:%02d%n", sumhours, summinutes, sumseconds);
+        }
+    }
+}
+
+public class ttt
+{
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Please enter hours 1 to 12");
+        int w = sc.nextInt();
+        System.out.println("Please enter minutes 1 to 60");
+        int h = sc.nextInt();
+        System.out.println("Please enter seconds 1 to 60");
+        int d = sc.nextInt();
+
+        if ((w <= 0 || w > 12) || (h < 0 || h >= 60) || (d < 0 || d >= 60))
+        {
+            System.out.println("Please enter valid input");
+        }
+        else
+        {
+            time t = new time(w, h, d);
+            t.display();
+        }
+
+        time t1 = new time(1, 50, 50);
+        time t2 = new time(5, 30, 40);
+        time t = new time();
+        t.add(t1, t2);
+    }
+}
+
+

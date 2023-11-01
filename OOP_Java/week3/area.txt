@@ -1,0 +1,18 @@
+package basics;
+import java.util.Scanner;
+public class Areacircumference {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Please enter Length of the rectangle: ");
+		float l=sc.nextFloat();
+		System.out.println("Please enter bredth of the rectangle: ");
+		float b=sc.nextFloat();
+		float area=l*b;
+		float circumference=2*(l+b);
+		System.out.println("Area of the entered rectangle is: "+area);
+		System.out.println("Circumference of the entered rectangle is: "+circumference);
+		
+	}
+
+}

@@ -1,0 +1,42 @@
+package week5;
+import java.util.Scanner;
+class box
+{
+	double width,height,depth;
+	void intiliaze(double w,double h,double d)
+	{
+		width=w;
+		height=h;
+		depth=d;
+	}
+	double volreturn()
+	{
+		double volume=(width*height*depth);
+		return volume;
+	}
+}
+public class question1 {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		box b=new box();
+		System.out.println("Please enter width of the box");
+		double w=sc.nextDouble();
+		System.out.println("Please enter height of the box");
+		double h=sc.nextDouble();
+		System.out.println("Please enter depth of the box");
+		double d=sc.nextDouble();
+		if(w<=0 || h<=0 || d<=0)
+		{
+			System.out.println("please enter valid input");
+		}
+		else
+		{
+			b.intiliaze(w,h,d);
+			double vol=b.volreturn();
+			System.out.println("The volume of the box is: "+vol);
+		}
+
+	}
+
+}

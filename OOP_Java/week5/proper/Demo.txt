@@ -1,0 +1,51 @@
+package Solidquestions;
+class Person {
+    private String name;
+    private int age;
+
+ 
+    public Person() {
+     
+        this("Unknown", 0); 
+    }
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+  
+    public void printDetails() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+
+    public void printDetails(String prefix) {
+        System.out.println(prefix + "Name: " + name);
+        System.out.println(prefix + "Age: " + age);
+    }
+
+    
+    public void updateDetails(String name, int age) {
+        this.name = name; 
+        this.age = age; 
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        
+        Person person1 = new Person(); 
+        Person person2 = new Person("Alice", 30); 
+
+        
+        person1.printDetails(); 
+        person2.printDetails("Updated ");
+        
+        person1.updateDetails("Bob", 25);
+
+        
+        person1.printDetails();
+    }
+}
+

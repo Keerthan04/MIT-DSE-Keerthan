@@ -1,0 +1,47 @@
+package week5;
+import java.util.Scanner;
+class time
+{
+	int hours,minutes,seconds;
+	time()
+	{
+		hours=0;
+		minutes=0;
+		seconds=0;
+	}
+	time(int h,int m,int s)
+	{
+		hours=h;
+		minutes=m;
+		seconds=s;
+	}
+	void display()
+	{
+		System.out.println("The time is:");
+		System.out.println(""+hours+":"+minutes+":"+seconds);
+	}
+}
+public class question2 {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.println("Please enter hours 1 to 12");
+		int w=sc.nextInt();
+		System.out.println("Please enter minutes 1 to 60");
+		int h=sc.nextInt();
+		System.out.println("Please enter seconds 1 to 60");
+		int d=sc.nextInt();
+		if((w<=0 || w>12) || (h<=0 || h>60) || (d<=0 || d>60))
+		{
+			System.out.println("please enter valid input");
+		}
+		else
+		{
+			time t=new time(w,h,d);
+			t.display();
+		}
+
+	}
+
+}

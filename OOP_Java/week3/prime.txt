@@ -1,0 +1,43 @@
+package week3;
+import java.util.Scanner;
+public class prime {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter your number: ");
+		int n=sc.nextInt();
+		int i,flag=1;
+		if(n==1)
+		{
+			System.out.println("The number 1 is neither prime nor composite");
+		}
+		else if(n==2)
+		{
+			System.out.println("The number 2 is prime");
+		}
+		else if(n<=0)
+		{
+			System.out.println("Please enter a valid number");
+		}
+		else
+		{
+			for(i=2;i<n;i++)
+			{
+				if(n%i==0)
+				{
+					flag=0;
+				}
+			}
+			if(flag==1)
+			{
+				System.out.println("The entered number "+n+" is prime");
+			}
+			else
+			{
+				System.out.println("The entered number "+n+" is not prime");
+			}
+		}
+
+	}
+
+}

@@ -1,0 +1,178 @@
+import java.util.Scanner;
+import java.lang.String;
+import java.util.Arrays;
+import java.lang.StringBuffer;
+abstract class SpellBee
+{
+	abstract void printWord();
+
+}
+class SpellTheWord extends SpellBee
+{
+	String word="";
+	Scanner sc=new Scanner(System.in);
+	SpellTheWord()
+	{
+		System.out.println("Please enter the word");
+		word=sc.nextLine();
+		check(word);
+	}
+	void check(String s)
+	{
+		char[] c=s.toCharArray();
+		for(int i=0;i<c.length;i++)
+		{
+			if(c[i]<65 || c[i]>124)
+			{
+				System.out.println("Please enter a valid word");
+				System.exit(0);
+			}
+		}
+	}
+	void printWord()
+	{
+		System.out.println("The word spelled is "+word);
+	}
+}
+class ReverseSpell extends SpellBee
+{
+	String word="";
+	Scanner sc=new Scanner(System.in);
+	ReverseSpell()
+	{
+		System.out.println("Please enter the word");
+		word=sc.nextLine();
+		check(word);
+	}
+	void check(String s)
+	{
+		char[] c=s.toCharArray();
+		for(int i=0;i<c.length;i++)
+		{
+			if(c[i]<65 || c[i]>124)
+			{
+				System.out.println("Please enter a valid word");
+				System.exit(0);
+			}
+		}
+	}
+	void printWord()
+	{
+		StringBuffer s=new StringBuffer(word);
+		System.out.println("The Reverse word is "+s.reverse());
+	}
+	
+}
+class Sortspell extends SpellBee
+{
+	String word="";
+	Scanner sc=new Scanner(System.in);
+	Sortspell()
+	{
+		System.out.println("Please enter the word");
+		word=sc.nextLine();
+		check(word);
+	}
+	void check(String s)
+	{
+		char[] c=s.toCharArray();
+		for(int i=0;i<c.length;i++)
+		{
+			if(c[i]<65 || c[i]>124)
+			{
+				System.out.println("Please enter a valid word");
+				System.exit(0);
+			}
+		}
+	}
+	void printWord()
+	{
+		String d=word.toLowerCase();
+		char c[]=d.toCharArray();
+		
+		Arrays.sort(c);String s="";
+		for(int i=0;i<c.length;i++)
+		{
+			s+=c[i];
+		}
+		System.out.println("The sorted word is "+s);
+	}
+}
+public class Midsem {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Please confirm your participation");
+		System.out.println("1.Spiderman");
+		System.out.println("2.ironman");
+		int m=sc.nextInt();
+		if(m==1)
+		{
+			while(true)
+			{	
+				System.out.println("Please enter your choice");
+				System.out.println("1.Spell the word");
+				System.out.println("2.Reverse the word");
+				System.out.println("3.Sort the word");
+				System.out.println("4.Exit");
+				int n=sc.nextInt();SpellBee r;
+				switch(n)
+				{
+				case 1:
+					r=new SpellTheWord();	
+					r.printWord();
+					break;
+				case 2:
+					r=new ReverseSpell();
+					r.printWord();
+					break;
+				case 3:
+					r=new Sortspell();
+					r.printWord();
+					break;
+				case 4:
+					System.exit(0);
+					
+				}
+	
+			}
+		}
+		else if(m==2)
+		{
+			while(true)
+			{	
+				System.out.println("Please enter your choice");
+				System.out.println("1.Spell the word");
+				System.out.println("2.Reverse the word");
+				System.out.println("3.Sort the word");
+				System.out.println("4.Exit");
+				int n=sc.nextInt();SpellBee r;
+				switch(n)
+				{
+				case 1:
+					r=new SpellTheWord();	
+					r.printWord();
+					break;
+				case 2:
+					r=new ReverseSpell();
+					r.printWord();
+					break;
+				case 3:
+					r=new Sortspell();
+					r.printWord();
+					break;
+				case 4:
+					System.exit(0);
+					
+				}
+	
+			}
+		}
+		else
+		{
+			System.out.println("Please enter a valid number");
+			System.exit(0);
+		}
+
+}
+}

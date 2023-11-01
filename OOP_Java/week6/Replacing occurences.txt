@@ -1,0 +1,33 @@
+package strings;
+import java.util.Scanner;
+import java.lang.String;
+class Repl{
+    void repl(String exp) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Please enter character to replace");
+        String r = sc.nextLine();
+
+        StringBuffer newExp = new StringBuffer(exp); 
+
+        for (int i = 0; i < newExp.length(); i++) {
+            char c = exp.charAt(i);
+            for (int j = i + 1; j < newExp.length(); j++) {
+                if (c == newExp.charAt(j)) {
+                    newExp.setCharAt(j, r.charAt(0));
+                }
+            }
+        }
+        System.out.println(newExp.toString());
+    }
+}
+
+public class replac {
+    public static void main(String[] args) {
+        Repl ob = new Repl();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Please enter String");
+        String A = sc.nextLine();
+        ob.repl(A);
+    }
+}
+

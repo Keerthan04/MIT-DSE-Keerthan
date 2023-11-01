@@ -1,0 +1,118 @@
+package strings;
+import java.lang.String;
+import java.util.Scanner;
+class A
+{
+	Scanner sc=new Scanner(System.in);
+	String getdata()
+	{
+		System.out.println("Please enter your string");
+		String ent=sc.nextLine();
+		return ent;
+	}
+	void palindrome(String exp)
+	{
+		String rev ="";
+		for(int i=(exp.length()-1);i>=0;i--)
+		{
+			char c=exp.charAt(i);
+			String e=String.valueOf(c);
+			rev+=e;
+		}
+		System.out.println("The reversed string is:"+rev);
+		if(exp.equals(rev)==true)
+		{
+			System.out.println("The string is palindrome");
+		}
+		else
+			System.out.println("The string is not a palindrome");
+	}
+	void alph(String exp)
+	{
+		String check,alpha ="";
+		String[] original=exp.split(" ");
+		for(int i=0;i<(original.length-1);i++)
+		{
+			for(int j=0;j<(original.length-i-1);j++)
+			{
+				if((original[j].compareToIgnoreCase(original[j+1]))>=0)
+				{
+					check=original[j+1];
+					original[j+1]=original[j];
+					original[j]=check;
+				}
+			}
+		}
+		for(int i=0;i<(original.length);i++)
+		{
+			alpha+=(original[i]+" ");
+		}
+		System.out.println("The String after srting to alphabetial order is: "+alpha);
+	}
+	void reverse(String exp)
+	{
+		String rev ="";
+		for(int i=(exp.length()-1);i>=0;i--)
+		{
+			char c=exp.charAt(i);
+			String e=String.valueOf(c);
+			rev+=e;
+		}
+		System.out.println("The reversed string is:"+rev);
+	}
+	void con(String exp)
+	{
+		String rev ="";
+		for(int i=(exp.length()-1);i>=0;i--)
+		{
+			char c=exp.charAt(i);
+			String e=String.valueOf(c);
+			rev+=e;
+		}
+		exp+=rev;
+		System.out.println("The concantinated string is:"+exp);
+	}
+	
+}
+public class menu1 {
+
+	public static void main(String[] args) {
+		A ob = new A();
+		Scanner sc=new Scanner(System.in);
+		while(true)
+		{
+			System.out.println("Please enter your choice");
+			System.out.println("1.Check palindrome of a string");
+			System.out.println("2.String in alphabetical order");
+			System.out.println("3.Reverse  a string");
+			System.out.println("4.Reverse and concatinate");
+			System.out.println("5.Exit");
+			int ch=sc.nextInt();
+			switch(ch)
+			{
+			case 1:{
+				String e=ob.getdata();
+				ob.palindrome(e);
+				break;}
+			case 2:{
+				String e=ob.getdata();
+				ob.alph(e);
+				break;}
+			case 3:{
+				String e=ob.getdata();
+				ob.reverse(e);
+				break;}
+			case 4:{
+				String e=ob.getdata();
+				ob.con(e);
+				break;}
+			case 5:
+				System.exit(0);
+			}
+
+
+
+	}
+
+}
+}

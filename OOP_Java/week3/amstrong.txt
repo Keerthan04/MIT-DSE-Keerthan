@@ -1,0 +1,32 @@
+package week3;
+import java.util.Scanner;
+public class Amstrong {
+	public static void main(String args[])
+	{
+		Scanner sc=new Scanner(System.in);
+		int rd,num,n,sum=0;
+		System.out.println("Please enter your number:");
+		num=sc.nextInt();
+		int count=0;
+		int number=num;
+		while(number>0)
+		{
+			count=count+1;
+			number=number/10;
+		}
+		n=num;
+		while(n>0)
+		{
+			rd=n%10;
+			sum=(int) (sum+(Math.pow(rd, count)));
+			n=n/10;
+		}
+		if(num==sum)
+		{
+			System.out.println("Number is Amstrong");
+		}
+		else
+			System.out.println("Number is not Amstrong");
+	}
+
+}

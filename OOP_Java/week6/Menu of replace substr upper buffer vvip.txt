@@ -1,0 +1,140 @@
+package strings;
+import java.lang.String;
+import java.lang.StringBuffer;
+import java.util.Scanner;
+class AB
+{
+	Scanner sc=new Scanner(System.in);
+	String getdata()
+	{
+		System.out.println("Please enter your string");
+		String ent=sc.nextLine();
+		return ent;
+	}
+	void compare(String exp)
+	{
+		System.out.println("Enter another string for comparision");
+		AB ob1=new AB();
+		String c= ob1.getdata();
+		if(exp.compareToIgnoreCase(c)>0)
+		{
+			System.out.println(exp+" is alphabeticaly greater than "+c);
+		}
+		else if(exp.compareToIgnoreCase(c)==0)
+		{
+			System.out.println(exp+" is equal to "+c);
+		}
+		else
+			System.out.println(exp+" is alphabeticaly smaller than "+c);
+		
+	}
+	void conversion(String exp)
+	{
+		String upper=exp.toUpperCase();
+		String lower=exp.toLowerCase();
+		System.out.println("After upper case conversion: "+upper);
+		System.out.println("After lower case conversion: "+lower);
+	}
+	void sub(String exp)
+	{
+		System.out.println("Enter a substring for checking");
+		AB ob1=new AB();int flag=0;
+		String c= ob1.getdata();
+		String[] original=exp.split(" ");
+		for(int i=0;i<original.length;i++)
+		{
+			flag=0;
+			if(original[i].equals(c))
+			{
+				flag=1;break;
+			}
+			else
+				flag=0;
+		}
+		if(flag==1)
+			System.out.println(c+" is a substring of "+exp);
+		else
+			System.out.println(c+" is not  a substring of "+exp);
+	}
+	void replace(String exp)
+	{
+		System.out.println("Enter a substring for check and replace");
+		AB ob1=new AB();
+		String newone="";
+		String c= ob1.getdata();
+		String[] original=exp.split(" ");
+		for(int i=0;i<original.length;i++)
+		{
+			
+			if(original[i].equals(c))
+			{
+				StringBuffer s = new StringBuffer(original[i]);
+				s.replace(0,original[i].length(),"Hello");
+				String a=new String(s);
+				original[i]=a;
+			}
+			
+		}
+		for(int i=0;i<original.length;i++)
+		{
+			newone+=(original[i]+" ");
+		}
+		System.out.println("The string after changing is:"+newone);
+	}
+	
+}
+public class menu2 {
+
+	public static void main(String[] args) {
+		AB ob = new AB();
+		Scanner sc=new Scanner(System.in);
+		while(true)
+		{
+			System.out.println("Please enter your choice");
+			System.out.println("1.Compare two strings");
+			System.out.println("2.Convert to upper and lower");
+			System.out.println("3.To check substring");
+			System.out.println("4.TO check and replace substring with hello");
+			System.out.println("5.Exit");
+			int ch=sc.nextInt();
+			switch(ch)
+			{
+			case 1:{
+				String e=ob.getdata();
+				ob.compare(e);
+				break;}
+			case 2:{
+				String e=ob.getdata();
+				ob.conversion(e);
+				break;}
+			case 3:{
+				String e=ob.getdata();
+				ob.sub(e);
+				break;}
+			case 4:{
+				String e=ob.getdata();
+				ob.replace(e);
+				break;}
+			case 5:
+				System.exit(0);
+			}
+
+	}
+
+}
+}
+/*of contains
+void sub(String exp)
+	{
+		System.out.println("Enter a substring for checking");
+		AB ob1=new AB();int flag=0;
+		String c= ob1.getdata();
+		String[] original=exp.split(" ");
+		if(exp.contains(c))
+			flag=1;
+		if(flag==1)
+			System.out.println(c+" is a substring of "+exp);
+		else
+			System.out.println(c+" is not  a substring of "+exp);
+	}
+*/

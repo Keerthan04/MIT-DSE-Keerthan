@@ -1,0 +1,63 @@
+package Solidquestions;
+import java.util.Scanner;
+class COM
+{
+	int real;
+	int comp;
+	COM()
+	{
+		real=0;
+		comp=0;
+	}
+	Scanner sc=new Scanner(System.in);
+	void getdata()
+	{
+		System.out.println("Please enter real part of the complex number");
+		real=sc.nextInt();
+		System.out.println("Please enter complex part of the complex number");
+		comp=sc.nextInt();
+		display();
+ 	}
+	void display()
+	{
+		System.out.println("the complex number is");
+		System.out.println(real+" +"+"i"+comp);
+	}
+	void addint()
+	{
+		System.out.println("Please enter the integer to add");
+		int i=sc.nextInt();
+		COM obr=new COM();
+		obr.real=real+i;
+		obr.comp=comp;
+		obr.display();
+	}
+	void addcom()
+	{
+		COM ob2=new COM();
+		ob2.getdata();
+		COM obr=new COM();
+		obr.real=real+ob2.real;
+		obr.comp=comp+ob2.comp;
+		obr.display();
+}
+}
+public class complex {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		COM ob=new COM();
+		ob.getdata();
+		System.out.println("do you want to add a 1 integer or 2 complex number to the entered number");
+		int ch=sc.nextInt();
+		if(ch==1)
+		{
+			ob.addint();
+		}
+		if(ch==2)
+		{
+			ob.addcom();
+		}
+	}
+}
+		

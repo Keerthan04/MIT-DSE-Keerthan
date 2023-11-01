@@ -1,0 +1,81 @@
+package Solidquestions;
+
+
+
+
+import java.util.*;
+import java.lang.*;
+class Parc
+{
+	int pid;
+	int pw;
+	String cname;
+	Parc()
+	{
+		pid=0;
+		pw=0;
+		cname="";
+	}
+	void infoentry(int pid,int pw,String cname)
+	{
+		this.pid=pid;
+		this.pw=pw;
+		this.cname=cname;
+	}
+	double wcheck()
+	{
+		double cost;
+		if(pw<=2)
+			cost=32.50;
+		else 
+		{
+			cost=32.50+(10.50*(pw-2));
+		}
+		return cost;
+			
+	}
+	void display()
+	{
+		System.out.println("Your Parcel Details are:");
+		System.out.println("name:"+cname);
+		System.out.println("Parcel id:"+pid);
+		System.out.println("Parcel weight:"+pw);
+		double c=wcheck();
+		System.out.println("COST OF THE PARCEL IS:"+c);
+		
+	}
+}
+public class par {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int i=4,j=0;
+		Parc[] par=new Parc[5];
+		while(i!=5)
+		{
+			System.out.println("ENter your chocie");
+			System.out.println("1.details entry");
+			System.out.println("2.Exit");
+			int ch=sc.nextInt();
+			if(ch==1)
+			{
+				System.out.println("Please enter your name");
+				String s=sc.next();
+				System.out.println("Please enter your parcel id");
+				int id=sc.nextInt();
+				System.out.println("Please enter your parcel weight");
+				int w=sc.nextInt();
+				par[j++]=new Parc();
+				Parc ob=par[j-1];
+				ob.infoentry(id, w, s);
+				ob.display();
+			}
+			else
+				i=5;
+		}
+
+	}
+
+}
+
+

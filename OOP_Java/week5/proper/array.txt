@@ -1,0 +1,121 @@
+package Solidquestions;
+import java.util.*;
+
+class arrayofint
+{
+	Scanner sc=new Scanner(System.in);
+	int l;
+	int a[];
+	arrayofint()
+	{
+		a=new int[] {0};
+	}
+	arrayofint(int len)
+	{
+		l=len;
+		 a=new int[len];
+		input();
+	}
+	void input()
+	{
+		System.out.println("Please enter elements of array");
+		for(int i=0;i<l;i++)
+		{
+			a[i]=sc.nextInt();
+		}
+	}
+	void print()
+	{
+		System.out.println("the elements of array");
+		for(int i=0;i<l;i++)
+		{
+			System.out.print(a[i]+" ");
+		}
+	}
+	void search(int ele)
+	{
+		int flag=0;
+		for(int i=0;i<l;i++)
+		{
+			if(a[i]==ele) {
+				flag=1;
+				break;
+			}
+		}
+		if(flag==1)
+			System.out.println("the element is present ");
+		else
+			System.out.println("the element is not present");
+	}
+	void compare(arrayofint other)
+	{
+	    if (l != other.l)
+	        System.out.println("The two arrays are not equal");
+	    else
+	    {
+	        int flag = 1;
+	        for (int i = 0; i < l; i++)
+	        {
+	            if (a[i] != other.a[i]) {
+	                flag = 0;
+	                break;
+	            }
+	        }
+	        if (flag == 1)
+	            System.out.println("The two arrays are equal");
+	        else
+	            System.out.println("The two arrays are not equal");
+	    }
+	}
+
+		
+	
+}
+public class array {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("please enter choice");
+		System.out.println("1. input of array");
+		System.out.println("2. exit");
+		int ch=sc.nextInt();
+		switch(ch)
+		{
+			case 1:{
+				System.out.println("please enter length");
+				int len=sc.nextInt();
+				arrayofint a=new arrayofint(len);
+				System.out.println("1. print 2.search 3.comapre");
+				int ch1=sc.nextInt();
+				if(ch1==1)
+					a.print();
+				if(ch1==2)
+				{
+					System.out.println("please enter element to search");
+					int ele=sc.nextInt();
+					a.search(ele);
+				}
+				if(ch1==3)
+				{
+					if (ch1 == 3)
+					{
+					    System.out.println("Input second array");
+					    System.out.println("Please enter length");
+					    int len2 = sc.nextInt();
+					    arrayofint b = new arrayofint(len2);
+					    a.compare(b);
+					}
+				}
+				break;
+			}
+			case 2:
+			{
+				break;
+			}
+		}
+		
+
+	}
+
+}
+

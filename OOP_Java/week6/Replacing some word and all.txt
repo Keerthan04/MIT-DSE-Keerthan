@@ -1,0 +1,36 @@
+package strings;
+import java.util.Scanner;
+
+public class ReplaceWordWithRepeatingChars {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        
+        System.out.print("Enter the text: ");
+        String text = scanner.nextLine();
+        System.out.print("Enter the word to replace: ");
+        String wordToReplace = scanner.nextLine();
+        
+       
+        System.out.print("Enter the repeating characters: ");
+        String repeatingChars = scanner.nextLine();
+        
+        
+        String result = replaceWordWithRepeatingChars(text, wordToReplace, repeatingChars);
+        
+        
+        System.out.println("Modified Text:");
+        System.out.println(result);
+        
+        scanner.close();
+    }
+    
+    public static String replaceWordWithRepeatingChars(String text, String wordToReplace, String repeatingChars) {
+       
+        if (text.contains(wordToReplace)) {
+            
+            text = text.replace(wordToReplace, repeatingChars);
+        }
+        return text;
+    }
+}

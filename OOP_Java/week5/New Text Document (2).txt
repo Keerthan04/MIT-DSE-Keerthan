@@ -1,0 +1,41 @@
+package Week5;
+import java.util.*;
+import java.text.*;
+public class Question2 {
+	int hour, min, sec;
+	Question2() {
+		hour = 0;
+		min = 0;
+		sec = 0;
+	}
+	Question2(int h, int m, int s) {
+		hour = h;
+		min = m;
+		sec = s;
+	}
+	static String timeElapsed(Question2 zero, Question2 given) {
+		int he= given.hour - zero.hour;
+		int me= given.min - zero.min;
+		int se= given.sec - zero.sec;
+		return(String.valueOf(he+":"+me+":"+se));
+	}
+	public static void main(String[] args) {
+		Scanner sc= new Scanner(System.in);
+		System.out.println("Enter hours mins secs: ");
+		//System.out.println("mins>=59");
+		//System.out.println("secs>=59 ");
+		int x = sc.nextInt();
+		int y = sc.nextInt();
+		int z = sc.nextInt();
+		if(y>=59 && z>=59)
+		{
+		Question2 zero = new Question2();
+		Question2 given = new Question2(x,y,z);
+		System.out.println("Time elapsed since 0 is: "+ Question2.timeElapsed(zero, given));
+		}
+		else
+		{
+			System.out.println("Enter Valid hours mins secs");
+		}
+	}
+}
