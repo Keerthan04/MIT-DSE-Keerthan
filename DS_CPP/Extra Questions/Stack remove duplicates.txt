@@ -1,0 +1,114 @@
+//Write a C++ program to remove duplicates from a stack using arrays.
+//for example of using classes also
+#include<iostream>
+using namespace std;
+#define MAX_SIZE 20
+class Stack
+{
+    private:
+
+        int top;
+        int arr[MAX_SIZE];
+
+    public:
+
+        Stack()
+        {
+            top=-1;
+        }
+        void push(int ele) {
+            if (isfull()) {
+                cout << "Stack overflow\n";
+            } else {
+                top++;
+                arr[top] = ele;
+            }
+        }
+         int pop() {
+            if (isempty()) {
+                cout << "Stack underflow\n";
+            } else {
+                    int element=arr[top];
+                    top--;
+                    return element;
+
+                }
+            }
+        int isfull() {
+            if (top == MAX_SIZE-1) {
+                return 1;
+            } else
+                return 0;
+        }
+
+        int isempty() {
+            if (top == -1)
+                return 1;
+            else
+                return 0;
+        }
+        int peek()
+        {
+            if(isempty())
+                cout<<"Stack underflow";
+            else
+                return arr[top];
+        }
+        void display()
+        {
+            if(isempty())
+                cout<<"Stack underflow";
+            for(int i=top;i>=0;i--)
+            {
+                cout<<arr[i]<<" ";
+            }
+            cout<<endl;
+        }
+        void checkdup()
+        {
+            Stack t;
+            int ele=pop();
+            t.push(ele);
+
+            while(isempty()!=1)
+            {
+                ele=pop();
+                int flag=1;
+                for(int i=t.top;i>=0;i--)
+                {
+
+                    if(ele==t.arr[i])
+                    {
+                        flag=0;
+                        break;
+                    }
+                }
+                if(flag==1)
+                {
+                    t.push(ele);
+                }
+            }
+            t.display();
+
+        }
+
+
+};
+int main()
+{
+    Stack s;
+    int n,a[100];
+    cout<<"Enter number of elements to be pushed into stack"<<endl;
+    cin>>n;
+    cout<<"Enter elements to be pushed"<<endl;
+    for(int i=0;i<n;i++)
+    {
+        cin>>a[i];
+        s.push(a[i]);
+    }
+    cout<<"The stack elements are"<<endl;
+    s.display();
+    cout<<"The stack elements after removing duplicates are:"<<endl;
+    s.checkdup();
+
+}

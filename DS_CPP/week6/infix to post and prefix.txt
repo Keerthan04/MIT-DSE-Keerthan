@@ -1,0 +1,243 @@
+//220968002
+//Keerthan Kumar c
+//infix to postfix and prefix
+#include<iostream>
+#include<string.h>
+using namespace std;
+char stack[100],top=-1;
+int isempty();
+int isfull();
+void push(char ele)
+        {
+                if(isfull())
+                {
+                        cout<<"Stack overflow\n";
+                }
+                else
+                {
+                        top++;
+                        stack[top]=ele;
+                }
+        }
+char pop()
+{
+        if(isempty())
+        {
+                cout<<"Stcak underflow\n";
+        }
+        else
+        {
+                char poppedElement = stack[top];
+                top--;
+                return poppedElement;
+        }
+}
+int isfull()
+{
+        if(top==99)
+        {
+                return 1;
+        }else
+                return 0;
+}
+int isempty()
+{
+        if(top==-1)
+                return 1;
+        else
+                return 0;
+}
+void display()
+{
+        int i;
+        for(i=top;i>=0;i--)
+        {
+                cout<<stack[i]<<" ";
+        }
+}
+void peek()
+{
+        if(isempty())
+        {
+                cout<<"Stack underflow\n";
+        }
+        else
+                cout<<"The peek element is"<<stack[top]<<endl;
+}
+int precedence(char a)
+{
+        switch(a)
+        {
+                case '^':
+                        return 4;
+                case '*':
+                case '/':
+                        return 3;
+                case '-':
+                case '+':
+                        return 2;
+                default:
+                        return 0;
+        }
+}
+
+void reverse(char *infix)
+{
+
+  int size = strlen (infix);
+  int j = size, i = 0;
+  char temp[size];
+
+  temp[j--] = '\0';
+  while (infix[i] != '\0')
+    {
+      temp[j] = infix[i];
+      j--;
+      i++;
+    }
+  strcpy (infix, temp);
+}
+int main()
+{
+        int count=0,flag=1,length=0;
+        char infix[100],postfix[100],prefix[100];
+        char symb;
+        cout<<"Please enter your string\n";
+        cin.getline(infix,100);
+        int j=0,i;
+        char next;
+        for(int i=0;infix[i]!='\0';i++)
+        {
+                if(infix[i]=='(' || infix[i]=='[' || infix[i]=='{')
+                {
+                        push(infix[i]);
+                        count++;
+                }
+
+                if(infix[i]==')')
+                {
+                        if(stack[top]=='(')
+                                       {
+                                flag=1;
+                                count--;
+                                 pop();
+                        }
+                }
+
+                if(infix[i]==']')
+                {
+                        if(stack[top]=='[')
+                        {
+                                flag=1;
+                                count--;
+                                pop();
+                        }
+                }
+
+                if(infix[i]=='}')
+                {
+                        if(stack[top]=='{')
+                        {
+                                flag=1;
+                                count--;
+                                pop();
+                        }
+                }
+        }
+        int r=isempty();int proper;
+        if(r==1 && flag==1 && count==0)
+                proper =1;
+        else  proper=0;
+        if(proper==1)
+        {
+                for(i=0;i<strlen(infix);i++)
+                {
+                        symb=infix[i];
+                        switch(symb)
+                        {
+                                case '(':{
+
+                                                push('(');
+                                                break;
+                                         }
+                                case ')':
+                                         {
+                                                 while((next=pop())!='(' )
+                                                         postfix[j++]=next;
+                                                 break;
+                                         }
+                                case '+':
+                                case '-':
+                                case '*':
+                                case '/':
+                                case '^':{
+
+                                                while((precedence(stack[top])>=precedence(symb)))
+                                                {
+                                                        postfix[j++]=pop();
+                                                }
+                                                push(symb);break;
+                                         }
+
+                                default:{
+                                                postfix[j++]=symb;
+                                                break;
+                                        }
+                        }
+
+                }
+                while(!isempty())
+                        postfix[j++]=pop();
+                postfix[j]!='\0';
+                cout<<"the postfix expression is:"<<postfix<<endl;
+                top=-1;
+                reverse(infix);
+                j=0;
+                 for(i=0;i<strlen(infix);i++)
+                {
+                        symb=infix[i];
+                        switch(symb)
+                        {
+                                case ')':{
+
+                                                push(')');
+                                                break;
+                                         }
+                                case '(':
+                                         {
+                                                 while((next=pop())!=')' )
+                                                         prefix[j++]=next;
+                                                 break;
+                                         }
+                                case '+':
+                                case '-':
+                                case '*':
+                                case '/':
+                                case '^':{
+
+                                                while((precedence(stack[top])>=precedence(symb)))
+                                                {
+                                                        prefix[j++]=pop();
+                                                }
+                                                push(symb);break;
+                                         }
+
+                                default:{
+                                                prefix[j++]=symb;
+                                                break;
+                                        }
+                        }
+
+                }
+                while(!isempty())
+                        prefix[j++]=pop();
+                prefix[j]!='\0';
+                cout<<"the prefix expression is:"<<prefix<<endl;
+        }
+        else
+                cout<<"Please enter a valid expression";
+        return 0;
+}
+
+
+

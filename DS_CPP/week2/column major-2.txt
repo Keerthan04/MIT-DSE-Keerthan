@@ -1,0 +1,59 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+        int matrix[20][20],a[20],i,j,m,n;
+        cout<<"please enter the dimesnion "<<endl;
+        cin>>m>>n;
+        cout<<"please enter  elements of  matrix "<<endl;
+        for(i=0;i<m;i++)
+        {
+                for(j=0;j<n;j++)
+                {
+                                cin>>matrix[i][j];
+                }
+        }
+        cout<<"the entered matrix is"<<endl;
+
+        for(i=0;i<m;i++)
+        {
+                for(j=0;j<n;j++)
+                {
+                        cout<<matrix[i][j]<<" ";
+                }
+                cout<<endl;
+        }
+        int k=0;
+        int count=0;
+        for(i=0;i<n;i++)
+        {
+                for(j=0;j<m;j++)
+                {
+
+
+                                a[count]=matrix[j][i];
+                                count=count+1;
+
+                }
+        }
+        cout<<"the mapped array using column major is "<<endl;
+        for(i=0;i<count;i++)
+        {
+                cout<<a[i]<<" ";
+        }
+        cout<<endl;
+        int c,b;
+        cout<<"please enter the row and column to be retrived "<<endl;
+        cin>>c>>b;
+         if(c>m && c>n)
+        {
+                cout<<"please enter a valid index"<<endl;
+        }
+        else
+        {
+             cout<<"the element is: "<<a[(b*n)+c];
+        }
+                return 0;
+}
+                                                                                                      
+                                                                                                      

@@ -1,0 +1,104 @@
+//220968002
+//keerthan kumar c
+//linked list and stack
+#include<iostream>
+using namespace std;
+struct node
+{
+        int data;
+        struct node* link;
+};
+struct node* top=NULL;
+class stack
+{public:
+        void push(int ele)
+        {
+                struct node* newnode=new struct node;
+                newnode->data=ele;
+                if(top==NULL)
+                {
+                        top=newnode;
+                        newnode->link=NULL;
+                }
+                else
+                {
+                        newnode->link=top;
+                        top=newnode;
+
+                }
+        }
+        void pop()
+        {
+                if(top==NULL)
+                {
+                        cout<<"No element to pop"<<endl;
+                }
+                else
+                {
+                        struct node* p=top;
+                        top=top->link;
+                        int ele=p->data;
+                        p=NULL;
+                        delete p;
+                        cout<<"The popped out element is "<<ele<<endl;
+                }
+        }
+        void peek()
+        {
+                if(top==NULL)
+                {
+                        cout<<"No element in the stack"<<endl;
+                }
+                else
+                        cout<<"The top element is "<<top->data;
+        }
+        void display()
+        {
+                if(top==NULL)
+                {
+                        cout<<"the stack is empty"<<endl;
+                }
+                else
+                {
+                        struct node* p=top;
+                        while(p!=NULL)
+                        {
+                                cout<<p->data<<" ";
+                                p=p->link;
+                        }
+                        cout<<endl;
+                }
+        }
+};
+int main()
+{
+        int ch;
+        stack s;
+        do
+        {
+                cout<<"Please enter your choice"<<endl;
+                cout<<"1.Push element to stack"<<endl;
+                cout<<"2.POP element from stack"<<endl;
+                cout<<"3.Peek element"<<endl;
+                cout<<"4.Display"<<endl;
+                cout<<"5.Exit"<<endl;
+                cin>>ch;
+                switch(ch)
+                {
+                        case 1:
+                                cout<<"Enter element to push"<<endl;
+                                int el;
+                                cin>>el;
+                                s.push(el);
+                                break;
+                        case 2:
+                                s.pop();break;
+                        case 3:
+                                s.peek();break;
+                        case 4:
+                                s.display();break;
+                        case 5:
+                                exit(1);
+                }
+        }while(ch!=5);
+}

@@ -1,0 +1,23 @@
+//220968002
+//Keerthan Kumar c
+//GCD Of two numbers
+#include<iostream>
+using namespace std;
+int gcd(int a,int b);
+int main()
+{
+        int m,n;
+        cout<<"please enter two numbers:\n";
+        cin>>m>>n;
+        int great=gcd(m,n);
+        cout<<"The Greatest common divisor among "<<m<<" and "<<n<<" is: "<<great<<endl;
+}
+int gcd(int a,int b)
+{
+        if(b==0)
+                return a;
+        else if(a==0)
+                return b;
+        else
+                return gcd(b,a%b);
+}

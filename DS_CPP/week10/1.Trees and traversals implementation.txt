@@ -1,0 +1,104 @@
+#include <iostream>
+#include<cstdlib>
+using namespace std;
+struct node
+{
+    int data;
+    struct node* left;
+    struct node* right;
+};
+struct node* create()
+{
+    struct node* newnode = new struct node;
+    int x;
+    cout<<"Please enter the data (-1 if no child nodes) "<<endl;
+    cin>>x;
+    if(x==-1)
+    {
+        return NULL;
+    }
+    newnode->data=x;
+    cout<<"Please enter data for left of "<<x<<endl;
+    newnode->left=create();
+    cout<<"Please enter data for right of "<<x<<endl;
+    newnode->right=create();
+    return newnode;
+};
+void preorder(struct node* ROOT)
+{
+    if(ROOT==NULL)
+    {
+        return;
+    }
+    cout<<ROOT->data<<" ";
+    preorder(ROOT->left);
+    preorder(ROOT->right);
+}
+void inorder(struct node* ROOT)
+{
+    if(ROOT==NULL)
+    {
+        return;
+    }
+    inorder(ROOT->left);
+    cout<<ROOT->data<<" ";
+    inorder(ROOT->right);
+}
+void postorder(struct node* ROOT)
+{
+    if(ROOT==NULL)
+    {
+        return;
+    }
+    postorder(ROOT->left);
+    postorder(ROOT->right);
+    cout<<ROOT->data<<" ";
+}
+int countLeafNodes(struct node* root) {
+    if (root == NULL) {
+        return 0;
+    }
+    if (root->left == NULL && root->right == NULL) {
+        return 1;
+    }
+    int leftCount = countLeafNodes(root->left);
+    int rightCount = countLeafNodes(root->right);
+    return leftCount + rightCount;
+}
+int main()
+{
+    struct node* root;
+    root=create();
+    int ch;
+    cout<<"The Tree has Been Created"<<endl;
+    do
+    {
+        cout<<"Please enter your Choice"<<endl;
+        cout<<"1.Preorder Traversal"<<endl;
+        cout<<"2.Inorder Traversal"<<endl;
+        cout<<"3.Postorder Traversal"<<endl;
+        cout<<"4.Count Leaf Nodes"<<endl;
+        cout<<"5.Exit"<<endl;
+        cin>>ch;
+        switch(ch)
+        {
+        case 1:
+            cout<<"Preorder traversal of Created tree is:"<<endl;
+            preorder(root);
+            break;
+        case 2:
+            cout<<"Inorder traversal of Created tree is:"<<endl;
+            inorder(root);
+            break;
+        case 3:
+            cout<<"Postorder traversal of Created tree is:"<<endl;
+            postorder(root);
+            break;
+        case 4:
+            int counts = countLeafNodes(root);
+            cout << "The total number of leaf nodes in the given tree is " << counts << endl;
+            break;
+        }
+    }while(ch!=5);
+
+}

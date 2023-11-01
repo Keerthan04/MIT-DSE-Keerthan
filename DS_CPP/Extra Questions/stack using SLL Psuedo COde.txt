@@ -1,0 +1,84 @@
+HERE IS THE COMPLETE CODE OF STACK USING LINKED LIST:
+#include<stdio.h>
+struct node {
+int data;
+struct node* link;
+};
+struct node* top=NULL;
+
+void push(int);
+void pop();
+void traverse();
+
+void main()
+{
+int ch;
+while(1)
+{
+printf("Choices are:\n");
+printf("1.Push\n");
+printf("2.Pop\n");
+printf("3.Traverse\n");
+printf("4.exit\n");
+printf("Enter your choice: ");
+scanf("%d",&ch);
+printf("Your choice was: %d\n",ch);
+switch(ch)
+{
+    int ele;
+case 1: printf("enter element to be pushed: ");
+        scanf("%d",&ele);
+        push(ele);
+        break;
+case 2: pop();
+break;
+case 3: traverse();
+break;
+case 4: exit(0);
+default: printf("Invalid input\n");
+}
+printf("\n");
+}
+printf("ok\n\n");
+}
+
+void push(int ele)
+{
+struct node*temp;
+temp=(struct node*)malloc(sizeof(struct node));
+temp->data=ele;
+temp->link=top;
+top=temp;
+}
+
+void traverse()
+{
+struct node* temp;
+if(top==NULL)
+printf("Stack is empty: \n");
+else
+{
+temp=top;
+printf("Stack elements are: ");
+while(temp!=NULL)
+{
+printf("%d ",temp->data);
+temp=temp->link;
+}
+}
+}
+
+void pop()
+{
+struct node* temp;
+if(top==NULL)
+printf("Stack is empty: Underflow\n");
+else
+{
+temp=top;
+printf("Deleted element is: %d",temp->data);
+top=top->link;
+temp->link=NULL;
+free(temp);
+}
+}

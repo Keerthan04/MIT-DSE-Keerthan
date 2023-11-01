@@ -1,0 +1,55 @@
+#include<iostream>
+using namespace std;
+void addpolynomial(int poly1[25],int poly2[25],int result[50],int degree1,int degree2)
+{
+        int maxdegree = max(degree1, degree2);
+        for(int i=0;i<=maxdegree;i++)
+        {
+                result[i]=poly1[i]+poly2[i];
+        }
+}
+void displaypolynomial(int poly[25], int degree)
+{
+        for(int i=degree; i>=0; i--)
+        {
+                if(poly[i]!=0)
+                {
+                        cout<<poly[i]<<"x^"<<i;
+                        if(i>0)
+                        {
+                                cout<<"+";
+                        }
+                }
+        }
+        cout<<endl;
+}
+int main()
+{
+        int degree1,degree2;
+        cout<<"Enter the degree of the fisrt polynomial:";
+        cin>>degree1;
+        int poly1[degree1+1];
+        cout<<"Enter the coefficients of first polynomial(Starting from constant term):";
+        for(int i=0;i<=degree1;i++)
+        {
+                cin>>poly1[i];
+        }
+        cout<<"Enter the degree of second polynomial:";
+        cin>>degree2;
+        int poly2[degree2+1];
+        cout<<"Enter the coefficients of first polynomial(Starting from constant term):";
+        for(int i=0;i<=degree2;i++)
+        {
+                cin>>poly2[i];
+        }
+        int maxdegree=max(degree1,degree2);
+        int result[maxdegree+1];
+        addpolynomial(poly1, poly2, result, degree1, degree2);
+        cout<<"First polynomial: ";
+        displaypolynomial(poly1,degree1);
+        cout<<"Second Polynomial: ";
+        displaypolynomial(poly2, degree2);
+        cout<<"Sum of two Polynomails:";
+        displaypolynomial(result,maxdegree);
+        return 0;
+}

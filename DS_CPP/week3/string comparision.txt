@@ -1,0 +1,71 @@
+//keerthan kumarc
+//220968002
+//string comparision
+#include<iostream>
+#include<cstdio>
+using namespace std;
+int main()
+{
+        char str1[100];
+        char str2[100];
+        int i,j,length1=0,length2=0;
+        cout<<"please enter first string \n";
+        cin.getline(str1,100);
+        cout<<"Please enter second string \n";
+        cin.getline(str2,100);
+        i=0,j=0;
+        while(str1[i]!='\0')
+        {
+                length1++;
+                i++;
+        }
+        i=0;
+        while(str2[i]!='\0')
+        {
+                length2++;
+                i++;
+        }
+        int cond=0;
+        if(length1>=length2)
+        {
+                for(i=0;i<length1;i++)
+                {
+                        if(str1[i]==str2[j])
+                        {
+                                cond=1;
+                        }
+                        else
+                                cond=0;
+                                break;
+                }
+                if(cond==1)
+                {
+                        cout<<"the two strings are same \n";
+                }
+                else
+                        cout<<"the two strings are not same \n";
+        }
+        else
+        {
+
+                for(i=0;i<length2;i++)
+                {
+                        if(str1[i]==str2[j])
+                        {
+                                cond=1;
+                        
+                        }
+                        else
+                                cond=0;
+                                break;
+                }
+                if(cond==1)
+                {
+                        cout<<"the two strings are same \n";
+                }
+                else
+                        cout<<"the two strings are not same \n";
+        }
+return 0;
+}
+

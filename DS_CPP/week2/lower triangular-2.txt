@@ -1,0 +1,63 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+        int matrix[20][20],a[20],i,j,m;
+        cout<<"please enter the dimesnion "<<endl;
+        cin>>m;
+        cout<<"please enter non zero elements of lower triangle matrix "<<endl;
+        for(i=0;i<m;i++)
+        {
+                for(j=0;j<m;j++)
+                {
+                        if(i<j)
+                        {
+                                matrix[i][j]=0;
+                        }
+                        else
+                                cin>>matrix[i][j];
+                }
+        }
+        cout<<"the entered matrix is"<<endl;
+
+        for(i=0;i<m;i++)
+        {
+                for(j=0;j<m;j++)
+                {
+                        cout<<matrix[i][j]<<" ";
+                }
+                cout<<endl;
+        }
+        int k=0;
+        int count=0;
+        for(i=0;i<m;i++)
+        {
+                for(j=0;j<m;j++)
+                {
+                        if(matrix[i][j]!=0)
+                        {
+                                a[count]=matrix[i][j];
+                                count=count+1;
+                        }
+                }
+        }
+        cout<<"the mapped array is "<<endl;
+        for(i=0;i<count;i++)
+        {
+                cout<<a[i]<<" ";
+        }
+        int c,b;
+        if(c>m && c>n)
+        {
+                cout<<"the entered row and column is invalide"<<endl;
+        }
+        else if(c<b)
+        {
+                cout<<"the elemet is 0"<<endl;
+        }
+        else
+        {
+            cout<<"the element is: "<<a[(c*(c+1))/2+b];
+        }
+                return 0;
+}

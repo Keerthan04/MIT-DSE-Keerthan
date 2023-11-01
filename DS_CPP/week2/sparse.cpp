@@ -1,0 +1,73 @@
+//program to sparse matrix
+#include<iostream>
+using namespace std;
+struct sparse
+{
+    int row;
+    int col;
+    int value;
+};
+int main()
+{
+    int matrix[20][20],i,j,b[20][20];
+    int m,n,k,counter=0;
+    sparse s[30];
+    cout<<"please enter the rows and columns of a matrix: "<<endl;
+    cin>>m>>n;
+    for(i=0;i<m;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            cin>>matrix[i][j];
+            if(matrix[i][j]!=0)
+            {
+                counter++;
+            }
+        }
+    }
+    cout<<"the matrix is:"<<endl;
+    for(i=0;i<m;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            cout<<matrix[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    s[0].row=m;
+    s[0].col=n;
+    s[0].value=counter;
+    for(i=0,k=1;i<m;i++)//stroing it into structure
+    {
+        for(j=0;j<n;j++)
+        {
+            if(k<=counter && matrix[i][j]!=0){
+                s[k].row=i;
+                s[k].col=j;
+                s[k].value=matrix[i][j];
+                k++;
+            }
+        }
+    }
+     // retriving it back
+    for (i = 0, k = 1; i < m; i++) {
+        for (j = 0; j < n; j++) {
+            if (k <= counter && s[k].row == i && s[k].col == j) {
+                b[i][j] = s[k].value;
+                k++;
+        } else {
+            b[i][j] = 0;
+        }
+    }
+}
+
+    for(i=0;i<m;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            cout<<b[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+   return 0;
+}

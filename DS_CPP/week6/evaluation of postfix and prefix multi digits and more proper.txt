@@ -1,0 +1,130 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+#include <cctype>
+
+
+using namespace std;
+
+int stack[100], top = -1;
+
+int isempty();
+int is_full();
+
+void push(int ele) {
+    if (is_full()) {
+        cout << "Stack overflow\n";
+    } else {
+        top++;
+        stack[top] = ele;
+    }
+}
+
+int pop() {
+    if (isempty()) {
+        cout << "Stack underflow\n";
+        return -1; // Return a sentinel value to indicate underflow
+    } else {
+        int popped_element = stack[top];
+        top--;
+        return popped_element;
+    }
+}
+
+int is_full() {
+    return top == 99;
+}
+
+int isempty() {
+    return top == -1;
+}
+
+int evaluate(int a, int b, char op) {
+    switch (op) {
+        case '+':
+            return a + b;
+        case '-':
+            return a - b;
+        case '*':
+            return a * b;
+        case '/':
+            if (b != 0)
+                return a / b;
+            else {
+                cerr << "Error: Division by zero\n";
+                exit(1);
+            }
+        case '^':
+            return pow(a, b);
+        default:
+            return 0;
+    }
+}
+
+int main() {
+    string exp, str, rstr;
+    cout << "Please enter the expression with spaces to evaluate" << endl;
+    getline(cin, exp);
+    cout << "Please enter the type" << endl;
+    cout << "1. Postfix exp" << endl;
+    cout << "2. Prefix exp" << endl;
+    char ch;
+    cin >> ch;
+
+    if (ch == '1') { // Postfix expression evaluation
+        for (char i : exp) {
+            if (isdigit(i)) {
+                str += i;
+            } else if (i == ' ') {
+                if (!str.empty()) {
+                    int num = stoi(str);
+                    push(num);
+                    str.clear();
+                }
+            } else if (i == '+' || i == '-' || i == '*' || i == '/' || i == '^') {
+                int A = pop();
+                int B = pop();
+                int res = evaluate(B, A, i); // Note the order of operands
+                push(res);
+            }
+        }
+        if (top == 0) {
+            cout << "The evaluated result is: " << stack[top] << endl;
+        } else {
+            cout << "Invalid postfix expression\n";
+        }
+    } else if (ch == '2') { 
+        for (int j = exp.length() - 1; j >= 0; j--) {
+            char i = exp[j];
+            if (isdigit(i)) {
+                str += i;
+            } else if (i == ' ') {
+                if (!str.empty()) {
+                    for (int k = str.length() - 1; k >= 0; k--) {
+                        rstr += str[k];
+                    }
+                    int num = stoi(rstr);
+                    push(num);
+                    str.clear();
+                    rstr.clear();
+                }
+            } else if (i == '+' || i == '-' || i == '*' || i == '/' || i == '^') {
+                int A = pop();
+                int B = pop();
+                int res = evaluate(A, B, i); // Note the order of operands
+                push(res);
+            }
+        }
+        if (top == 0) {
+            cout << "The evaluated result is: " << stack[top] << endl;
+        } else {
+            cout << "Invalid prefix expression\n";
+        }
+    } else {
+        cout << "Invalid choice" << endl;
+    }
+
+    return 0;
+}
+
+

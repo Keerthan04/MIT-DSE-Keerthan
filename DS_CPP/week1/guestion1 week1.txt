@@ -1,0 +1,57 @@
+#include<iostream>
+using namespace std;
+
+class Employee
+{
+        int emp_num;
+        char emp_name[20];
+        float basic;
+        float da,it,net_sal,gross_sal;
+ public:
+        void getdata()
+        {
+                cout<<"Enter your employee number "<<endl;
+                cin>> emp_num;
+                cout<<"Enter your employee name "<<endl;
+                cin>> emp_name;
+                cout<<"enter your basic salary "<<endl;
+                cin>> basic;
+        }
+        void cal_netsalary()
+        {
+                da=((12/100.)*basic);
+                gross_sal=basic+da;
+        }
+        void cal_gross_sal()
+        {
+                it=((18/100.)*gross_sal);
+                net_sal=(gross_sal-it);
+        }
+        void cal_gross_sal()
+        {
+                it=((18/100.)*gross_sal);
+                net_sal=(gross_sal-it);
+        }
+        void showdata()
+        {
+                cal_netsalary();
+                cal_gross_sal();
+                cout<<"Your net salary is "<<net_sal<<"and gross salary is "<<gross_sal<<endl;
+        }
+};
+int main()
+{
+        int n;
+        Employee emp;
+        cout<<"please enter number of employees "<<endl;
+        cin>>n;
+        for(int i=0;i<n;i++)
+        {
+                emp.getdata();
+                emp.showdata();
+        }
+        return 0;
+}
+
+
+                                                                                                      1,1           Top 

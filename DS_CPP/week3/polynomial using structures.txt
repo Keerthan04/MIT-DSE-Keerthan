@@ -1,0 +1,92 @@
+//Keerthan Kumar C
+//Polynomail Addition
+#include<iostream>
+using namespace std;
+struct poly
+{
+        int coeff,exp;
+};
+void getpoly(poly p[])
+{
+        int n,i;
+        cout<<"Enter number of terms \n";
+        cin>>n;
+        p[0].coeff=n;
+        cout<<"ENter the terms (coeff,exp) \n";
+        for(i=1;i<=n;i++)
+                cin>>p[i].coeff>>p[i].exp;
+}
+void showpoly(poly p[])
+{
+        for(int i=1;i<=p[0].coeff;i++)
+                if(i==p[0].coeff)
+                {
+                        cout<<p[i].coeff<<"x^"<<p[i].exp<<" ";
+                }
+                else
+                        cout<<p[i].coeff<<"x^"<<p[i].exp<<"+"<<" ";
+        cout<<endl;
+}
+void add(poly p1[],poly p2[],poly p3[])
+{
+        int i=1,j=1,n1=p1[0].coeff,n2=p2[0].coeff,n3=0;
+        while(i<=n1 && j<=n2)
+        {
+                if(p1[i].exp>p2[j].exp)
+                {
+                        n3++;
+                        p3[n3].coeff=p1[i].coeff;
+                        p3[n3].exp=p1[i].exp;
+                        i++;
+                }
+                else if(p1[i].exp<p2[j].exp)
+                {
+                        n3++;
+                        p3[n3].coeff=p2[j].coeff;
+                        p3[n3].exp=p2[j].exp;
+                        j++;
+                }
+                else
+                {
+                        int sum=p1[i].coeff + p2[i].coeff;
+                        if(sum!=0)
+                        {
+                                n3++;
+                                p3[n3].coeff=sum;
+                                p3[n3].exp=p1[i].exp;
+                        }
+                        i++;
+                        j++;
+                }
+        }
+        while(i<=n1)
+        {
+                n3++;
+                p3[n3].coeff=p1[i].coeff;
+                p3[n3].exp=p1[i].exp;
+                i++;
+        }
+        while(j<=n2)
+        {
+                n3++;
+                p3[n3].coeff=p2[j].coeff;
+                p3[n3].exp=p2[j].exp;
+                j++;
+        }
+        p3[0].coeff=n3;
+        showpoly(p3);
+}
+int main()
+{
+        poly p1[10],p2[10],p3[20];
+        cout<<"please enter 1st polynomial: \n";
+        getpoly(p1);
+        cout<<"please enter 2nd polynomial: \n";
+        getpoly(p2);
+        cout<<"The entered 1st polynomail is: \n";
+        showpoly(p1);
+        cout<<"the entered 2nd polynomial is: \n";
+        showpoly(p2);
+        cout<<"Polynmial after addition is: \n";
+        add(p1,p2,p3);
+}

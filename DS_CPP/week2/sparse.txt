@@ -1,0 +1,79 @@
+//Keerthan kumar c
+//220968002
+//sparse matrix
+#include<iostream>
+using namespace std;
+struct sparse{
+        int row,col,value;
+};
+int main()
+{
+        sparse s[20];
+        int matrix[20][20],i,j,m,n,k=0,count=0,b[20][20];
+        cout<<"please enter the dimesnions of matrix "<<endl;
+        cin>>m>>n;
+        cout<<"please enter the elements of the matrix "<<endl;
+        for(i=0;i<m;i++)
+        {
+                for(j=0;j<n;j++)
+                {
+                        cin>>matrix[i][j];
+                        if(matrix[i][j]!=0)
+                        {
+                                count=count+1;
+                        }
+                }
+        }
+        cout<<"Your Entered matrix is "<<endl;
+        for(i=0;i<m;i++)
+        {
+                for(j=0;j<n;j++)
+                {
+                        cout<<matrix[i][j]<<" ";
+                }
+                cout<<endl;
+        }
+
+        s[0].row=m;
+        s[0].col=n;
+        s[0].value=count;
+        for(i=0,k=1;i<m;i++)
+        {
+                for(j=0;j<n;j++)
+                {
+                        if((k<=s[0].value) && (matrix[i][j]!=0))
+                        {
+                                s[k].row=i;
+                                s[k].col=j;
+                                s[k].value=matrix[i][j];
+                                k=k+1;
+                        }
+                }
+        }
+        for(i=0,k=1;i<m;i++)
+        {
+ 
+                for(j=0;j<n;j++)
+                {
+                        if(k<=s[0].value && s[k].row==i && s[k].col==j)
+                        {
+                                b[i][j]=s[k].value;
+                                k=k+1;
+                        }
+                        else
+                                b[i][j]=0;
+                }
+        }
+        cout<<"The matrix after retriving is "<<endl;
+        for(i=0;i<m;i++)
+        {
+                for(j=0;j<n;j++)
+                {
+                        cout<<b[i][j]<<" ";
+                }
+                cout<<endl;
+        }
+        return 0;
+}
+                                                                                                   
+                                                                                            

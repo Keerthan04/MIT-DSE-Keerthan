@@ -1,0 +1,199 @@
+#include <iostream>
+#include <cstdlib> // for exit
+
+using namespace std;
+
+struct node
+{
+    int data;
+    struct node* link;
+};
+
+struct node* root = NULL;
+
+void append()
+{
+    struct node* newnode = new struct node;
+    cout << "Please enter the data to add: ";
+    cin >> newnode->data;
+    newnode->link = NULL;
+
+    if (root == NULL)
+    {
+        root = newnode;
+    }
+    else
+    {
+        struct node* p = root;
+        while (p->link != NULL)
+        {
+            p = p->link;
+        }
+        p->link = newnode;
+    }
+}
+
+void appendbefore()
+{
+    int ele, flag = 0, pos = 0;
+    cout << "Please enter the element before which we need to add the element: ";
+    cin >> ele;
+    struct node* p = root;
+    struct node* prev = NULL;
+
+    while (p != NULL)
+    {
+        pos++;
+        if (p->data == ele)
+        {
+            flag = 1;
+            break;
+        }
+        prev = p;
+        p = p->link;
+    }
+
+    if (flag == 1)
+    {
+        struct node* newnode = new struct node;
+        cout << "Please enter the data to add: ";
+        cin >> newnode->data;
+        newnode->link = p;
+
+        if (prev == NULL)
+        {
+            root = newnode;
+        }
+        else
+        {
+            prev->link = newnode;
+        }
+    }
+    else
+    {
+        cout << "No such element in the list." << endl;
+    }
+}
+
+void appendafter()
+{
+    int ele, flag = 0;
+    cout << "Please enter the element after which we need to add the element: ";
+    cin >> ele;
+    struct node* p = root;
+
+    while (p != NULL)
+    {
+        if (p->data == ele)
+        {
+            flag = 1;
+            break;
+        }
+        p = p->link;
+    }
+
+    if (flag == 1)
+    {
+        struct node* newnode = new struct node;
+        cout << "Please enter the data to add: ";
+        cin >> newnode->data;
+        newnode->link = p->link;
+        p->link = newnode;
+    }
+    else
+    {
+        cout << "No such element in the list." << endl;
+    }
+}
+
+void deleteele()
+{
+    int ele, flag = 0;
+    cout << "Please enter the element to delete: ";
+    cin >> ele;
+    struct node* p = root;
+    struct node* prev = NULL;
+
+    while (p != NULL)
+    {
+        if (p->data == ele)
+        {
+            flag = 1;
+            break;
+        }
+        prev = p;
+        p = p->link;
+    }
+
+    if (flag == 1)
+    {
+        if (prev == NULL)
+        {
+            root = p->link;
+        }
+        else
+        {
+            prev->link = p->link;
+        }
+        delete p; // Free the memory
+    }
+    else
+    {
+        cout << "No such element in the list." << endl;
+    }
+}
+
+void display()
+{
+    struct node* p = root;
+    while (p != NULL)
+    {
+        cout << p->data << " ";
+        p = p->link;
+    }
+    cout << endl;
+}
+
+int main()
+{
+    int ch;
+    do
+    {
+        cout << "Please enter your choice" << endl;
+        cout << "1. Insert at beginning" << endl;
+        cout << "2. Insert at end" << endl;
+        cout << "3. Insert after" << endl;
+        cout << "4. Insert before" << endl;
+        cout << "5. Delete" << endl;
+        cout << "6. Print" << endl;
+        cout << "7. Exit" << endl;
+        cin >> ch;
+        switch (ch)
+        {
+        case 1:
+            append();
+            break;
+        case 2:
+            append();
+            break;
+        case 3:
+            appendafter();
+            break;
+        case 4:
+            appendbefore();
+            break;
+        case 5:
+            deleteele();
+            break;
+        case 6:
+            display();
+            break;
+        case 7:
+            exit(1);
+        default:
+            cout << "Invalid choice." << endl;
+        }
+    } while (ch != 7);
+
+    return 0;
+}

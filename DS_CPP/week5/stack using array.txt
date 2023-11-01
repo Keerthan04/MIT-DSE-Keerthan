@@ -1,0 +1,100 @@
+//220968002
+//Keerthan Kumar C
+//parenthesis using stack
+#include<iostream>
+using namespace std;
+int stack[100],top=-1;
+int isempty();
+int isfull();
+void push(int ele)
+        {
+                if(isfull())
+                {
+                        cout<<"Stack overflow\n";
+                }
+                else
+                {
+                        top++;
+                        stack[top]=ele;
+                }
+        }
+void pop()
+{
+        if(isempty())
+        {
+                cout<<"Stcak underflow\n";
+        }
+        else
+        {
+                cout<<"the popped element is"<<stack[top]<<endl;
+                top--;
+        }
+}
+int isfull()
+{
+        if(top==99)
+        {
+                return 1;
+        }else
+                return 0;
+}
+int isempty()
+{
+        if(top==-1)
+                return 1;
+        else
+                return 0;
+}
+void display()
+{
+        int i;
+        for(i=top;i>=0;i--)
+        {
+                cout<<stack[i]<<" ";
+        }
+}
+void peek()
+{
+        if(isempty())
+        {
+                cout<<"Stack underflow\n";
+        }
+        else
+                cout<<"The peek element is"<<stack[top]<<endl;
+}
+int main()
+{
+        int choice;
+        cout<<"Please enter your choice\n";
+        cout<<"1)Push element to stack\n";
+        cout<<"2)pop element from stack \n";
+        cout<<"3)Display stack\n";
+        cout<<"4)Exit\n";
+        do
+        {
+                cout<<"Enter your choice \n";
+                cin>>choice;                                                                                                                               
+                switch(choice)
+                {
+                        case 1:{
+                                cout<<"Please enter element to be pushed\n";
+                                int ele;
+                                cin>>ele;
+                                push(ele);
+                                break;}
+                        case 2:{
+                                pop();
+                                break;}
+                        case 3:{
+                                cout<<"The contents of stack are\n";
+                                display();
+                                break;}
+                        case 4:{
+                                cout<<"exit\n";
+                                break;}
+                        default:{
+                                cout<<"invalid input";
+                                break;}
+                }
+        }while(choice!=4);
+}

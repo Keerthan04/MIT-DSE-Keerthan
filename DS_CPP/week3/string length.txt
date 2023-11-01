@@ -1,0 +1,19 @@
+//keerthan kumar c
+//220968002
+//length of string
+#include<iostream>
+using namespace std;
+int main()
+{
+        char str[20];
+        int length=0;
+        cout<<"Please enter a string"<<endl;
+        cin.get(str,20);
+        int i=0;
+        while(str[i]!='\0')
+        {
+                length++;
+                i++;
+        }
+        cout<<"length of the string: "<<length<<endl;
+}

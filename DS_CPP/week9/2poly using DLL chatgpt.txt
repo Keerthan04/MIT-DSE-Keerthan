@@ -1,0 +1,137 @@
+#include <iostream>
+using namespace std;
+
+// Structure to represent a term in a polynomial
+struct Term {
+    int coefficient;
+    int exponent;
+    Term* next;
+    Term* prev;
+};
+
+// Function to create a new term node
+Term* createTerm(int coeff, int exp) {
+    Term* term = new Term;
+    term->coefficient = coeff;
+    term->exponent = exp;
+    term->next = nullptr;
+    term->prev = nullptr;
+    return term;
+}
+
+// Function to insert a term into a polynomial (doubly linked list)
+void insertTerm(Term*& poly, int coeff, int exp) {
+    Term* term = createTerm(coeff, exp);
+
+    if (poly == nullptr) {
+        poly = term;
+    } else {
+        Term* current = poly;
+        while (current->next != nullptr) {
+            current = current->next;
+        }
+        current->next = term;
+        term->prev = current;
+    }
+}
+
+// Function to add two polynomials
+Term* addPolynomials(Term* poly1, Term* poly2) {
+    Term* result = nullptr;
+    
+    while (poly1 != nullptr || poly2 != nullptr) {
+        if (poly1 == nullptr) {
+            insertTerm(result, poly2->coefficient, poly2->exponent);
+            poly2 = poly2->next;
+        } else if (poly2 == nullptr) {
+            insertTerm(result, poly1->coefficient, poly1->exponent);
+            poly1 = poly1->next;
+        } else {
+            if (poly1->exponent == poly2->exponent) {
+                int sum = poly1->coefficient + poly2->coefficient;
+                if (sum != 0) {
+                    insertTerm(result, sum, poly1->exponent);
+                }
+                poly1 = poly1->next;
+                poly2 = poly2->next;
+            } else if (poly1->exponent > poly2->exponent) {
+                insertTerm(result, poly1->coefficient, poly1->exponent);
+                poly1 = poly1->next;
+            } else {
+                insertTerm(result, poly2->coefficient, poly2->exponent);
+                poly2 = poly2->next;
+            }
+        }
+    }
+    
+    return result;
+}
+
+// Function to display a polynomial
+void displayPolynomial(Term* poly) {
+    if (poly == nullptr) {
+        cout << "0" << endl;
+        return;
+    }
+    
+    while (poly != nullptr) {
+        cout << poly->coefficient;
+        if (poly->exponent > 0) {
+            cout << "x^" << poly->exponent;
+        }
+        if (poly->next != nullptr) {
+            cout << " + ";
+        }
+        poly = poly->next;
+    }
+    cout << endl;
+}
+
+int main() {
+    Term* poly1 = nullptr;
+    Term* poly2 = nullptr;
+
+    // Insert terms into polynomial 1
+    insertTerm(poly1, 3, 2);
+    insertTerm(poly1, -2, 1);
+    insertTerm(poly1, 5, 0);
+
+    // Insert terms into polynomial 2
+    insertTerm(poly2, 4, 3);
+    insertTerm(poly2, -2, 1);
+    insertTerm(poly2, 1, 0);
+
+    // Display the input polynomials
+    cout << "Polynomial 1: ";
+    displayPolynomial(poly1);
+    cout << "Polynomial 2: ";
+    displayPolynomial(poly2);
+
+    // Add the polynomials
+    Term* result = addPolynomials(poly1, poly2);
+
+    // Display the result
+    cout << "Sum of Polynomials: ";
+    displayPolynomial(result);
+
+    // Clean up memory
+    while (poly1 != nullptr) {
+        Term* temp = poly1;
+        poly1 = poly1->next;
+        delete temp;
+    }
+    
+    while (poly2 != nullptr) {
+        Term* temp = poly2;
+        poly2 = poly2->next;
+        delete temp;
+    }
+    
+    while (result != nullptr) {
+        Term* temp = result;
+        result = result->next;
+        delete temp;
+    }
+    
+    return 0;
+}

@@ -1,0 +1,225 @@
+//220968002
+//Keerthan Kumar C
+//double linked list implementation
+#include<iostream>
+#include<cstdlib>
+using namespace std;
+struct node
+{
+        struct node* pre;
+        int data;
+        struct node* next;
+};
+struct node* front=NULL;
+struct node* rear=NULL;
+void insertatrear(int ele)
+{
+        struct node* newnode=new struct node;
+        newnode->data=ele;
+        newnode->next=NULL;
+        if(front==NULL && rear==NULL)
+        {
+                front=newnode;
+                rear=newnode;
+                newnode->pre=NULL;
+        }
+        else
+        {
+                rear->next=newnode;
+                newnode->pre=rear;
+                rear=newnode;
+        }
+}
+void deleterear()
+{
+        if(rear==NULL)
+                cout<<"The List is emplty already"<<endl;
+        else if(rear==front)
+        {
+                struct node* temp;
+                temp=rear;
+                delete temp;
+                front=rear=NULL;
+        }
+        else
+        {
+                struct node* temp;
+                temp=rear;
+                rear=rear->pre;
+                rear->next=NULL;
+                delete temp;
+        }
+}
+void insertatpos(int pos)
+{
+        struct node* newnode=new struct node;
+        cout<<"ENter data to add at position"<<endl;
+        cin>>newnode->data;
+        if(pos==1)
+        {
+                newnode->pre=NULL;
+                newnode->next=front;
+                front->pre=newnode;
+                front=newnode;
+        }
+        else
+        {
+                struct node* temp=front;
+                for(int i=1;i<pos-1;i++)
+                {
+                        temp=temp->next;
+                }
+                newnode->pre=temp;
+                newnode->next=temp->next;
+                if(temp->next!=NULL)
+                {
+                        struct node* p=temp->next;
+                        p->pre=newnode;
+                }
+                temp->next=newnode;
+        }
+}
+void deleteatpos(int pos)
+{
+        if(pos==1)
+        {
+                if(front==NULL)
+                {
+                        cout<<"The list is empty"<<endl;
+                }
+                struct node* temp;
+                temp=front;
+                front=front->next;
+                if(front!=NULL)
+                {
+                        front->pre=NULL;
+                }
+                delete temp;
+        }
+        else
+        {
+                struct node* temp=front;
+                struct node* p=NULL;
+                for(int i=1;i<pos && temp!=NULL;i++)
+                {
+                        p=temp;
+                        temp=temp->next;
+                }
+                if(temp==NULL)
+                {
+                        cout<<"Position not found"<<endl;
+                        return;
+                }
+                p->next=temp->next;
+                if(temp->next!=NULL)
+                {
+                        temp->next->pre=p;
+                }
+                delete temp;
+        }
+}
+void insertafterele(int ele)                                                                                                                                                     
+{
+        int pos=1;
+        struct node* temp=front;
+        while(temp!=NULL && temp->data!=ele)
+        {
+                pos++;
+                temp=temp->next;
+        }
+        if(temp==NULL)
+        {
+                cout<<"Element not found in the list"<<endl;
+        }
+        else
+        {
+                insertatpos(pos+1);
+        }
+}
+void insertbeforeele(int ele)
+{
+        int pos=1;
+        struct node* temp=front;
+        while(temp!=NULL && temp->data!=ele)
+        {
+                pos++;
+                temp=temp->next;
+        }
+        if(temp==NULL)
+        {
+                cout<<"Element not found in the list"<<endl;
+        }
+        else
+        {
+                insertatpos(pos);
+        }
+}
+void print()
+{
+        struct node* temp=front;
+        cout<<"The list elements are"<<endl;
+        while(temp!=NULL)
+        {
+                cout<<temp->data<<" ";
+                temp=temp->next;
+        }
+        cout<<endl;
+}
+int main()
+{
+        int ch;
+        while(1)
+        {
+                cout<<"Please enter your choice"<<endl;
+                cout<<"1.Insert an element at rear end of the list"<<endl;
+                cout<<"2.Delete an element of rear end of the list"<<endl;
+                cout<<"3.Insert an element at a given position of the list"<<endl;
+                cout<<"4.Delete an element at a given position of the list"<<endl;
+                cout<<"5.Insert an element after a given element of the list"<<endl;
+                cout<<"6.Insert an element before a given element of the list"<<endl;
+                cout<<"7.Print the list"<<endl;
+                cout<<"8.Exit"<<endl;
+                cin>>ch;
+                switch(ch)
+                {
+                        case 1:
+                                cout<<"Please enter the element to be added"<<endl;
+                                int e;
+                                cin>>e;
+                                insertatrear(e);
+                                break;
+                        case 2:
+                                deleterear();
+                                break;
+                        case 3:
+                                cout<<"Enter the position at which element to be added"<<endl;
+                                int p;
+                                cin>>p;
+                                insertatpos(p);
+                                break;
+                        case 4:
+                                cout<<"Enter the postion at which element to be deleted"<<endl;
+                                int pk;
+                                cin>>pk;
+                                deleteatpos(pk);
+                                break;
+                        case 5:
+                                cout<<"Enter the element after which element to be added"<<endl;
+                                int ek;
+                                cin>>ek;
+                                insertafterele(ek);
+                                break;
+                        case 6:
+                                cout<<"Enter the element before which element to be added"<<endl;
+                                int ee;
+                                cin>>ee;
+                                insertbeforeele(ee);
+                                break;
+                        case 7:
+                                print();
+                                break;
+                        case 8:
+                                exit(1);
+                }
+        }
+}

@@ -1,0 +1,110 @@
+//220968002
+//Keerthan Kumar C
+//Binary search tree implementation
+#include<iostream>
+#include<cstdlib>
+using namespace std;
+struct node
+{
+        int data;
+        struct node* left=NULL;
+        struct node* right=NULL;
+};
+struct node* constructtree(struct node* root,int x)
+{
+        if(root==NULL)
+        {
+                struct node* newnode=new struct node;
+                newnode->data=x;
+                return newnode;
+        }
+        if(x<root->data)
+        {
+                root->left=constructtree(root->left,x);
+        }
+        else
+        {
+                root->right=constructtree(root->right,x);
+        }
+        return root;
+}
+void insert(struct node* &root)
+{
+        int dataa;
+        cout<<"Enter data (-1 to exit)"<<endl;
+        cin>>dataa;
+        while(dataa!=-1)
+        {
+                root=constructtree(root,dataa);
+                cin>>dataa;
+        }
+}
+bool search(int ele,struct node* root)
+{
+        struct node* temp=root;
+        while(temp!=NULL)
+        {
+                if(temp->data==ele)
+                        return true;
+                if(temp->data>ele)
+                {
+                        temp=temp->left;
+                }
+                if(temp->data<ele)
+                {
+                        temp=temp->right;
+                }
+        }
+        return false;
+}
+void inorder(struct node* root)
+{
+        if(root==NULL)
+        {
+                return;
+        }
+        inorder(root->left);
+        cout<<root->data<<" ";
+        inorder(root->right);
+}
+
+int main()
+{
+        int ch;int e;
+        struct node* root=NULL;
+        while(1)
+        {
+                cout<<"Please enter your choice"<<endl;
+                cout<<"1.Construct a binary search Tree"<<endl;
+                cout<<"2.View tree"<<endl;
+                cout<<"3.Search for an element in the tree"<<endl;
+                cout<<"4.Exit"<<endl;
+                cin>>ch;
+                switch(ch)
+                {
+                        case 1:
+                                insert(root);
+                                cout<<"Tree construction successfull"<<endl;
+                                break;
+                        case 2:
+                                cout<<"The Inorder traversal of binary search tree is"<<endl;
+                                inorder(root);
+                                break;
+                        case 3:{
+                                cout<<"Please enter element to be searched"<<endl;
+                                cin>>e;
+                                if(search(e,root))
+                                {
+                                        cout<<"THe entered element is present in the tree"<<endl;
+                                }
+                                else
+                                {
+                                        cout<<"The entered element is not present in the tree"<<endl;
+                                }
+                                break;
+                               }
+                        case 4:
+                               exit(1);
+                }
+        }
+}

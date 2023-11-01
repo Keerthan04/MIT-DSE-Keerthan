@@ -1,0 +1,118 @@
+#include<iostream>
+#include<cctype>
+using namespace std;
+#define N 20
+class stack
+{
+        private:
+                int top;
+                char a[N];
+        public:
+                stack()
+                {
+                        top=-1;
+                }
+                void push(char c)
+                {
+                        if(isfull())
+                        {
+                                cout<<"Stack overflow"<<endl;
+                        }
+                        else
+                        {
+                                top++;
+                                a[top]=c;
+                        }
+                }
+                char pop()
+                {
+                        if(isempty())
+                        {
+                                cout<<"Stack underflow"<<endl;
+                        }
+                        else
+                        {
+                                char popelement=a[top];
+                                top--;
+                                return popelement;
+                        }
+                }
+                bool isfull()
+                {
+                                                if(top==N-1)
+                                return true;
+                        else
+                                return false;
+                }
+                bool isempty()
+                {
+                        if(top==-1)
+                                return true;
+                        else
+                                return false;
+                }
+};
+int main()
+{
+        stack s1;
+        char w[20];char wr[20];char f[40];
+        char temp[20];
+        int lengthw=0;int lengthwr=0;int i,k;
+        cout<<"Please enter your w string"<<endl;
+        cin.getline(w,20);
+        cout<<"please enter your wr string"<<endl;
+        cin.getline(wr,20);
+        for(int j=0;w[j]!='\0';j++)
+        {
+                char s=w[j];
+                s1.push(s);
+                lengthw++;
+        }
+        for(int j=0;wr[j]!='\0';j++)
+        {
+                lengthwr++;
+        }
+        for(int j=0;j<lengthw;j++)
+        {
+                temp[j]=s1.pop();
+        if(lengthw!=lengthwr)
+        {
+                cout<<"Invalid String"<<endl;
+                exit(1);
+        }
+        int flag=0;
+        for(int j=0;j<lengthw;j++)
+        {
+                if(temp[j]!=wr[j])
+                {
+                        flag=1;
+                        break;
+                }
+        }
+        for(i=0;i<lengthw;i++)
+        {
+                f[i]=w[i];
+        }
+        k=i;
+        f[i]='c';
+        int j;
+        for(i=k+1,j=0;j<lengthwr;i++,j++)
+        {
+                f[i]=wr[j];
+        }
+        f[i]='\0';
+        cout<<"The W string is"<<endl;
+        cout<<w<<endl;
+        cout<<"the WR string is"<<endl;
+        cout<<wr<<endl;
+        cout<<"The final string after concatination is"<<endl;
+        cout<<f<<endl;
+        if(flag==0)
+        {
+                cout<<"The string is valid"<<endl;
+        }
+        else
+        {
+                cout<<"The string is invalid"<<endl;
+        }    
+} 

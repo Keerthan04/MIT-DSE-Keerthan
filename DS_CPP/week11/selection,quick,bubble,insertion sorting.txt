@@ -1,0 +1,141 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+void selectionsort(int a[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        int minindex = i;
+        for (int j = i + 1; j < n; j++) {
+            if (a[j] < a[minindex]) {
+                minindex = j;
+            }
+        }
+        if (minindex != i) {
+            int temp = a[i];
+            a[i] = a[minindex];
+            a[minindex] = temp;
+        }
+    }
+}
+void bubblesort(int a[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (a[j] > a[j + 1]) {
+                int temp = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = temp;
+            }
+        }
+    }
+}
+void insertionsort(int a[],int n)
+{
+    for(int i=1;i<n;i++)
+    {
+        int temp=a[i];int j;
+        for(j=i-1;j>=0;j--)
+        {
+            if(a[j]>temp)
+                a[j+1]=a[j];
+            else
+                break;
+        }
+        a[j+1]=temp;
+    }
+}
+int partsort(int a[],int lb,int ub)
+{
+    int pivot =a[lb];
+    int start=lb;
+    int end=ub;
+    while(start<end)
+    {
+        while(a[start]<=pivot)
+        {
+            start++;
+        }
+        while(a[end]>pivot)
+        {
+            end--;
+        }
+        if(start<end)
+        {
+            int temp=a[end];
+            a[end]=a[start];
+            a[start]=temp;
+        }
+    }
+    int temp=a[end];
+    a[end]=a[lb];
+    a[lb]=temp;
+    return end;
+}
+void quicksort(int a[],int lb,int ub)
+{
+    int loc;
+    if(lb<ub)
+    {
+        loc=partsort(a,lb,ub);
+        quicksort(a,lb,loc-1);
+        quicksort(a,loc+1,ub);
+    }
+}
+
+
+int main() {
+    int ch, n, key, index;
+    cout << "Please enter size of array: " << endl;
+    cin >> n;
+    int a[n];
+    cout << "Please enter array elements: " << endl;
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
+
+    while (1) {
+        cout << "Please enter your choice" << endl;
+        cout << "1. Selection Sort" << endl;
+        cout << "2. Insertion Sort" << endl;
+        cout << "3. Bubble Sort" << endl;
+        cout << "4. Quick Sort" << endl;
+        cout << "5. Exit" << endl;
+        cin >> ch;
+        switch (ch) {
+            case 1: {
+                selectionsort(a, n);
+                cout << "After sorting by selection sort" << endl;
+                for (int i = 0; i < n; i++)
+                    cout << a[i] << " ";
+                cout << endl;
+                break;
+            }
+            case 2: {
+                insertionsort(a, n);
+                cout << "After sorting by selection sort" << endl;
+                for (int i = 0; i < n; i++)
+                    cout << a[i] << " ";
+                cout << endl;
+                break;
+            }
+            case 3: {
+                bubblesort(a, n);
+                cout << "After sorting by bubble sort" << endl;
+                for (int i = 0; i < n; i++)
+                    cout << a[i] << " ";
+                cout << endl;
+                break;
+            }
+            case 4: {
+                quicksort(a,0,n-1);
+                cout << "After sorting by Quick sort" << endl;
+                for (int i = 0; i < n; i++)
+                    cout << a[i] << " ";
+                cout << endl;
+                break;
+            }
+            case 5:
+                exit(1);
+            default:
+                cout << "Invalid choice. Please enter a valid option." << endl;
+        }
+    }
+}

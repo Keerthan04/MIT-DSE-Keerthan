@@ -1,0 +1,131 @@
+//220968002
+//Keerthan kumar c
+//Circular queue of strings
+#include<iostream>
+using namespace std;
+#define N 10
+class Queue
+{private:
+        int front;
+        int rear;
+        int queue[N];
+public:
+        Queue()
+        {
+                front=rear=-1;
+        }
+
+void enqueue(int x)
+{
+        if(isfull())
+        {
+                cout<<"The queue is full"<<endl;
+        }
+        else if(isempty())
+        {
+                front=rear=0;
+                queue[rear]=x;
+        }
+        else{
+                rear=((rear+1)%N);
+                queue[rear]=x;
+        }
+}
+void dequeue()
+{
+        if(isempty())
+        {
+                cout<<"The queue is empty"<<endl;
+        }
+        else if(front==rear)
+        {
+                                   cout<<"The dequeued element is "<<queue[front]<<endl;
+                front=rear=-1;
+        }
+        else{
+                cout<<"The dequeued element is "<<queue[front]<<endl;
+                front=((front+1)%N);}
+}
+void display()
+{
+        if(isempty())
+                cout<<"The queue is empty"<<endl;
+        else
+        {
+                int i=front;
+                cout<<"The elements of the queue are: "<<endl;
+                while(i!=rear)
+                {
+                        cout<<queue[i]<<" ";
+                        i=((i+1)%N);
+                }
+                cout<<queue[rear];
+                cout<<endl;
+        }
+}
+int isempty()
+{
+        if(front==-1 && rear==-1)
+                return 1;
+        else
+                return 0;
+}
+int isfull()
+{
+        if(((rear+1)%N)==front)
+                return 1;
+        else
+                return 0;
+}
+void Front()
+{
+        if(isempty())
+                cout<<"The queue is empty";
+        else{
+                cout<<"The front element in the queue is"<<endl;
+                cout<<queue[front];}
+}
+void Rear()
+{
+        if(isempty())
+                cout<<"the queue is empty";
+        else{
+                cout<<"The rear element in the queue is"<<endl;
+                cout<<queue[rear];}
+}
+};
+int main()
+{
+        Queue q;
+        int choice,a;
+        do
+        {
+                cout<<"Please enter your choice"<<endl;
+                cout<<"1.Enqueue"<<endl;
+                cout<<"2.Dequeue"<<endl;
+                cout<<"3.Display"<<endl;
+                cout<<"4.Front"<<endl;
+                cout<<"5.Rear"<<endl;
+                cout<<"6.exit"<<endl;
+                cin>>choice;
+                switch(choice)
+                {
+                        case 1:{
+                                       cout<<"Please enter element to enqueue "<<endl;
+                                       int c;
+                                       cin>>c;
+                                       q.enqueue(c);break;}
+                        case 2:
+                                q.dequeue();break;
+                        case 3:
+                                                        q.display();break;
+                        case 4:
+                                q.Front();break;
+                        case 5:
+                                q.Rear();break;
+                        case 6:
+                                a=6;
+                }
+        }while(a!=6);
+        return 0;
+}

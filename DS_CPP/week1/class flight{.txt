@@ -1,0 +1,104 @@
+class flight{
+        int flight_no;
+        char destination[15];
+        float distance , fuel = 13.2;
+
+        void calculate_fuel(float dist){
+                if(dist <= 1000)
+                        fuel = 500;
+                else if(dist > 1000 && dist <=2000)
+                        fuel = 1100;
+                else
+                        fuel = 2200;
+        }
+
+        public:
+                void information_entry(){
+                        cout << "Enter flight number = ";
+                        cin >> flight_no;
+                        cout << "Enter destination : ";
+                        cin >> destination;
+                        cout << "Enter distance = ";
+                        cin >> distance;
+			calculate_fuel(distance);
+                }
+
+                void display_info(){
+                        cout << "Flight number : " << flight_no << endl;
+                        cout << "Destination : " << destination << endl;
+                        cout << "Distance = " << distance << endl;
+                        cout << "Fuel = " << fuel << " liters" << endl;
+                }
+};
+
+int main(){
+        flight f;
+
+        f.information_entry();
+        f.display_info();
+        return 0;
+}
+
+
+
+
+
+
+
+
+
+#include<iostream>
+using namespace std;
+
+int main(){
+        int n , row , col;
+        cout << "Enter the dimension of the matrix = ";
+        cin >> n;
+
+        int arr[100] , mat[10][10];
+
+        cout << "Enter the elements of the matrix : " << endl;
+        for(int i=0 ; i<n ; i++)
+        {
+                for(int j=0; j<n ; j++)
+                        cin >> mat[i][j];
+        }
+
+        cout << endl;
+        cout << "The matrix is : " << endl;
+
+        for(int i=0 ; i<n ; i++)
+        {
+                for(int j=0; j<n ; j++)
+                        cout << mat[i][j] << " ";
+        cout << endl;
+        }
+
+        cout << endl;
+
+	 for(int i=0 ; i<n ; i++)
+        {
+                for(int j=0; j<n ; j++)
+                {
+                        if(i<=j)
+                                arr[n*i+j-i*(i+1)/2] = mat[i][j];
+                }
+        }
+
+        cout << "The array is : " << endl;
+        for(int i=0 ; i<n*(n+1)/2 ; i++)
+                cout << arr[i] << " ";
+
+        cout << endl;
+
+        cout << "Enter the row and col of the element" ; << endl;
+        cin >> row;
+        cin >> col;
+
+        cout << "The element is = " << arr[n*row+col-row*(row+1)/2] << endl;
+        cout << "The location is = " << n*row+col-row*(row+1)/2 ;
+
+        return 0;
+
+}
+                  

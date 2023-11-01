@@ -1,0 +1,47 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+    char main[50], sub[50];
+    int i, j, k, lengthmain = 0, lengthsub = 0, flag;
+    cout << "Please enter your main string: \n";
+    cin.getline(main, 50);
+    cout << "Please enter your sub string: \n";
+    cin.getline(sub, 50);
+
+
+    i = 0;
+    while (main[i] != '\0') {
+        lengthmain++;
+        i++;
+    }
+    i = 0;
+    while (sub[i] != '\0') {
+        lengthsub++;
+        i++;
+    }
+
+    for (i = 0; i <= lengthmain - lengthsub; i++) {
+        if (main[i] == sub[0]) {
+            flag = 1;
+            for (j = 0; j < lengthsub; j++) {
+                if (main[i + j] != sub[j]) {
+                    flag = 0;
+                    break;
+                }
+            }
+            if (flag == 1) {
+
+                for (k = i; k < lengthmain - lengthsub; k++) {
+                    main[k] = main[k + lengthsub];
+                }
+                main[k] = '\0';
+        }
+    }
+    }
+
+    cout << "The string after deletion is:\n";
+    cout << main;
+
+    return 0;
+}

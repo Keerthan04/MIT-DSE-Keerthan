@@ -1,0 +1,136 @@
+#include <iostream>
+#include <cmath>
+#include <string.h>
+
+using namespace std;
+
+int stack[100], top = -1;
+
+int isempty();
+int is_full();
+
+void push(int ele) {
+    if (is_full()) {
+        cout << "Stack overflow\n";
+    } else {
+        top++;
+        stack[top] = ele;
+    }
+}
+
+int pop() {
+    if (isempty()) {
+        cout << "Stack underflow\n";
+        return -1;
+    } else {
+        int popped_element = stack[top];
+        top--;
+        return popped_element;
+    }
+}
+
+int is_full() {
+    return top == 99;
+}
+
+int isempty() {
+    return top == -1;
+}
+
+int evaluate(int a, int b, char op) {
+    switch (op) {
+        case '+':
+            return a + b;
+        case '-':
+            return a - b;
+        case '*':
+            return a * b;
+        case '/':
+            if (b != 0)
+                return a / b;
+            else {
+                cerr << "Error: Division by zero\n";
+                exit(1);
+            }
+        case '^':
+            return pow(a, b);
+        default:
+            return 0;
+    }
+}
+
+int is_digit(char c) {
+    return (c >= '0' && c <= '9');
+}
+
+int main() {
+    char exp[100];
+    char n[100];
+    int numb = 0, k = 0, flag = 0;
+    cout << "Please enter the expression with spaces to evaluate" << endl;
+    cin.getline(exp, 100);
+    cout << "Please enter the type" << endl;
+    cout << "1. Postfix exp" << endl;
+    cout << "2. Prefix exp" << endl;
+    char ch;
+    cin >> ch;
+
+    if (ch == '1') {
+        for (int i = 0; i < strlen(exp); i++) {
+            char c = exp[i];
+            if (is_digit(c)) {
+                numb = numb * 10 + (c - '0');
+            } else if (c == ' ') {
+                if (numb != 0) {
+                    int num = numb;
+                    push(num);
+                    numb = 0;
+                }
+            } else if (c == '+' || c == '-' || c == '*' || c == '/' || c == '^') {
+                int A = pop();
+                int B = pop();
+                int res = evaluate(B, A, c);
+                push(res);
+            }
+        }
+        if (top == 0) {
+            cout << "The evaluated result is: " << stack[top] << endl;
+        } else {
+            cout << "Invalid postfix expression\n";
+        }
+    } else if (ch == '2') {
+        for (int j = strlen(exp) - 1; j >= 0; j--) {
+            char i = exp[j];
+            if (is_digit(i)) {
+                n[k++] = i;
+                flag = 1;
+            } else if (i == ' ') {
+                if (flag == 1) {
+                    for (int l = k - 1; l >= 0; l--) {
+                        numb = numb * 10 + (n[l] - '0');
+                    }
+                    k = 0;
+                    int num = numb;
+                    push(num);
+                    numb = 0;
+                    flag = 0;
+                }
+            } else if (i == '+' || i == '-' || i == '*' || i == '/' || i == '^') {
+                int A = pop();
+                int B = pop();
+                int res = evaluate(A, B, i);
+                push(res);
+            }
+        }
+        if (top == 0) {
+            cout << "The evaluated result is: " << stack[top] << endl;
+        } else {
+            cout << "Invalid prefix expression\n";
+        }
+    } else {
+        cout << "Invalid choice" << endl;
+    }
+
+    return 0;
+}
+

@@ -1,0 +1,21 @@
+//220968002
+//Keerthan Kumar c
+//Factorial Of a number
+#include<iostream>
+using namespace std;
+int factorial(int n);
+int main()
+{
+        int n;
+        cout<<"Please enter your number: \n";
+        cin>>n;
+        int fact=factorial(n);
+        cout<<"The factorial of the number "<<n<<"is : "<<fact<<endl;
+}
+int factorial(int n)
+{
+        if(n==0)
+                return 1;
+        else
+                return factorial(n-1)*n;
+}

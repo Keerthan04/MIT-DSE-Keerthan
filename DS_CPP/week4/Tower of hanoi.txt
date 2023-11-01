@@ -1,0 +1,26 @@
+//220968002
+//Keerthan Kumar c
+//Tower of hanoi
+#include<iostream>
+using namespace std;
+int toh(int n,char source,char destination,char auxillary);
+int main()
+{
+        int n;
+        char source,destination,auxillary;
+        cout<<"please Enter the number of disks: \n";
+        cin>>n;
+        cout<<"Your Source is A,Destination is B and Auxillary is C: \n";
+        toh(n,'A','B','C');
+}
+int toh(int n,char source,char destination,char auxillary)
+{
+        if(n==1)
+                cout<<"Move from "<<source<<" to "<<destination<<endl;
+        else
+        {
+                toh(n-1,source,auxillary,destination);
+                cout<<"Move from "<<source<<" to "<<destination<<endl;
+                toh(n-1,auxillary,destination,source);
+        }
+}

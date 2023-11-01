@@ -1,0 +1,11 @@
+#include<iostream>
+#include<string>
+#include<string.h>
+using namespace std;
+int main()
+{
+    string exp="hello";
+    const char* a=exp.c_str();
+    int b=strlen(a);
+    cout<<b;
+}

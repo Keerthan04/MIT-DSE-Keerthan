@@ -1,0 +1,42 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+int main() {
+    char main[50], sub[50];
+    int i, j, k, lengthmain, lengthsub, flag;
+    cout << "Please enter your main string: \n";
+    cin.getline(main, 50);
+    cout << "Please enter your sub string: \n";
+    cin.getline(sub, 50);
+
+    lengthmain = strlen(main);
+    lengthsub = strlen(sub);
+
+    for (i = 0; i <= lengthmain - lengthsub; i++) {
+        if (main[i] == sub[0]) {
+            flag = 1;
+            for (j = 0; j < lengthsub; j++) {
+                if (main[i + j] != sub[j]) {
+                    flag = 0;
+                    break;
+                }
+            }
+            if (flag == 1) {
+                for (k = i; k < lengthmain - lengthsub; k++) {
+                    main[k] = main[k + lengthsub];
+                }
+                main[k] = '\0';
+                // Update lengthmain after deleting the substring
+                lengthmain = strlen(main);
+                // Reset i to recheck for more occurrences
+                i = -1;
+            }
+        }
+    }
+
+    cout << "The string after deletion is:\n";
+    cout << main;
+
+    return 0;
+}

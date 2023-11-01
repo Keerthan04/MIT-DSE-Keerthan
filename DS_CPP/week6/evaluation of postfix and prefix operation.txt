@@ -1,0 +1,162 @@
+//220968002
+//Keerthan kumar c
+//postfix and prefix evaluation
+#include <iostream>
+#include<math.h>
+using namespace std;
+
+int stack[100], top = -1;
+
+int isempty();
+int isfull();
+void push(int ele) {
+    if (isfull()) {
+        cout << "Stack overflow\n";
+    } else {
+        top++;
+        stack[top] = ele;
+    }
+}
+
+int pop() {
+    if (isempty()) {
+        cout << "Stack underflow\n";
+    } else {
+        int poppedElement = stack[top];
+        top--;
+        return poppedElement;
+    }
+}
+
+int isfull() {
+    if (top == 99) {
+        return 1;
+    } else
+        return 0;
+}
+
+int isempty() {
+    if (top == -1)
+        return 1;
+    else
+        return 0;
+}
+
+int evaluate(int a, int b, char op) {
+    switch (op) {
+        case '+':
+            return a + b;
+        case '-':
+            return a - b;
+        case '*':
+            return a * b;
+        case '/':
+            return a / b;
+        case '^':
+            return pow(a, b);
+        default:
+            return 0;
+    }
+}
+
+int main() {
+    int count = 0, flag = 1, length = 0;
+    int a[100];
+    char operators[100];
+    int symb,i=0,option,exi=0;
+    cout << "Enter an infix expression"<<endl;
+    i=0;
+    do
+    {
+        cout<<"1.If digit"<<endl;
+        cout<<"2.Is Operator"<<endl;
+        cout<<"3.Exit"<<endl;
+        cin>>option;
+        switch(option)
+        {
+        case 1:
+            {
+                cout<<"Please enter digit";
+                cin>>a[i];
+                operators[i]='0';
+                break;
+            }
+        case 2:
+            {
+                cout<<"Please enter operator";
+                cin>>operators[i];
+                a[i]=-1;
+                break;
+            }
+        case 3:
+            {
+                exi=5;
+                a[i]=-1;
+                operators[i]='0';
+                break;
+            }
+
+        }
+        i++;length++;
+    }while(exi!=5);
+    cout<<"The operands array is:"<<endl;
+    for(int j=0;j<length;j++){
+        if(a[j]==-1)
+        {
+            continue;
+        }
+        else
+            cout<<a[j]<<" ";
+    }
+    cout<<endl;
+    cout<<"The operators array is:"<<endl;
+    for(int j=0;j<length;j++){
+        if(operators[j]=='0')
+            continue;
+        else
+            cout<<operators[j]<<" ";
+    }
+    cout<<endl;
+    cout<<"Enter choice of evaluation"<<endl;;
+    cout<<"1.Postfix"<<endl;
+    cout<<"2.Prefix"<<endl;
+    int ch;
+    cin>>ch;
+    if(ch==1)
+    {
+        for(int i=0;i<length-1;i++)
+        {
+            if(a[i]!=-1 && operators[i]=='0')
+            {
+                push(a[i]);
+            }
+            if(a[i]==-1 && operators[i]!='0')
+            {
+                int A=pop();
+                int B=pop();
+                double res=evaluate(B,A,operators[i]);
+                push(res);
+            }
+        }
+        cout << "The evaluated postfix output is: " << stack[top] << endl;
+    }
+    else
+    {
+        for(int i=length-1;i>=0;i--)
+        {
+            if(a[i]!=-1 && operators[i]=='0')
+            {
+                push(a[i]);
+            }
+            if(a[i]==-1 && operators[i]!='0')
+            {
+                int A=pop();
+                int B=pop();
+                double res=evaluate(A,B,operators[i]);
+                push(res);
+            }
+        }
+        cout << "The evaluated prefix output is: " << stack[top] << endl;
+    }
+    return 0;
+}

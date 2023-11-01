@@ -1,0 +1,28 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+using namespace std;
+int main()
+{
+    string exp="123 2 6560 0";
+    int arr[100];
+    int i=0,charnum=0;
+    for(char c : exp)
+    {
+        if(isdigit(c))
+        {
+            charnum=charnum*10+(c-'0');
+        }
+        else if(charnum>0){
+            arr[i++]=charnum;charnum=0;}
+    }
+    if(charnum>=0)
+        arr[i++]=charnum;
+    for(int j=0;j<i;j++)
+        cout<<arr[j]<<" ";
+
+for(int j : arr)
+        cout<<j<<" ";//will work but full size of arr prints here 100 so for string good not good for char array also
+
+}
+

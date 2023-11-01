@@ -1,0 +1,111 @@
+//220968002
+//Keerthan Kumar C
+//polynomial addition using double linked list
+#include<iostream>
+using namespace std;
+
+struct Node {
+    int coeff;
+    int pow;
+    Node* next;
+    Node* prev;
+};
+
+class LinkedList {
+    public:
+        Node* head;
+
+        LinkedList() {
+            head = NULL;
+        }
+
+        void addNode(int coeff, int pow) {
+            Node* newNode = new Node();
+            newNode->coeff = coeff;
+            newNode->pow = pow;
+            newNode->next = NULL;
+            newNode->prev = NULL;
+
+            if(head == NULL) {
+                head = newNode;
+            } else {
+                Node* temp = head;
+                while(temp->next != NULL) {
+                    temp = temp->next;
+                }
+                temp->next = newNode;
+                newNode->prev = temp;
+            }
+        }        
+	LinkedList Add(LinkedList &ll1,LinkedList &ll2) {
+            LinkedList sum;
+
+            Node* n1 = ll1.head;
+            Node* n2 = ll2.head;
+
+            while(n1 != NULL && n2 != NULL) {
+                if(n1->pow > n2->pow) {
+                    sum.addNode(n1->coeff, n1->pow);
+                    n1 = n1->next;
+                } else if(n1->pow < n2->pow) {
+                    sum.addNode(n2->coeff, n2->pow);
+                    n2 = n2->next;
+                } else {
+                    int coeffSum = n1->coeff + n2->coeff;
+                    if(coeffSum != 0) {
+                        sum.addNode(coeffSum, n1->pow);
+                    }
+                    n1 = n1->next;
+                    n2 = n2->next;
+                }
+            }
+
+            while(n1 != NULL) {
+                sum.addNode(n1->coeff, n1->pow);
+                n1 = n1->next;
+            }
+
+            while(n2 != NULL) {
+                sum.addNode(n2->coeff, n2->pow);
+                n2 = n2->next;
+            }
+
+            return sum;
+        }
+
+        void print() {
+            Node* temp = head;
+            while(temp != NULL) {
+                cout << temp->coeff << "x^" << temp->pow << " + ";
+                temp = temp->next;
+            }
+            cout << endl;
+        }
+};
+
+int main() {
+        LinkedList ll1,ll2;
+        int n1,n2,coeff,exp;
+        cout<<"Please enter the number of terms in polynomial 1"<<endl;
+        cin>>n1;
+        for(int i=0;i<n1;i++)
+        {
+                cout<<"Please enter the coefficient and exponent of term "<<(i+1)<<endl;
+                cin>>coeff>>exp;
+                ll1.addNode(coeff,exp);
+        }
+
+        cout<<"Please enter the number of terms in polynomial 2"<<endl;
+        cin>>n2;
+        for(int i=0;i<n2;i++)
+        {
+                cout<<"Please enter the coefficient and exponent of term "<<(i+1)<<endl;
+                cin>>coeff>>exp;
+                ll2.addNode(coeff,exp);
+        }
+        cout<<"The resultant polynomial is"<<endl;
+        LinkedList sum=sum.Add(ll1,ll2);
+        sum.print();
+
+    return 0;
+}
