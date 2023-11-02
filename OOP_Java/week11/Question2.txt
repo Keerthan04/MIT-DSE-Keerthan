@@ -1,0 +1,53 @@
+package threadsquestions;
+
+import java.util.Scanner;
+
+class ThreadByExtending extends Thread {
+    @Override
+    public void run() {
+        System.out.println("Thread created by extending Thread class is running.");
+    }
+}
+
+class ThreadByImplementing implements Runnable {
+    @Override
+    public void run() {
+        System.out.println("Thread created by implementing Runnable interface is running.");
+    }
+}
+
+public class question2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("\nMenu:");
+            System.out.println("1. Create and run a Thread by Extending Thread class");
+            System.out.println("2. Create and run a Thread by Implementing Runnable interface");
+            System.out.println("3. Exit");
+            System.out.print("Enter your choice: ");
+
+            int choice = sc.nextInt();
+
+            switch (choice) {
+                case 1:
+                    ThreadByExtending threadByExtending = new ThreadByExtending();
+                    threadByExtending.start();
+                    break;
+                case 2:
+                    ThreadByImplementing threadByImplementing = new ThreadByImplementing();
+                    Thread thread = new Thread(threadByImplementing);
+                    thread.start();
+                    break;
+                case 3:
+                    System.out.println("Exiting the program.");
+                    sc.close();
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please select a valid option.");
+            }
+        }
+    }
+}
+

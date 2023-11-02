@@ -1,0 +1,28 @@
+package week11;
+
+import java.awt.Container;
+import java.awt.Font;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+public class question7  extends JFrame{
+	JLabel Hello;
+	question7()
+	{
+		Hello =new JLabel();
+		Hello.setText("Hello World");
+		Hello.setFont(new Font(null,Font.BOLD,20));
+		Container c=getContentPane();
+		c.add(Hello);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setTitle("Hello World Swing");
+		this.setBounds(200,200,500,150);
+		this.setVisible(true);
+	}
+	public static void main(String[] args)
+	{
+		new question7();
+	}
+
+}

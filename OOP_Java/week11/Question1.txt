@@ -1,0 +1,120 @@
+package threadsquestions;
+import java.util.Scanner;
+import java.lang.Thread;
+
+class thread1 extends Thread
+{
+	int a[],b[],union[];
+	thread1(int a[],int b[])
+	{
+		this.a=a;
+		this.b=b;
+		union=new int[a.length];
+		start();
+	}
+	public void run()
+	{
+		int k=0;
+		for(int i=0;i<a.length;i++)
+		{
+			for(int j=0;j<b.length;j++)
+			{
+				if(a[i]==b[j])
+				{
+					union[k++]=a[i];
+				}
+			}
+		}
+		System.out.println("The union of two arrays is:");
+		for(int i=0;i<union.length;i++)
+		{
+			System.out.print(union[i]+" ");
+		}
+		System.out.println();
+	}
+}
+
+class thread2 extends Thread
+{
+	int a[],b[],inter[];thread1 t;
+	thread2(int a[],int b[],thread1 t1)
+	{
+		t=t1;
+		this.a=a;
+		this.b=b;
+		inter=new int[a.length];
+		start();
+	}
+	public void run()
+	{
+		int l=0;
+		for(int i=0;i<a.length;i++)
+		{int flag=1;
+			for(int j=0;j<b.length;j++)
+			{
+				if(a[i]==b[j])
+				{
+					flag=0;
+				}
+			}
+			if(flag==1)
+			{
+				inter[l++]=a[i];
+			}
+			
+		}
+		for(int i=0;i<b.length;i++) {
+			int flag=1;
+			for(int j=0;j<t.union.length;j++)
+			{
+				if(b[i]==t.union[j])
+				{
+					flag=0;
+				}
+			}
+			if(flag==1)
+			{
+				inter[l++]=b[i];
+			}
+			
+		}
+		System.out.println("The intersection of two arrays is:");
+		for(int i=0;i<inter.length;i++)
+		{
+			System.out.print(inter[i]+" ");
+		}
+	}
+}
+public class question1 {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the size of first array");
+		int n=sc.nextInt();
+		System.out.println("Enter the size of second array");
+		int m=sc.nextInt();
+		int a[]=new int[n];
+		int b[]=new int[m];
+		System.out.println("Enter the elements of first array");
+		for(int i=0;i<n;i++)
+		{
+			a[i]=sc.nextInt();
+		}
+		System.out.println("Enter the elements of second array");
+		for(int i=0;i<m;i++)
+		{
+			b[i]=sc.nextInt();
+		}
+		thread1 t1=new thread1(a,b);
+		
+		try {
+			t1.join();
+			thread2 t2=new thread2(a,b,t1);
+			t2.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+}

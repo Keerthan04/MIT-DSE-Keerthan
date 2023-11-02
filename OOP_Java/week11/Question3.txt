@@ -1,0 +1,19 @@
+package threadsquestions;
+
+class MyThread extends Thread {
+    @Override
+    public void run() {
+        System.out.println("Thread " + getName() + " is running.");
+    }
+}
+
+public class question3 {
+    public static void main(String[] args) {
+        int numThreads = 5; 
+        for (int i = 1; i <= numThreads; i++) {
+            MyThread thread = new MyThread();
+            thread.start();
+        }
+    }
+}
+

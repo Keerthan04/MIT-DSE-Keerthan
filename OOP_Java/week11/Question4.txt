@@ -1,0 +1,38 @@
+package threadsquestions;
+
+class MyThreads extends Thread {
+    @Override
+    public void run() {
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("Thread is running: " + i);
+            try {
+                Thread.sleep(1000); 
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+public class question4 {
+    public static void main(String[] args) {
+        MyThreads myThread = new MyThreads();
+        
+        System.out.println("Thread status before starting: " + myThread.isAlive());
+        
+        myThread.start();
+        
+        System.out.println("Thread status after starting: " + myThread.isAlive());
+        
+        try {
+            myThread.join(); 
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        System.out.println("Thread status after join: " + myThread.isAlive());
+        
+        System.out.println("Main thread is done.");
+    }
+}
+
