@@ -1,0 +1,29 @@
+Implement KNN algorithm 
+
+1. Dataset: breast-cancer-wisconsin.data.txt, iris
+2. Rename columns as 'Id', 'Clump_thickness', 'Uniformity_Cell_Size',
+       'Uniformity_Cell_Shape', 'Marginal_Adhesion',
+       'Single_Epithelial_Cell_Size', 'Bare_Nuclei', 'Bland_Chromatin',
+       'Normal_Nucleoli', 'Mitoses', 'Class'
+3. Drop redundant columns
+4. View the summary of the dataset
+5. View the summary of the dataset
+6. Convert the data type of Bare_Nuclei to an integer
+7. Check data types of columns of data frame
+8. Identify Missing values, NAN in variables
+9. Check the distribution of variables using histograms
+10. Estimate correlation coefficients and represent using heatmaps
+11. Declare feature vector and target variable
+12. Split data into separate training and test set
+13. Perform Feature Scaling(Normalize)
+14. Fit the K Neighbours Classifier to the training set
+15. Predict test-set results 
+16. Check the accuracy score 
+17. Compare the train-set and test-set accuracy
+18. Rebuild the kNN Classification model using different values of k (3,4,5,6,7,8,9)
+19. Tabulate the results using the Tabulate package
+20. Display confusion matrix
+21. Generate classification report
+22. Evaluate classification error
+23. Generate ROC curve and ROC AUC score.
+24. Perform k-fold validation
