@@ -1,0 +1,11 @@
+﻿cgpa,interactive,practical knowledge,skills,job offer
+>=9,yes,very good,good,yes
+>=8,no,good,moderate,yes
+>=9,no,average,poor,no
+<8,no,average,good,no
+>=8,yes,good,moderate,yes
+>=9,yes,good,moderate,yes
+<8,yes,good,poor,no
+>=9,no,very good,good,yes
+>=8,yes,good,good,yes
+>=8,yes,average,good,yes
