@@ -1,0 +1,437 @@
+SQL> select upper(name) from emp;
+
+UPPER(NAME                                                                      
+----------                                                                      
+PRSAD                                                                           
+BHASKAR                                                                         
+RAVI                                                                            
+KEER                                                                            
+RAJ                                                                             
+VIJAY                                                                           
+ABHI                                                                            
+AJAY                                                                            
+RAJESH                                                                          
+MANISH                                                                          
+RAKESH                                                                          
+
+UPPER(NAME                                                                      
+----------                                                                      
+RAKESH                                                                          
+RAJ                                                                             
+SHASH                                                                           
+
+14 rows selected.
+
+SQL> select lower(name) from emp;
+
+LOWER(NAME                                                                      
+----------                                                                      
+prsad                                                                           
+bhaskar                                                                         
+ravi                                                                            
+keer                                                                            
+raj                                                                             
+vijay                                                                           
+abhi                                                                            
+ajay                                                                            
+rajesh                                                                          
+manish                                                                          
+rakesh                                                                          
+
+LOWER(NAME                                                                      
+----------                                                                      
+rakesh                                                                          
+raj                                                                             
+shash                                                                           
+
+14 rows selected.
+
+SQL> select initcap(name) from emp;
+
+INITCAP(NA                                                                      
+----------                                                                      
+Prsad                                                                           
+Bhaskar                                                                         
+Ravi                                                                            
+Keer                                                                            
+Raj                                                                             
+Vijay                                                                           
+Abhi                                                                            
+Ajay                                                                            
+Rajesh                                                                          
+Manish                                                                          
+Rakesh                                                                          
+
+INITCAP(NA                                                                      
+----------                                                                      
+Rakesh                                                                          
+Raj                                                                             
+Shash                                                                           
+
+14 rows selected.
+
+SQL> select name || ' works as ' || designation from emp;
+
+NAME||'WORKSAS'||DESIGNATION                                                    
+----------------------------------------                                        
+PRSAD works as CEO                                                              
+BHASKAR works as PROJECT DIRECTOR                                               
+RAVI works as PROJECT LEADER                                                    
+KEER works as PROJECT LEADER                                                    
+RAJ works as PROJECT LEADER                                                     
+VIJAY works as PROJECT MANAGER                                                  
+ABHI works as PROJECT MANAGER                                                   
+AJAY works as TECHNICAL HEAD                                                    
+RAJESH works as DEVELOPER                                                       
+MANISH works as DEVELOPER                                                       
+RAKESH works as DEVELOPER                                                       
+
+NAME||'WORKSAS'||DESIGNATION                                                    
+----------------------------------------                                        
+RAKESH works as DEVELOPER                                                       
+RAJ works as DEVELOPER                                                          
+SHASH works as DEVELOPER                                                        
+
+14 rows selected.
+
+SQL> select lpad(salary, 10, '*') from emp;
+
+LPAD(SALARY,10,'*')                                                             
+----------------------------------------                                        
+****220000                                                                      
+****150000                                                                      
+****121000                                                                      
+****110000                                                                      
+****207900                                                                      
+****120000                                                                      
+****200000                                                                      
+****100000                                                                      
+****105000                                                                      
+****210000                                                                      
+****199500                                                                      
+
+LPAD(SALARY,10,'*')                                                             
+----------------------------------------                                        
+****262500                                                                      
+****210000                                                                      
+****210000                                                                      
+
+14 rows selected.
+
+SQL> select rpad(salary, 10, '*') from emp;
+
+RPAD(SALARY,10,'*')                                                             
+----------------------------------------                                        
+220000****                                                                      
+150000****                                                                      
+121000****                                                                      
+110000****                                                                      
+207900****                                                                      
+120000****                                                                      
+200000****                                                                      
+100000****                                                                      
+105000****                                                                      
+210000****                                                                      
+199500****                                                                      
+
+RPAD(SALARY,10,'*')                                                             
+----------------------------------------                                        
+262500****                                                                      
+210000****                                                                      
+210000****                                                                      
+
+14 rows selected.
+
+SQL> select length(name) from emp;
+
+LENGTH(NAME)                                                                    
+------------                                                                    
+           5                                                                    
+           7                                                                    
+           4                                                                    
+           4                                                                    
+           3                                                                    
+           5                                                                    
+           4                                                                    
+           4                                                                    
+           6                                                                    
+           6                                                                    
+           6                                                                    
+
+LENGTH(NAME)                                                                    
+------------                                                                    
+           6                                                                    
+           3                                                                    
+           5                                                                    
+
+14 rows selected.
+
+SQL> select substr(name, 3, 9) from emp;
+
+SUBSTR(NAME,3,9)                                                                
+--------------------------------                                                
+SAD                                                                             
+ASKAR                                                                           
+VI                                                                              
+ER                                                                              
+J                                                                               
+JAY                                                                             
+HI                                                                              
+AY                                                                              
+JESH                                                                            
+NISH                                                                            
+KESH                                                                            
+
+SUBSTR(NAME,3,9)                                                                
+--------------------------------                                                
+KESH                                                                            
+J                                                                               
+ASH                                                                             
+
+14 rows selected.
+
+SQL> select replace(email, 'digisol', 'digitech') from emp;
+
+REPLACE(EMAIL,'DIGISOL','DIGITECH')                                             
+--------------------------------------------------------------------------------
+prasad@digitech.com                                                             
+bhaskar@digitech.com                                                            
+ravi@digitech.com                                                               
+keer@digitech.com                                                               
+raj@digitech.com                                                                
+vijay@digitech.com                                                              
+abhih@digitech.com                                                              
+ajay@digitech.com                                                               
+rajesh@digitech.com                                                             
+manish@digitech.com                                                             
+rakeesh@digitech.com                                                            
+
+REPLACE(EMAIL,'DIGISOL','DIGITECH')                                             
+--------------------------------------------------------------------------------
+rakesh@digitech.com                                                             
+rajh@digitech.com                                                               
+shashh@digitech.com                                                             
+
+14 rows selected.
+
+SQL> select concat(concat(empno, ' '), dep_name) from family_dependents;
+
+CONCAT(CONCAT(EMPNO,''),DEP_NAME)                                               
+-------------------------------------------------------------                   
+100 AJITH                                                                       
+100 PRITHVI                                                                     
+101 AARYA                                                                       
+101 AKANKSH                                                                     
+101 ANKITHA                                                                     
+
+SQL> select clientid, length(clientid) from client;
+select clientid, length(clientid) from client
+                        *
+ERROR at line 1:
+ORA-00904: "CLIENTID": invalid identifier 
+
+
+SQL> select clientid, length(client_id) from client;
+select clientid, length(client_id) from client
+       *
+ERROR at line 1:
+ORA-00904: "CLIENTID": invalid identifier 
+
+
+SQL> select client_id, length(client_id) from client;
+
+CLI LENGTH(CLIENT_ID)                                                           
+--- -----------------                                                           
+C1                  3                                                           
+C2                  3                                                           
+C3                  3                                                           
+C4                  3                                                           
+C5                  3                                                           
+C6                  3                                                           
+C7                  3                                                           
+C8                  3                                                           
+
+8 rows selected.
+
+SQL> select client_id, length(rtrim(client_id)) from client;
+
+CLI LENGTH(RTRIM(CLIENT_ID))                                                    
+--- ------------------------                                                    
+C1                         2                                                    
+C2                         2                                                    
+C3                         2                                                    
+C4                         2                                                    
+C5                         2                                                    
+C6                         2                                                    
+C7                         2                                                    
+C8                         2                                                    
+
+8 rows selected.
+
+SQL> select client_id, length(ltrim(client_id)) from client;
+
+CLI LENGTH(LTRIM(CLIENT_ID))                                                    
+--- ------------------------                                                    
+C1                         3                                                    
+C2                         3                                                    
+C3                         3                                                    
+C4                         3                                                    
+C5                         3                                                    
+C6                         3                                                    
+C7                         3                                                    
+C8                         3                                                    
+
+8 rows selected.
+
+SQL> select client_id, length(trim(client_id)) from client;
+
+CLI LENGTH(TRIM(CLIENT_ID))                                                     
+--- -----------------------                                                     
+C1                        2                                                     
+C2                        2                                                     
+C3                        2                                                     
+C4                        2                                                     
+C5                        2                                                     
+C6                        2                                                     
+C7                        2                                                     
+C8                        2                                                     
+
+8 rows selected.
+
+SQL> select ascii('A') from dual;
+
+ASCII('A')                                                                      
+----------                                                                      
+        65                                                                      
+
+SQL> select chr(65) from dual;
+
+C                                                                               
+-                                                                               
+A                                                                               
+
+SQL> select trunc(123.456, 2) from dual;
+
+TRUNC(123.456,2)                                                                
+----------------                                                                
+          123.45                                                                
+
+SQL> select sqrt(9), power(9, 2), power(9, 5) from dual;
+
+   SQRT(9) POWER(9,2) POWER(9,5)                                                
+---------- ---------- ----------                                                
+         3         81      59049                                                
+
+SQL> select round(123.456, 2) from dual;
+
+ROUND(123.456,2)                                                                
+----------------                                                                
+          123.46                                                                
+
+SQL> select abs(-123), mod(123, 10) from dual;
+
+ ABS(-123) MOD(123,10)                                                          
+---------- -----------                                                          
+       123           3                                                          
+
+SQL> select floor(234.36), ceil(234.36) from dual;
+
+FLOOR(234.36) CEIL(234.36)                                                      
+------------- ------------                                                      
+          234          235                                                      
+
+SQL> select floor(-234.26), ceil(-234.26) from dual;
+
+FLOOR(-234.26) CEIL(-234.26)                                                    
+-------------- -------------                                                    
+          -235          -234                                                    
+
+SQL> select to_char(start_date, 'dd-month-yy'), to_char(end_date, 'dd-month-yy') from prj_details;
+
+TO_CHAR(START_DATE,'DD-MONTH-YY')                                               
+------------------------------------------                                      
+TO_CHAR(END_DATE,'DD-MONTH-YY')                                                 
+------------------------------------------                                      
+10-january  -20                                                                 
+11-october  -22                                                                 
+                                                                                
+01-january  -19                                                                 
+10-july     -20                                                                 
+                                                                                
+03-september-21                                                                 
+10-october  -23                                                                 
+                                                                                
+
+TO_CHAR(START_DATE,'DD-MONTH-YY')                                               
+------------------------------------------                                      
+TO_CHAR(END_DATE,'DD-MONTH-YY')                                                 
+------------------------------------------                                      
+28-february -20                                                                 
+09-june     -21                                                                 
+                                                                                
+07-august   -18                                                                 
+04-february -20                                                                 
+                                                                                
+21-february -19                                                                 
+07-august   -20                                                                 
+                                                                                
+
+TO_CHAR(START_DATE,'DD-MONTH-YY')                                               
+------------------------------------------                                      
+TO_CHAR(END_DATE,'DD-MONTH-YY')                                                 
+------------------------------------------                                      
+07-september-18                                                                 
+04-march    -20                                                                 
+                                                                                
+
+7 rows selected.
+
+SQL> select to_char(actual_end_date, 'MON-yy') from prj_details;
+
+TO_CHAR(ACTUAL_                                                                 
+---------------                                                                 
+NOV-22                                                                          
+DEC-21                                                                          
+NOV-23                                                                          
+JAN-22                                                                          
+NOV-20                                                                          
+SEP-20                                                                          
+DEC-20                                                                          
+
+7 rows selected.
+
+SQL> select to_char(start_date, 'dd'), to_char(start_date, 'mm'), to_char(start_date, 'yy') from prj_details;
+
+TO TO TO                                                                        
+-- -- --                                                                        
+10 01 20                                                                        
+01 01 19                                                                        
+03 09 21                                                                        
+28 02 20                                                                        
+07 08 18                                                                        
+21 02 19                                                                        
+07 09 18                                                                        
+
+7 rows selected.
+
+SQL> select prj_name, months_between(end_date, start_date) from prj_details;
+
+PRJ_NAME   MONTHS_BETWEEN(END_DATE,START_DATE)                                  
+---------- -----------------------------------                                  
+SPYDER                              33.0322581                                  
+APOLLO                              18.2903226                                  
+UNICORN                             25.2258065                                  
+ZEUS                                15.3870968                                  
+JUPITOR                             17.9032258                                  
+MARS                                17.5483871                                  
+XXX                                 17.9032258                                  
+
+7 rows selected.
+
+SQL> select next_day(sysdate, 'thursday') from dual;
+
+NEXT_DAY(                                                                       
+---------                                                                       
+22-FEB-24                                                                       
+
+SQL> spool off

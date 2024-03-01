@@ -1,0 +1,970 @@
+SQL> insert all
+  2  	into emp values(100,'RAJESH','BTECH',1234567899,'rajesh@digisol.com','DEVELOPER',100000,101)
+  3  	into emp values(101,'RAVI','MTECH',1234563899,'ravi@digisol.com','PROJEACT LEADER',110000,102)
+  4  	into emp values(102,'VIJAY','BTECH',1234567859,'vijay@digisol.com','PROJECT MANAGER',120000,110)
+  5  	into emp values(108,'AJAY','BTECH',1234567839,'ajay@digisol.com','TECHNICAL HEAD',10000,102)
+  6  	into emp values(110,'BHASKAR','MTECH',1234567349,'bhaskar@digisol.com','PROJECT DIRECTOR',150000,106)
+  7  	into emp values(106,'RAJ','MSC',1234534567,'raj@digisol.com','PROJECT LEADER',189000,110)
+  8  	into emp values(105,'MANISH','MCA',1234567899,'manish@digisol.com','DEVELOPER',200000,106)
+  9  	into emp values(106,'PRSAD','PHD',3234563893,'prasad@digisol.com','CEO',220000,NULL)
+ 10  	into emp values(102,'RAKESH','MTECH',1234567899,'rakesh@digisol.com','DEVELOPER',190000,108)
+ 11  	into emp values(108,'RAKESH','MTECH',4534567899,'rakesh@digisol.com','DEVELOPER',250000,103)
+ 12  	into emp values(109,'KEER','MBA',1244567899,'keer@digisol.com','PROJECT LEADER',100000,105)
+ 13  	into emp values(110,'ABHI','BTECH',9234567899,'abhih@digisol.com','S. ENGINEER',200000,104)
+ 14  	into emp values(111,'RAJ','BTECH',1234567899,'rajh@digital.com','DEVELOPER',200000,101)
+ 15  Select * from dual;
+	into emp values(100,'RAJESH','BTECH',1234567899,'rajesh@digisol.com','DEVELOPER',100000,101)
+	                                                *
+ERROR at line 2:
+ORA-12899: value too large for column "DSE071"."EMP"."EMAIL" (actual: 18, 
+maximum: 10) 
+
+
+SQL> alter table emp modify(EMAIL varchar2(30));
+
+Table altered.
+
+SQL> insert all
+  2  	into emp values(100,'RAJESH','BTECH',1234567899,'rajesh@digisol.com','DEVELOPER',100000,101)
+  3  	into emp values(101,'RAVI','MTECH',1234563899,'ravi@digisol.com','PROJEACT LEADER',110000,102)
+  4  	into emp values(102,'VIJAY','BTECH',1234567859,'vijay@digisol.com','PROJECT MANAGER',120000,110)
+  5  	into emp values(108,'AJAY','BTECH',1234567839,'ajay@digisol.com','TECHNICAL HEAD',10000,102)
+  6  	into emp values(110,'BHASKAR','MTECH',1234567349,'bhaskar@digisol.com','PROJECT DIRECTOR',150000,106)
+  7  	into emp values(106,'RAJ','MSC',1234534567,'raj@digisol.com','PROJECT LEADER',189000,110)
+  8  	into emp values(105,'MANISH','MCA',1234567899,'manish@digisol.com','DEVELOPER',200000,106)
+  9  	into emp values(106,'PRSAD','PHD',3234563893,'prasad@digisol.com','CEO',220000,NULL)
+ 10  	into emp values(102,'RAKESH','MTECH',1234567899,'rakesh@digisol.com','DEVELOPER',190000,108)
+ 11  	into emp values(108,'RAKESH','MTECH',4534567899,'rakesh@digisol.com','DEVELOPER',250000,103)
+ 12  	into emp values(109,'KEER','MBA',1244567899,'keer@digisol.com','PROJECT LEADER',100000,105)
+ 13  	into emp values(110,'ABHI','BTECH',9234567899,'abhih@digisol.com','S. ENGINEER',200000,104)
+ 14  	into emp values(111,'RAJ','BTECH',1234567899,'rajh@digital.com','DEVELOPER',200000,101)
+ 15  	into emp values(112,'SHASH','BTECH',3434567899,'shashh@digital.com','DEVELOPER',200000,101)
+ 16  Select * from dual;
+insert all
+*
+ERROR at line 1:
+ORA-02290: check constraint (DSE071.VALID_DESIGNATION) violated 
+
+
+SQL> insert all
+  2  	into emp values(100,'RAJESH','BTECH',1234567899,'rajesh@digisol.com','DEVELOPER',100000,101)
+  3  	into emp values(101,'RAVI','MTECH',1234563899,'ravi@digisol.com','PROJECT LEADER',110000,102)
+  4  	into emp values(102,'VIJAY','BTECH',1234567859,'vijay@digisol.com','PROJECT MANAGER',120000,110)
+  5  	into emp values(108,'AJAY','BTECH',1234567839,'ajay@digisol.com','TECHNICAL HEAD',10000,102)
+  6  	into emp values(110,'BHASKAR','MTECH',1234567349,'bhaskar@digisol.com','PROJECT DIRECTOR',150000,106)
+  7  	into emp values(106,'RAJ','MSC',1234534567,'raj@digisol.com','PROJECT LEADER',189000,110)
+  8  	into emp values(105,'MANISH','MCA',1234567899,'manish@digisol.com','DEVELOPER',200000,106)
+  9  	into emp values(106,'PRSAD','PHD',3234563893,'prasad@digisol.com','CEO',220000,NULL)
+ 10  	into emp values(102,'RAKESH','MTECH',1234567899,'rakesh@digisol.com','DEVELOPER',190000,108)
+ 11  	into emp values(108,'RAKESH','MTECH',4534567899,'rakesh@digisol.com','DEVELOPER',250000,103)
+ 12  	into emp values(109,'KEER','MBA',1244567899,'keer@digisol.com','PROJECT LEADER',100000,105)
+ 13  	into emp values(110,'ABHI','BTECH',9234567899,'abhih@digisol.com','S. ENGINEER',200000,104)
+ 14  	into emp values(111,'RAJ','BTECH',1234567899,'rajh@digital.com','DEVELOPER',200000,101)
+ 15  	into emp values(112,'SHASH','BTECH',3434567899,'shashh@digital.com','DEVELOPER',200000,101)
+ 16  Select * from dual;
+insert all
+*
+ERROR at line 1:
+ORA-02290: check constraint (DSE071.SALARY_RANGE) violated 
+
+
+SQL> insert all
+  2  	into emp values(100,'RAJESH','BTECH',1234567899,'rajesh@digisol.com','DEVELOPER',100000,101)
+  3  	into emp values(101,'RAVI','MTECH',1234563899,'ravi@digisol.com','PROJECT LEADER',110000,102)
+  4  	into emp values(102,'VIJAY','BTECH',1234567859,'vijay@digisol.com','PROJECT MANAGER',120000,110)
+  5  	into emp values(108,'AJAY','BTECH',1234567839,'ajay@digisol.com','TECHNICAL HEAD',100000,102)
+  6  	into emp values(110,'BHASKAR','MTECH',1234567349,'bhaskar@digisol.com','PROJECT DIRECTOR',150000,106)
+  7  	into emp values(106,'RAJ','MSC',1234534567,'raj@digisol.com','PROJECT LEADER',189000,110)
+  8  	into emp values(105,'MANISH','MCA',1234567899,'manish@digisol.com','DEVELOPER',200000,106)
+  9  	into emp values(106,'PRSAD','PHD',3234563893,'prasad@digisol.com','CEO',220000,NULL)
+ 10  	into emp values(102,'RAKESH','MTECH',1234567899,'rakesh@digisol.com','DEVELOPER',190000,108)
+ 11  	into emp values(108,'RAKESH','MTECH',4534567899,'rakesh@digisol.com','DEVELOPER',250000,103)
+ 12  	into emp values(109,'KEER','MBA',1244567899,'keer@digisol.com','PROJECT LEADER',100000,105)
+ 13  	into emp values(110,'ABHI','BTECH',9234567899,'abhih@digisol.com','S. ENGINEER',200000,104)
+ 14  	into emp values(111,'RAJ','BTECH',1234567899,'rajh@digital.com','DEVELOPER',200000,101)
+ 15  	into emp values(112,'SHASH','BTECH',3434567899,'shashh@digital.com','DEVELOPER',200000,101)
+ 16  Select * from dual;
+insert all
+*
+ERROR at line 1:
+ORA-00001: unique constraint (DSE071.UNQ_PHONE) violated 
+
+
+SQL> insert all
+  2  	into emp values(100,'RAJESH','BTECH',1234567899,'rajesh@digisol.com','DEVELOPER',100000,101)
+  3  	into emp values(101,'RAVI','MTECH',1234563899,'ravi@digisol.com','PROJECT LEADER',110000,102)
+  4  	into emp values(102,'VIJAY','BTECH',1234567859,'vijay@digisol.com','PROJECT MANAGER',120000,110)
+  5  	into emp values(108,'AJAY','BTECH',1234567839,'ajay@digisol.com','TECHNICAL HEAD',100000,102)
+  6  	into emp values(110,'BHASKAR','MTECH',1234567349,'bhaskar@digisol.com','PROJECT DIRECTOR',150000,106)
+  7  	into emp values(106,'RAJ','MSC',1234534567,'raj@digisol.com','PROJECT LEADER',189000,110)
+  8  	into emp values(105,'MANISH','MCA',1234567899,'manish@digisol.com','DEVELOPER',200000,106)
+  9  	into emp values(106,'PRSAD','PHD',3234563893,'prasad@digisol.com','CEO',220000,NULL)
+ 10  	into emp values(102,'RAKESH','MTECH',1234567899,'rakesh@digisol.com','DEVELOPER',190000,108)
+ 11  	into emp values(108,'RAKESH','MTECH',4534567899,'rakesh@digisol.com','DEVELOPER',250000,103)
+ 12  	into emp values(109,'KEER','MBA',1244567899,'keer@digisol.com','PROJECT LEADER',100000,105)
+ 13  	into emp values(110,'ABHI','BTECH',9234567899,'abhih@digisol.com','S. ENGINEER',200000,104)
+ 14  	into emp values(111,'RAJ','BTECH',1834567899,'rajh@digital.com','DEVELOPER',200000,101)
+ 15  	into emp values(112,'SHASH','BTECH',3434567899,'shashh@digital.com','DEVELOPER',200000,101)
+ 16  Select * from dual;
+insert all
+*
+ERROR at line 1:
+ORA-00001: unique constraint (DSE071.UNQ_PHONE) violated 
+
+
+SQL> insert all
+  2  	into emp values(100,'RAJESH','BTECH',1234567899,'rajesh@digisol.com','DEVELOPER',100000,101)
+  3  	into emp values(101,'RAVI','MTECH',1234563899,'ravi@digisol.com','PROJECT LEADER',110000,102)
+  4  	into emp values(102,'VIJAY','BTECH',1234567859,'vijay@digisol.com','PROJECT MANAGER',120000,110)
+  5  	into emp values(108,'AJAY','BTECH',1234567839,'ajay@digisol.com','TECHNICAL HEAD',100000,102)
+  6  	into emp values(110,'BHASKAR','MTECH',1234567349,'bhaskar@digisol.com','PROJECT DIRECTOR',150000,106)
+  7  	into emp values(106,'RAJ','MSC',1234534567,'raj@digisol.com','PROJECT LEADER',189000,110)
+  8  	into emp values(105,'MANISH','MCA',1834567899,'manish@digisol.com','DEVELOPER',200000,106)
+  9  	into emp values(106,'PRSAD','PHD',3234563893,'prasad@digisol.com','CEO',220000,NULL)
+ 10  	into emp values(102,'RAKESH','MTECH',1234567899,'rakesh@digisol.com','DEVELOPER',190000,108)
+ 11  	into emp values(108,'RAKESH','MTECH',4534567899,'rakesh@digisol.com','DEVELOPER',250000,103)
+ 12  	into emp values(109,'KEER','MBA',1244567899,'keer@digisol.com','PROJECT LEADER',100000,105)
+ 13  	into emp values(110,'ABHI','BTECH',9234567899,'abhih@digisol.com','S. ENGINEER',200000,104)
+ 14  	into emp values(111,'RAJ','BTECH',1834567899,'rajh@digital.com','DEVELOPER',200000,101)
+ 15  	into emp values(112,'SHASH','BTECH',3434567899,'shashh@digital.com','DEVELOPER',200000,101)
+ 16  Select * from dual;
+insert all
+*
+ERROR at line 1:
+ORA-00001: unique constraint (DSE071.PK_EMPNO) violated 
+
+
+SQL> insert all
+  2  	into emp values(100,'RAJESH','BTECH',1234567899,'rajesh@digisol.com','DEVELOPER',100000,101)
+  3  	into emp values(101,'RAVI','MTECH',1234563899,'ravi@digisol.com','PROJECT LEADER',110000,102)
+  4  	into emp values(102,'VIJAY','BTECH',1234567859,'vijay@digisol.com','PROJECT MANAGER',120000,110)
+  5  	into emp values(108,'AJAY','BTECH',1234567839,'ajay@digisol.com','TECHNICAL HEAD',100000,102)
+  6  	into emp values(110,'BHASKAR','MTECH',1234567349,'bhaskar@digisol.com','PROJECT DIRECTOR',150000,106)
+  7  	into emp values(106,'RAJ','MSC',1234534567,'raj@digisol.com','PROJECT LEADER',189000,110)
+  8  	into emp values(105,'MANISH','MCA',1834567899,'manish@digisol.com','DEVELOPER',200000,106)
+  9  	into emp values(107,'PRSAD','PHD',3234563893,'prasad@digisol.com','CEO',220000,NULL)
+ 10  	into emp values(102,'RAKESH','MTECH',1234567899,'rakesh@digisol.com','DEVELOPER',190000,108)
+ 11  	into emp values(103,'RAKESH','MTECH',4534567899,'rakesh@digisol.com','DEVELOPER',250000,103)
+ 12  	into emp values(109,'KEER','MBA',1244567899,'keer@digisol.com','PROJECT LEADER',100000,105)
+ 13  	into emp values(104,'ABHI','BTECH',9234567899,'abhih@digisol.com','S. ENGINEER',200000,104)
+ 14  	into emp values(111,'RAJ','BTECH',1834567899,'rajh@digital.com','DEVELOPER',200000,101)
+ 15  	into emp values(112,'SHASH','BTECH',3434567899,'shashh@digital.com','DEVELOPER',200000,101)
+ 16  Select * from dual;
+insert all
+*
+ERROR at line 1:
+ORA-00001: unique constraint (DSE071.PK_EMPNO) violated 
+
+
+SQL> insert all
+  2  	into emp values(100,'RAJESH','BTECH',1234567899,'rajesh@digisol.com','DEVELOPER',100000,101)
+  3  	into emp values(101,'RAVI','MTECH',1234563899,'ravi@digisol.com','PROJECT LEADER',110000,102)
+  4  	into emp values(102,'VIJAY','BTECH',1234567859,'vijay@digisol.com','PROJECT MANAGER',120000,110)
+  5  	into emp values(108,'AJAY','BTECH',1234567839,'ajay@digisol.com','TECHNICAL HEAD',100000,102)
+  6  	into emp values(110,'BHASKAR','MTECH',1234567349,'bhaskar@digisol.com','PROJECT DIRECTOR',150000,106)
+  7  	into emp values(106,'RAJ','MSC',1234534567,'raj@digisol.com','PROJECT LEADER',189000,110)
+  8  	into emp values(105,'MANISH','MCA',1834567899,'manish@digisol.com','DEVELOPER',200000,106)
+  9  	into emp values(107,'PRSAD','PHD',3234563893,'prasad@digisol.com','CEO',220000,NULL)
+ 10  	into emp values(113,'RAKESH','MTECH',1234567899,'rakesh@digisol.com','DEVELOPER',190000,108)
+ 11  	into emp values(103,'RAKESH','MTECH',4534567899,'rakesh@digisol.com','DEVELOPER',250000,103)
+ 12  	into emp values(109,'KEER','MBA',1244567899,'keer@digisol.com','PROJECT LEADER',100000,105)
+ 13  	into emp values(104,'ABHI','BTECH',9234567899,'abhih@digisol.com','S. ENGINEER',200000,104)
+ 14  	into emp values(111,'RAJ','BTECH',1834567899,'rajh@digital.com','DEVELOPER',200000,101)
+ 15  	into emp values(112,'SHASH','BTECH',3434567899,'shashh@digital.com','DEVELOPER',200000,101)
+ 16  Select * from dual;
+insert all
+*
+ERROR at line 1:
+ORA-00001: unique constraint (DSE071.UNQ_PHONE) violated 
+
+
+SQL> insert all
+  2  	into emp values(100,'RAJESH','BTECH',1234567899,'rajesh@digisol.com','DEVELOPER',100000,101)
+  3  	into emp values(101,'RAVI','MTECH',9434563899,'ravi@digisol.com','PROJECT LEADER',110000,102)
+  4  	into emp values(102,'VIJAY','BTECH',5675678589,'vijay@digisol.com','PROJECT MANAGER',120000,110)
+  5  	into emp values(108,'AJAY','BTECH',1234567839,'ajay@digisol.com','TECHNICAL HEAD',100000,102)
+  6  	into emp values(110,'BHASKAR','MTECH',1234567349,'bhaskar@digisol.com','PROJECT DIRECTOR',150000,106)
+  7  	into emp values(106,'RAJ','MSC',1234534567,'raj@digisol.com','PROJECT LEADER',189000,110)
+  8  	into emp values(105,'MANISH','MCA',1834567899,'manish@digisol.com','DEVELOPER',200000,106)
+  9  	into emp values(107,'PRSAD','PHD',3234563893,'prasad@digisol.com','CEO',220000,NULL)
+ 10  	into emp values(113,'RAKESH','MTECH',7734567899,'rakesh@digisol.com','DEVELOPER',190000,108)
+ 11  	into emp values(103,'RAKESH','MTECH',4534567899,'rakesh@digisol.com','DEVELOPER',250000,103)
+ 12  	into emp values(109,'KEER','MBA',1244567899,'keer@digisol.com','PROJECT LEADER',100000,105)
+ 13  	into emp values(104,'ABHI','BTECH',9234567899,'abhih@digisol.com','S. ENGINEER',200000,104)
+ 14  	into emp values(111,'RAJ','BTECH',1834567899,'rajh@digital.com','DEVELOPER',200000,101)
+ 15  	into emp values(112,'SHASH','BTECH',3434567899,'shashh@digital.com','DEVELOPER',200000,101)
+ 16  Select * from dual;
+insert all
+*
+ERROR at line 1:
+ORA-00001: unique constraint (DSE071.UNQ_EMAIL) violated 
+
+
+SQL> insert all
+  2  	into emp values(100,'RAJESH','BTECH',1234567899,'rajesh@digisol.com','DEVELOPER',100000,101)
+  3  	into emp values(101,'RAVI','MTECH',9434563899,'ravi@digisol.com','PROJECT LEADER',110000,102)
+  4  	into emp values(102,'VIJAY','BTECH',5675678589,'vijay@digisol.com','PROJECT MANAGER',120000,110)
+  5  	into emp values(108,'AJAY','BTECH',1234567839,'ajay@digisol.com','TECHNICAL HEAD',100000,102)
+  6  	into emp values(110,'BHASKAR','MTECH',1234567349,'bhaskar@digisol.com','PROJECT DIRECTOR',150000,106)
+  7  	into emp values(106,'RAJ','MSC',1234534567,'raj@digisol.com','PROJECT LEADER',189000,110)
+  8  	into emp values(105,'MANISH','MCA',1834567899,'manish@digisol.com','DEVELOPER',200000,106)
+  9  	into emp values(107,'PRSAD','PHD',3234563893,'prasad@digisol.com','CEO',220000,NULL)
+ 10  	into emp values(113,'RAKESH','MTECH',7734567899,'rakeesh@digisol.com','DEVELOPER',190000,108)
+ 11  	into emp values(103,'RAKESH','MTECH',4534567899,'rakesh@digisol.com','DEVELOPER',250000,103)
+ 12  	into emp values(109,'KEER','MBA',1244567899,'keer@digisol.com','PROJECT LEADER',100000,105)
+ 13  	into emp values(104,'ABHI','BTECH',9234567899,'abhih@digisol.com','S. ENGINEER',200000,104)
+ 14  	into emp values(111,'RAJ','BTECH',1834567899,'rajh@digital.com','DEVELOPER',200000,101)
+ 15  	into emp values(112,'SHASH','BTECH',3434567899,'shashh@digital.com','DEVELOPER',200000,101)
+ 16  Select * from dual;
+insert all
+*
+ERROR at line 1:
+ORA-02290: check constraint (DSE071.VALID_QUALIF) violated 
+
+
+SQL> insert all
+  2  	into emp values(100,'RAJESH','BTECH',1234567899,'rajesh@digisol.com','DEVELOPER',100000,101)
+  3  	into emp values(101,'RAVI','MTECH',9434563899,'ravi@digisol.com','PROJECT LEADER',110000,102)
+  4  	into emp values(102,'VIJAY','BTECH',5675678589,'vijay@digisol.com','PROJECT MANAGER',120000,110)
+  5  	into emp values(108,'AJAY','BTECH',1234567839,'ajay@digisol.com','TECHNICAL HEAD',100000,102)
+  6  	into emp values(110,'BHASKAR','MTECH',1234567349,'bhaskar@digisol.com','PROJECT DIRECTOR',150000,106)
+  7  	into emp values(106,'RAJ','MSC',1234534567,'raj@digisol.com','PROJECT LEADER',189000,110)
+  8  	into emp values(105,'MANISH','MCA',1834567899,'manish@digisol.com','DEVELOPER',200000,106)
+  9  	into emp values(107,'PRSAD','PHD',3234563893,'prasad@digisol.com','CEO',220000,NULL)
+ 10  	into emp values(113,'RAKESH','MTECH',7734567899,'rakeesh@digisol.com','DEVELOPER',190000,108)
+ 11  	into emp values(103,'RAKESH','MTECH',4534567899,'rakesh@digisol.com','DEVELOPER',250000,103)
+ 12  	into emp values(109,'KEER','MBA',1244567899,'keer@digisol.com','PROJECT LEADER',100000,105)
+ 13  	into emp values(104,'ABHI','BTECH',9234567899,'abhih@digisol.com','PROJECT MANAGER',200000,104)
+ 14  	into emp values(111,'RAJ','BTECH',1834567899,'rajh@digital.com','DEVELOPER',200000,101)
+ 15  	into emp values(112,'SHASH','BTECH',3434567899,'shashh@digital.com','DEVELOPER',200000,101)
+ 16  Select * from dual;
+insert all
+*
+ERROR at line 1:
+ORA-02290: check constraint (DSE071.VALID_QUALIF) violated 
+
+
+SQL> insert all
+  2  	into emp values(100,'RAJESH','BTECH',1234567899,'rajesh@digisol.com','DEVELOPER',100000,101)
+  3  	into emp values(101,'RAVI','MTECH',9434563899,'ravi@digisol.com','PROJECT LEADER',110000,102)
+  4  	into emp values(102,'VIJAY','BTECH',5675678589,'vijay@digisol.com','PROJECT MANAGER',120000,110)
+  5  	into emp values(108,'AJAY','BTECH',1234567839,'ajay@digisol.com','TECHNICAL HEAD',100000,102)
+  6  	into emp values(110,'BHASKAR','MTECH',1234567349,'bhaskar@digisol.com','PROJECT DIRECTOR',150000,106)
+  7  	into emp values(106,'RAJ','MSC',1234534567,'raj@digisol.com','PROJECT LEADER',189000,110)
+  8  	into emp values(105,'MANISH','MCA',1834567899,'manish@digisol.com','DEVELOPER',200000,106)
+  9  	into emp values(107,'PRSAD','PHD',3234563893,'prasad@digisol.com','CEO',220000,NULL)
+ 10  	into emp values(113,'RAKESH','MTECH',7734567899,'rakeesh@digisol.com','DEVELOPER',190000,108)
+ 11  	into emp values(103,'RAKESH','MTECH',4534567899,'rakesh@digisol.com','DEVELOPER',250000,103)
+ 12  	into emp values(109,'KEER','MSC',1244567899,'keer@digisol.com','PROJECT LEADER',100000,105)
+ 13  	into emp values(104,'ABHI','BTECH',9234567899,'abhih@digisol.com','PROJECT MANAGER',200000,104)
+ 14  	into emp values(111,'RAJ','BTECH',1834567899,'rajh@digital.com','DEVELOPER',200000,101)
+ 15  	into emp values(112,'SHASH','BTECH',3434567899,'shashh@digital.com','DEVELOPER',200000,101)
+ 16  Select * from dual;
+insert all
+*
+ERROR at line 1:
+ORA-00001: unique constraint (DSE071.UNQ_PHONE) violated 
+
+
+SQL> insert all
+  2  	into emp values(100,'RAJESH','BTECH',1234567899,'rajesh@digisol.com','DEVELOPER',100000,101)
+  3  	into emp values(101,'RAVI','MTECH',9434563899,'ravi@digisol.com','PROJECT LEADER',110000,102)
+  4  	into emp values(102,'VIJAY','BTECH',5675678589,'vijay@digisol.com','PROJECT MANAGER',120000,110)
+  5  	into emp values(108,'AJAY','BTECH',1234567839,'ajay@digisol.com','TECHNICAL HEAD',100000,102)
+  6  	into emp values(110,'BHASKAR','MTECH',1234567349,'bhaskar@digisol.com','PROJECT DIRECTOR',150000,106)
+  7  	into emp values(106,'RAJ','MSC',1234534567,'raj@digisol.com','PROJECT LEADER',189000,110)
+  8  	into emp values(105,'MANISH','MCA',1834567899,'manish@digisol.com','DEVELOPER',200000,106)
+  9  	into emp values(107,'PRSAD','PHD',3234563893,'prasad@digisol.com','CEO',220000,NULL)
+ 10  	into emp values(113,'RAKESH','MTECH',7734567899,'rakeesh@digisol.com','DEVELOPER',190000,108)
+ 11  	into emp values(103,'RAKESH','MTECH',4534567899,'rakesh@digisol.com','DEVELOPER',250000,103)
+ 12  	into emp values(109,'KEER','MSC',1248423899,'keer@digisol.com','PROJECT LEADER',100000,105)
+ 13  	into emp values(104,'ABHI','BTECH',9234567899,'abhih@digisol.com','PROJECT MANAGER',200000,104)
+ 14  	into emp values(111,'RAJ','BTECH',1838765899,'rajh@digital.com','DEVELOPER',200000,101)
+ 15  	into emp values(112,'SHASH','BTECH',3434567899,'shashh@digital.com','DEVELOPER',200000,101)
+ 16  Select * from dual;
+insert all
+*
+ERROR at line 1:
+ORA-02290: check constraint (DSE071.EMAIL_DOMAIN) violated 
+
+
+SQL> insert all
+  2  	into emp values(100,'RAJESH','BTECH',1234567899,'rajesh@digisol.com','DEVELOPER',100000,101)
+  3  	into emp values(101,'RAVI','MTECH',9434563899,'ravi@digisol.com','PROJECT LEADER',110000,102)
+  4  	into emp values(102,'VIJAY','BTECH',5675678589,'vijay@digisol.com','PROJECT MANAGER',120000,110)
+  5  	into emp values(108,'AJAY','BTECH',1234567839,'ajay@digisol.com','TECHNICAL HEAD',100000,102)
+  6  	into emp values(110,'BHASKAR','MTECH',1234567349,'bhaskar@digisol.com','PROJECT DIRECTOR',150000,106)
+  7  	into emp values(106,'RAJ','MSC',1234534567,'raj@digisol.com','PROJECT LEADER',189000,110)
+  8  	into emp values(105,'MANISH','MCA',1834567899,'manish@digisol.com','DEVELOPER',200000,106)
+  9  	into emp values(107,'PRSAD','PHD',3234563893,'prasad@digisol.com','CEO',220000,NULL)
+ 10  	into emp values(113,'RAKESH','MTECH',7734567899,'rakeesh@digisol.com','DEVELOPER',190000,108)
+ 11  	into emp values(103,'RAKESH','MTECH',4534567899,'rakesh@digisol.com','DEVELOPER',250000,103)
+ 12  	into emp values(109,'KEER','MSC',1248423899,'keer@digisol.com','PROJECT LEADER',100000,105)
+ 13  	into emp values(104,'ABHI','BTECH',9234567899,'abhih@digisol.com','PROJECT MANAGER',200000,104)
+ 14  	into emp values(111,'RAJ','BTECH',1838765899,'rajh@digisol.com','DEVELOPER',200000,101)
+ 15  	into emp values(112,'SHASH','BTECH',3434567899,'shashh@digisol.com','DEVELOPER',200000,101)
+ 16  Select * from dual;
+insert all
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (DSE071.FK_REPORTS_TO_EMPCODE) violated - 
+parent key not found 
+
+
+SQL> insert all
+  2  	into emp values(100,'RAJESH','BTECH',1234567899,'rajesh@digisol.com','DEVELOPER',100000,100)
+  3  	into emp values(101,'RAVI','MTECH',9434563899,'ravi@digisol.com','PROJECT LEADER',110000,101)
+  4  	into emp values(102,'VIJAY','BTECH',5675678589,'vijay@digisol.com','PROJECT MANAGER',120000,102)
+  5  	into emp values(108,'AJAY','BTECH',1234567839,'ajay@digisol.com','TECHNICAL HEAD',100000,108)
+  6  	into emp values(110,'BHASKAR','MTECH',1234567349,'bhaskar@digisol.com','PROJECT DIRECTOR',150000,110)
+  7  	into emp values(106,'RAJ','MSC',1234534567,'raj@digisol.com','PROJECT LEADER',189000,106)
+  8  	into emp values(105,'MANISH','MCA',1834567899,'manish@digisol.com','DEVELOPER',200000,105)
+  9  	into emp values(107,'PRSAD','PHD',3234563893,'prasad@digisol.com','CEO',220000,107)
+ 10  	into emp values(113,'RAKESH','MTECH',7734567899,'rakeesh@digisol.com','DEVELOPER',190000,113)
+ 11  	into emp values(103,'RAKESH','MTECH',4534567899,'rakesh@digisol.com','DEVELOPER',250000,103)
+ 12  	into emp values(109,'KEER','MSC',1248423899,'keer@digisol.com','PROJECT LEADER',100000,109)
+ 13  	into emp values(104,'ABHI','BTECH',9234567899,'abhih@digisol.com','PROJECT MANAGER',200000,104)
+ 14  	into emp values(111,'RAJ','BTECH',1838765899,'rajh@digisol.com','DEVELOPER',200000,111)
+ 15  	into emp values(112,'SHASH','BTECH',3434567899,'shashh@digisol.com','DEVELOPER',200000,112)
+ 16  Select * from dual;
+
+14 rows created.
+
+SQL> delete * from emp;
+delete * from emp
+       *
+ERROR at line 1:
+ORA-00903: invalid table name 
+
+
+SQL> delete from emp;
+
+14 rows deleted.
+
+SQL> insert all
+  2  	into emp values(106,'PRSAD','PHD',3234563893,'prasad@digisol.com','CEO',220000,NULL)
+  3  	into emp values(110,'BHASKAR','MTECH',1234567349,'bhaskar@digisol.com','PROJECT DIRECTOR',150000,106)
+  4  	into emp values(101,'RAVI','MTECH',9434563899,'ravi@digisol.com','PROJECT LEADER',110000,110)
+  5  	into emp values(109,'KEER','MSC',1248423899,'keer@digisol.com','PROJECT LEADER',100000,110)
+  6  	into emp values(107,'RAJ','MSC',1234534567,'raj@digisol.com','PROJECT LEADER',189000,110)
+  7  	into emp values(102,'VIJAY','BTECH',5675678589,'vijay@digisol.com','PROJECT MANAGER',120000,102)
+  8  	into emp values(104,'ABHI','BTECH',9234567899,'abhih@digisol.com','PROJECT MANAGER',200000,101)
+  9  	into emp values(108,'AJAY','BTECH',1234567839,'ajay@digisol.com','TECHNICAL HEAD',100000,104)
+ 10  	into emp values(100,'RAJESH','BTECH',1234567899,'rajesh@digisol.com','DEVELOPER',100000,101)
+ 11  	into emp values(105,'MANISH','MCA',1834567899,'manish@digisol.com','DEVELOPER',200000,101)
+ 12  	into emp values(113,'RAKESH','MTECH',7734567899,'rakeesh@digisol.com','DEVELOPER',190000,104)
+ 13  	into emp values(103,'RAKESH','MTECH',4534567899,'rakesh@digisol.com','DEVELOPER',250000,104)
+ 14  	into emp values(111,'RAJ','BTECH',1838765899,'rajh@digisol.com','DEVELOPER',200000,108)
+ 15  	into emp values(112,'SHASH','BTECH',3434567899,'shashh@digisol.com','DEVELOPER',200000,108)
+ 16  Select * from dual;
+
+14 rows created.
+
+SQL> commit
+  2  ;
+
+Commit complete.
+
+SQL> insert all
+  2  	into skill values('S1','Full stack')
+  3  	into skill values('S2','Python')
+  4  	into skill values('S3','Java')
+  5  	into skill values('S4','C++')
+  6  	into skill values('S6','Oracle')
+  7  	into skill values('S7','Android')
+  8  	into skill values('S8','AZURE')
+  9  	into skill values('S9','DOT NET')
+ 10  	into skill values('S10','IOS')
+ 11  Select * from dual;
+
+9 rows created.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> insert all
+  2  	into Client values('C1','ABC','+48-87489389','aaa@abc.com')
+  3  	into Client values('C2','LTS','+91-78389397','bbb@its.com')
+  4  	into Client values('C3','RK','+44-67838934','ccc@rk.com')
+  5  	into Client values('C4','MMA','+31-77839093','ddd@mma.com')
+  6  	into Client values('C5','AKS','+81-66822903','eee@aks.com')
+  7  	into Client values('C6','GKS','+78-75628982','fff@gks.com')
+  8  	into Client values('C7','B&B','+91-64839839','ggg@bb.com')
+  9  	into Client values('C8','ABT','+97-67554667','cbc@dce.com')
+ 10  	into Client values('C9','XVY','+48-12345678','xyz@.ab.com')
+ 11  Select * from dual;
+Enter value for b: 
+old   8: 	into Client values('C7','B&B','+91-64839839','ggg@bb.com')
+new   8: 	into Client values('C7','B','+91-64839839','ggg@bb.com')
+insert all
+*
+ERROR at line 1:
+ORA-02290: check constraint (DSE071.PHONE_FORMAT) violated 
+
+
+SQL> insert all
+  2  	into Client values('C1','ABC','+48-87489389','aaa@abc.com')
+  3  	into Client values('C2','LTS','+91-78389397','bbb@its.com')
+  4  	into Client values('C3','RK','+44-67838934','ccc@rk.com')
+  5  	into Client values('C4','MMA','+31-77839093','ddd@mma.com')
+  6  	into Client values('C5','AKS','+81-66822903','eee@aks.com')
+  7  	into Client values('C6','GKS','+91-75628982','fff@gks.com')
+  8  	into Client values('C7','B&B','+91-64839839','ggg@bb.com')
+  9  	into Client values('C8','ABT','+97-67554667','cbc@dce.com')
+ 10  	into Client values('C9','XVY','+48-12345678','xyz@.ab.com')
+ 11  Select * from dual;
+Enter value for b: a
+old   8: 	into Client values('C7','B&B','+91-64839839','ggg@bb.com')
+new   8: 	into Client values('C7','Ba','+91-64839839','ggg@bb.com')
+insert all
+*
+ERROR at line 1:
+ORA-02290: check constraint (DSE071.PHONE_FORMAT) violated 
+
+
+SQL> insert all
+  2  	into Client values('C1','ABC','+48-87489389','aaa@abc.com')
+  3  	into Client values('C2','LTS','+91-78389397','bbb@its.com')
+  4  	into Client values('C3','RK','+44-67838934','ccc@rk.com')
+  5  	into Client values('C4','MMA','+31-77839093','ddd@mma.com')
+  6  	into Client values('C5','AKS','+81-66822903','eee@aks.com')
+  7  	into Client values('C6','GKS','+91-75628982','fff@gks.com')
+  8  	into Client values('C7','B&B','+91-64839839','ggg@bb.com')
+  9  	into Client values('C8','ABT','+38-67554667','cbc@dce.com')
+ 10  	into Client values('C9','XVY','+48-12345678','xyz@.ab.com')
+ 11  Select * from dual;
+Enter value for b: a
+old   8: 	into Client values('C7','B&B','+91-64839839','ggg@bb.com')
+new   8: 	into Client values('C7','Ba','+91-64839839','ggg@bb.com')
+insert all
+*
+ERROR at line 1:
+ORA-02290: check constraint (DSE071.PHONE_FORMAT) violated 
+
+
+SQL> insert all
+  2  	into Client values('C1','ABC','+48-87489389','aaa@abc.com')
+  3  	into Client values('C2','LTS','+91-78389397','bbb@its.com')
+  4  	into Client values('C3','RK','+44-67838934','ccc@rk.com')
+  5  	into Client values('C4','MMA','+31-77839093','ddd@mma.com')
+  6  	into Client values('C5','AKS','+81-66822903','eee@aks.com')
+  7  	into Client values('C6','GKS','+91-75628982','fff@gks.com')
+  8  	into Client values('C7','B&B','+91-64839839','ggg@bb.com')
+  9  	into Client values('C8','ABT','+31-67554667','cbc@dce.com')
+ 10  	into Client values('C9','XVY','+48-12345678','xyz@.ab.com')
+ 11  Select * from dual;
+Enter value for b: a
+old   8: 	into Client values('C7','B&B','+91-64839839','ggg@bb.com')
+new   8: 	into Client values('C7','Ba','+91-64839839','ggg@bb.com')
+insert all
+*
+ERROR at line 1:
+ORA-02290: check constraint (DSE071.PHONE_FORMAT) violated 
+
+
+SQL> insert all
+  2  	into Client values('C1','ABC','+48-87489389','aaa@abc.com')
+  3  	into Client values('C2','LTS','+91-78389397','bbb@its.com')
+  4  	into Client values('C3','RK','+44-67838934','ccc@rk.com')
+  5  	into Client values('C4','MMA','+31-77839093','ddd@mma.com')
+  6  	into Client values('C5','AKS','+81-66822903','eee@aks.com')
+  7  	into Client values('C6','GKS','+91-75628982','fff@gks.com')
+  8  	into Client values('C7','BAB','+91-64839839','ggg@bb.com')
+  9  	into Client values('C8','ABT','+31-67554667','cbc@dce.com')
+ 10  	into Client values('C9','XYZ','+48-12345678','xyz@.ab.com')
+ 11  Select * from dual;
+insert all
+*
+ERROR at line 1:
+ORA-02290: check constraint (DSE071.PHONE_FORMAT) violated 
+
+
+SQL> insert all
+  2  into client2 values('C1','ABC','+48-87489389','aaa@abc.com')
+  3  into client2 values('C2','LTS','+91-78389397','bbb@lts.com')
+  4  into client2 values('C3','RK','+44-67838934','ccc@rk.com')
+  5  into client2 values('C4','MMA','+91-77839093','ddd@mma.com')
+  6  into client2 values('C5','AKS','+91-66822903','eee@aks.com')
+  7  into client2 values('C6','GKS','+91-75628982','fff@gks.com')
+  8  into client2 values('C7','BAB','+91-64839839','ggg@bb.com')
+  9  into client2 values('C8','ABT','+91-67554667','hhh@abt.com')
+ 10  select * from dual;
+into client2 values('C8','ABT','+91-67554667','hhh@abt.com')
+     *
+ERROR at line 9:
+ORA-00942: table or view does not exist 
+
+
+SQL> insert all
+  2  into client values('C1','ABC','+48-87489389','aaa@abc.com')
+  3  into client values('C2','LTS','+91-78389397','bbb@lts.com')
+  4  into client values('C3','RK','+44-67838934','ccc@rk.com')
+  5  into client values('C4','MMA','+91-77839093','ddd@mma.com')
+  6  into client values('C5','AKS','+91-66822903','eee@aks.com')
+  7  into client values('C6','GKS','+91-75628982','fff@gks.com')
+  8  into client values('C7','BAB','+91-64839839','ggg@bb.com')
+  9  into client values('C8','ABT','+91-67554667','hhh@abt.com')
+ 10  select * from dual;
+insert all
+*
+ERROR at line 1:
+ORA-02290: check constraint (DSE071.PHONE_FORMAT) violated 
+
+
+SQL> alter table drop constraint PHONE_FORMAT;
+alter table drop constraint PHONE_FORMAT
+            *
+ERROR at line 1:
+ORA-00903: invalid table name 
+
+
+SQL> alter table client drop constraint PHONE_FORMAT;
+
+Table altered.
+
+SQL> alter table client add constraint PHONE_FORMAT Check(
+  2  Phone like '+91-%' OR
+  3  Phone like '+81-%' OR
+  4  Phone like '+31-%' OR
+  5  Phone like '+48-%' OR
+  6  Phone like '+44-%');
+
+Table altered.
+
+SQL> insert all
+  2  into client values('C1','ABC','+48-87489389','aaa@abc.com')
+  3  into client values('C2','LTS','+91-78389397','bbb@lts.com')
+  4  into client values('C3','RK','+44-67838934','ccc@rk.com')
+  5  into client values('C4','MMA','+91-77839093','ddd@mma.com')
+  6  into client values('C5','AKS','+91-66822903','eee@aks.com')
+  7  into client values('C6','GKS','+91-75628982','fff@gks.com')
+  8  into client values('C7','BAB','+91-64839839','ggg@bb.com')
+  9  into client values('C8','ABT','+91-67554667','hhh@abt.com')
+ 10  select * from dual;
+
+8 rows created.
+
+SQL> insert all
+  2  into emp_skill_2 values(100,'S1',15)
+  3  into emp_skill_2 values(100,'S3',10)
+  4  into emp_skill_2 values(101,'S1',6)
+  5  into emp_skill_2 values(101,'S2',10)
+  6  into emp_skill_2 values(102,'S4',18)
+  7  into emp_skill_2 values(110,'S1',14)
+  8  into emp_skill_2 values(110,'S6',20)
+  9  into emp_skill_2 values(106,'S2',10)
+ 10  into emp_skill_2 values(106,'S6',12)
+ 11  into emp_skill_2 values(106,'S8',10)
+ 12  into emp_skill_2 values(108,'S9',5)
+ 13  into emp_skill_2 values(108,'S6',18)
+ 14  into emp_skill_2 values(105,'S7',12)
+ 15  into emp_skill_2 values(105,'S10',11)
+ 16  into emp_skill_2 values(101,'S6',7)
+ 17  select * from dual;
+into emp_skill_2 values(101,'S6',7)
+     *
+ERROR at line 16:
+ORA-00942: table or view does not exist 
+
+
+SQL> insert all
+  2  into emp_skill values(100,'S1',15)
+  3  into emp_skill values(100,'S3',10)
+  4  into emp_skill values(101,'S1',6)
+  5  into emp_skill values(101,'S2',10)
+  6  into emp_skill values(102,'S4',18)
+  7  into emp_skill values(110,'S1',14)
+  8  into emp_skill values(110,'S6',20)
+  9  into emp_skill values(106,'S2',10)
+ 10  into emp_skill values(106,'S6',12)
+ 11  into emp_skill values(106,'S8',10)
+ 12  into emp_skill values(108,'S9',5)
+ 13  into emp_skill values(108,'S6',18)
+ 14  into emp_skill values(105,'S7',12)
+ 15  into emp_skill values(105,'S10',11)
+ 16  into emp_skill values(101,'S6',7)
+ 17  select * from dual;
+
+15 rows created.
+
+SQL> alter session set NLS_DATE_FORMAT = 'DD-MM-YYYY';
+
+Session altered.
+
+SQL> insert all
+  2  into prj_details values('P1','SPYDER','10-01-2020','11-10-2022','11-11-2022',102,2000000,1990000)
+  3  into prj_details values('P2','APOLLO','01-01-2019','10-07-2020','30-12-2021',108,3000000,3600000)
+  4  into prj_details values('P3','UNICORN','03-09-2021','10-10-2023','10-11-2023',106,7500000,8000000)
+  5  into prj_details values('P4','ZEUS','28-02-2020','09-06-2021','10-01-2022',110,5500000,5000000)
+  6  into prj_details values('P5','JUPITOR','07-08-2018','04-02-2020','01-11-2020',110,9000000,9000000)
+  7  into prj_details values('P6','MARS','21-02-2019','07-08-2020','07-09-2020',110,7000000,7500000)
+  8  into prj_details values('P7','XXX','07-09-2018','04-03-2020','01-12-2020',102,8000000,8500000)
+  9  select * from dual;
+
+7 rows created.
+
+SQL> 
+SQL> insert all
+  2  into work_exp values(100,'P1',20,'C1','A')
+  3  into work_exp values(100,'P3',15,'C3','A')
+  4  into work_exp values(101,'P1',16,'C1','A')
+  5  into work_exp values(102,'P2',18,'C2','B')
+  6  into work_exp values(102,'P1',18,'C1','A')
+  7  into work_exp values(108,'P2',12,'C2','C')
+  8  into work_exp values(106,'P3',20,'C3','C')
+  9  into work_exp values(106,'P4',10,'C4','C')
+ 10  into work_exp values(105,'P2',19,'C2','B')
+ 11  into work_exp values(110,'P4',12,'C4','B')
+ 12  into work_exp values(110,'P5',16,'C7','A')
+ 13  into work_exp values(105,'P5',5,'C5','B')
+ 14  into work_exp values(111,'P5',5,'C5','C')
+ 15  select * from dual;
+
+13 rows created.
+
+SQL> commit
+  2  ;
+
+Commit complete.
+
+SQL> insert all
+  2  into family_dependents values(100,'AJITH','SON',12)
+  3  into family_dependents values(100,'PRITHVI','DAUGHTER',9)
+  4  into family_dependents values(101,'AARYA','DAUGHTER',17)
+  5  into family_dependents values(101,'AKANKSH','SON',11)
+  6  into family_dependents values(101,'ANKITHA','SPOUSE',43)
+  7  select * from dual;
+
+5 rows created.
+
+SQL> commit
+  2  ;
+
+Commit complete.
+
+SQL> insert all
+  2  into medical_policy values(100,'MED001',10000,'10-12-2020')
+  3  into medical_policy values(101,'MED003',12000,'15-12-2020')
+  4  into medical_policy values(100,'MED001',10000,'10-01-2021')
+  5  into medical_policy values(101,'MED003',12000,'15-01-2021')
+  6  into medical_policy values(106,'MED004',9000,'21-01-2021')
+  7  select * from dual;
+insert all
+*
+ERROR at line 1:
+ORA-02290: check constraint (DSE071.SYS_C0080335) violated 
+
+
+SQL> drop table Medical_policy;
+
+Table dropped.
+
+SQL> Create table MEDICAL_POLICY(EMPNO References EMP, POLICYNO varchar2(6) Check(POLICYNO LIKE 'MED%'), PREMIUM Number(5) Constraint PRE_AMOUNT Check(PREMIUM >0),
+  2  POLICYDATE Date,CONSTRAINT MED_POL_PK PRIMARY KEY(EMPNO,POLICYNO));
+
+Table created.
+
+SQL> Alter table MEDICAL_POLICY DROP CONSTRAINT MED_POL_PK;
+
+Table altered.
+
+SQL> Alter table MEDICAL_POLICY ADD CONSTRAINT MED_POL_PK PRIMARY KEY(EMPNO,POLICYNO,POLICYDATE);
+
+Table altered.
+
+SQL> Alter table MEDICAL_POLICY DROP CONSTRAINT PRE_AMOUNT;
+
+Table altered.
+
+SQL> Alter table MEDICAL_POLICY ADD CONSTRAINT PRE_AMOUNT CHECK(PREMIUM > 1000);
+
+Table altered.
+
+SQL> insert all
+  2  into medical_policy values(100,'MED001',10000,'10-12-2020')
+  3  into medical_policy values(101,'MED003',12000,'15-12-2020')
+  4  into medical_policy values(100,'MED001',10000,'10-01-2021')
+  5  into medical_policy values(101,'MED003',12000,'15-01-2021')
+  6  into medical_policy values(106,'MED004',9000,'21-01-2021')
+  7  select * from dual;
+
+5 rows created.
+
+SQL> insert all
+  2  into pay_check values(100,'01-12-2020',2000,null,null,null,2500,5000)
+  3  into pay_check values(101,'01-12-2020',3000,null,null,null,5000,7000)
+  4  into pay_check values(102,'01-12-2020',3000,null,null,null,3600,7000)
+  5  into pay_check values(100,'01-12-2021',3000,null,null,null,450,4000)
+  6  into pay_check values(101,'01-01-2021',5000,null,null,null,2100,4000)
+  7  into pay_check values(102,'01-01-2021',5000,null,null,null,null,9000)
+  8  into pay_check values(106,'02-01-2021',7000,null,null,null,900,3000)
+  9  select * from dual;
+
+7 rows created.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> update emp set email='rajesh@digital.com' where empcode=100;
+update emp set email='rajesh@digital.com' where empcode=100
+*
+ERROR at line 1:
+ORA-02290: check constraint (DSE071.EMAIL_DOMAIN) violated 
+
+
+SQL> update work_exp set prjid='P9' where empcode=111;
+update work_exp set prjid='P9' where empcode=111
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (DSE071.PRJID_FK) violated - parent key not 
+found 
+
+
+SQL> spool off;
+SQL> delete from emp where empcode=100;
+delete from emp where empcode=100
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (DSE071.SYS_C0080707) violated - child record 
+found 
+
+
+SQL> commit;
+
+Commit complete.
+
+SQL> delete from family_dependents where empno=100;
+
+2 rows deleted.
+
+SQL> rollback;
+
+Rollback complete.
+
+SQL> select * from family_dependents;
+
+     EMPNO DEP_NAME             RELATIONSHIP            AGE                     
+---------- -------------------- ---------------- ----------                     
+       100 AJITH                SON                      12                     
+       100 PRITHVI              DAUGHTER                  9                     
+       101 AARYA                DAUGHTER                 17                     
+       101 AKANKSH              SON                      11                     
+       101 ANKITHA              SPOUSE                   43                     
+
+SQL> update emp set salary=salary+(0.1*salary) where designtion=developer;
+update emp set salary=salary+(0.1*salary) where designtion=developer
+                                                           *
+ERROR at line 1:
+ORA-00904: "DEVELOPER": invalid identifier 
+
+
+SQL> update emp set salary=salary+(0.1*salary) where designtion="DEVELOPER";
+update emp set salary=salary+(0.1*salary) where designtion="DEVELOPER"
+                                                           *
+ERROR at line 1:
+ORA-00904: "DEVELOPER": invalid identifier 
+
+
+SQL> update emp set salary=salary+(0.1*salary) where designation="DEVELOPER";
+update emp set salary=salary+(0.1*salary) where designation="DEVELOPER"
+                                                            *
+ERROR at line 1:
+ORA-00904: "DEVELOPER": invalid identifier 
+
+
+SQL> select*from emp;
+
+   EMPCODE NAME       QUALIFI      PHONE EMAIL                                  
+---------- ---------- ------- ---------- ------------------------------         
+DESIGNATION              SALARY REPORTS_TO                                      
+-------------------- ---------- ----------                                      
+       106 PRSAD      PHD     3234563893 prasad@digisol.com                     
+CEO                      220000                                                 
+                                                                                
+       110 BHASKAR    MTECH   1234567349 bhaskar@digisol.com                    
+PROJECT DIRECTOR         150000        106                                      
+                                                                                
+       101 RAVI       MTECH   9434563899 ravi@digisol.com                       
+PROJECT LEADER           110000        110                                      
+                                                                                
+
+   EMPCODE NAME       QUALIFI      PHONE EMAIL                                  
+---------- ---------- ------- ---------- ------------------------------         
+DESIGNATION              SALARY REPORTS_TO                                      
+-------------------- ---------- ----------                                      
+       109 KEER       MSC     1248423899 keer@digisol.com                       
+PROJECT LEADER           100000        110                                      
+                                                                                
+       107 RAJ        MSC     1234534567 raj@digisol.com                        
+PROJECT LEADER           189000        110                                      
+                                                                                
+       102 VIJAY      BTECH   5675678589 vijay@digisol.com                      
+PROJECT MANAGER          120000        102                                      
+                                                                                
+
+   EMPCODE NAME       QUALIFI      PHONE EMAIL                                  
+---------- ---------- ------- ---------- ------------------------------         
+DESIGNATION              SALARY REPORTS_TO                                      
+-------------------- ---------- ----------                                      
+       104 ABHI       BTECH   9234567899 abhih@digisol.com                      
+PROJECT MANAGER          200000        101                                      
+                                                                                
+       108 AJAY       BTECH   1234567839 ajay@digisol.com                       
+TECHNICAL HEAD           100000        104                                      
+                                                                                
+       100 RAJESH     BTECH   1234567899 rajesh@digisol.com                     
+DEVELOPER                100000        101                                      
+                                                                                
+
+   EMPCODE NAME       QUALIFI      PHONE EMAIL                                  
+---------- ---------- ------- ---------- ------------------------------         
+DESIGNATION              SALARY REPORTS_TO                                      
+-------------------- ---------- ----------                                      
+       105 MANISH     MCA     1834567899 manish@digisol.com                     
+DEVELOPER                200000        101                                      
+                                                                                
+       113 RAKESH     MTECH   7734567899 rakeesh@digisol.com                    
+DEVELOPER                190000        104                                      
+                                                                                
+       103 RAKESH     MTECH   4534567899 rakesh@digisol.com                     
+DEVELOPER                250000        104                                      
+                                                                                
+
+   EMPCODE NAME       QUALIFI      PHONE EMAIL                                  
+---------- ---------- ------- ---------- ------------------------------         
+DESIGNATION              SALARY REPORTS_TO                                      
+-------------------- ---------- ----------                                      
+       111 RAJ        BTECH   1838765899 rajh@digisol.com                       
+DEVELOPER                200000        108                                      
+                                                                                
+       112 SHASH      BTECH   3434567899 shashh@digisol.com                     
+DEVELOPER                200000        108                                      
+                                                                                
+
+14 rows selected.
+
+SQL> update emp set salary=salary+(0.1*salary) where designation=DEVELOPER;
+update emp set salary=salary+(0.1*salary) where designation=DEVELOPER
+                                                            *
+ERROR at line 1:
+ORA-00904: "DEVELOPER": invalid identifier 
+
+
+SQL> update emp set salary+=salary*0.1 where designation=DEVELOPER;
+update emp set salary+=salary*0.1 where designation=DEVELOPER
+                     *
+ERROR at line 1:
+ORA-00927: missing equal sign 
+
+
+SQL> update emp set salary= salary+salary*0.1 where designation="DEVELOPER";
+update emp set salary= salary+salary*0.1 where designation="DEVELOPER"
+                                                           *
+ERROR at line 1:
+ORA-00904: "DEVELOPER": invalid identifier 
+
+
+SQL> update emp set salary= salary+salary*0.1 where designation='DEVELOPER';
+
+6 rows updated.
+
+SQL> select * from medical_policy;
+
+     EMPNO POLICY    PREMIUM POLICYDAT                                          
+---------- ------ ---------- ---------                                          
+       100 MED001      10000 10-DEC-20                                          
+       101 MED003      12000 15-DEC-20                                          
+       100 MED001      10000 10-JAN-21                                          
+       101 MED003      12000 15-JAN-21                                          
+       106 MED004       9000 21-JAN-21                                          
+
+SQL> delete from client where clientid='c1';
+delete from client where clientid='c1'
+                         *
+ERROR at line 1:
+ORA-00904: "CLIENTID": invalid identifier 
+
+
+SQL> delete from client where clientid='C1';
+delete from client where clientid='C1'
+                         *
+ERROR at line 1:
+ORA-00904: "CLIENTID": invalid identifier 
+
+
+SQL> select * from client;
+
+CLI NAME       PHONE          EMAIL                                             
+--- ---------- -------------- --------------------                              
+C1  ABC        +48-87489389   aaa@abc.com                                       
+C2  LTS        +91-78389397   bbb@lts.com                                       
+C3  RK         +44-67838934   ccc@rk.com                                        
+C4  MMA        +91-77839093   ddd@mma.com                                       
+C5  AKS        +91-66822903   eee@aks.com                                       
+C6  GKS        +91-75628982   fff@gks.com                                       
+C7  BAB        +91-64839839   ggg@bb.com                                        
+C8  ABT        +91-67554667   hhh@abt.com                                       
+
+8 rows selected.
+
+SQL> delete from client where cli='C1';
+delete from client where cli='C1'
+                         *
+ERROR at line 1:
+ORA-00904: "CLI": invalid identifier 
+
+
+SQL> delete from client where CLIENTID='C1';
+delete from client where CLIENTID='C1'
+                         *
+ERROR at line 1:
+ORA-00904: "CLIENTID": invalid identifier 
+
+
+SQL> delete from client where CLIEN_ID='C1';
+delete from client where CLIEN_ID='C1'
+                         *
+ERROR at line 1:
+ORA-00904: "CLIEN_ID": invalid identifier 
+
+
+SQL> delete from client where CLIENT_ID='C1';
+
+1 row deleted.
+
+SQL> select* from client;
+
+CLI NAME       PHONE          EMAIL                                             
+--- ---------- -------------- --------------------                              
+C2  LTS        +91-78389397   bbb@lts.com                                       
+C3  RK         +44-67838934   ccc@rk.com                                        
+C4  MMA        +91-77839093   ddd@mma.com                                       
+C5  AKS        +91-66822903   eee@aks.com                                       
+C6  GKS        +91-75628982   fff@gks.com                                       
+C7  BAB        +91-64839839   ggg@bb.com                                        
+C8  ABT        +91-67554667   hhh@abt.com                                       
+
+7 rows selected.
+
+SQL> update emp set REPORTS_TO=106 where empcode=108;
+
+1 row updated.
+
+SQL> update emp set REPORTS_TO=117\ where empcode=108;
+update emp set REPORTS_TO=117\ where empcode=108
+                             *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> update emp set REPORTS_TO=117 where empcode=108;
+update emp set REPORTS_TO=117 where empcode=108
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (DSE071.FK_REPORTS_TO_EMPCODE) violated - 
+parent key not found 
+
+
+SQL> spool off;

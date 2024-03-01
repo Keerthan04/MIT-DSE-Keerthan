@@ -1,0 +1,68 @@
+Questions
+
+5.1
+select name from emp where designation in (select designation from emp where empcode=100);
+
+5.2
+select empcode,name from emp where reports_to in (select empcode from emp where name='VIJAY');
+
+5.3
+select name,designation,email from emp natural join work_exp where name!='VIJAY' and prjid in (select prjid from work_exp where empcode=102);
+
+5.4
+select name from emp join family_dependents on emp.empcode = family_dependents.empno where relationship in (select relationship from family_dependents where relationship='DAUGHTER');
+
+5.5
+select distinct name from emp e join prj_details p on e.empcode = p.lead_by_empcode where prj_name not in (select prj_name from prj_details where prj_name='SPYDER');
+
+5.6
+select distinct empcode from work_exp e join emp_skill s on e.empcode = s.empno where skillid> some (select distinct skillid from emp_skill e join work_exp w on e.empno=w.empcode where prjid='P1');
+
+5.7
+select name from emp natural join work_exp where prjid= 'P1' and work_experience > all (select work_experience from work_exp where prjid = 'P2');
+
+5.8
+select name from WORK_EXP natural join emp where prjid in (select prjid from work_exp where empcode = 100)
+and client_id in (select client_id from work_exp where empcode = 100); 
+
+5.9
+select empcode from WORK_EXP minus select empcode from WORK_EXP where prjid in (select prjid from WORK_EXP where empcode = 106);
+
+5.10
+select prjid from (select prjid, sum(salary) sum from EMP natural join WORK_EXP group by prjid) natural join PRJ_DETAILS p where sum < budget_allocated;
+
+5.11
+with t as (select prjid, count(*) count_emp from WORK_EXP w where rating in ('A', 'B') group by prjid)
+select prj_name, t.count_emp from PRJ_DETAILS p natural join t order by count_emp desc;
+
+5.12
+select prj_name, count(*) from WORK_EXP natural join PRJ_DETAILS group by prj_name having count(*) > 1;
+
+5.13
+select name, count(*) from FAMILY_DEPENDENTS f join EMP on emp.empcode = f.empno group by name;
+
+5.14
+select sum(premium) from MEDICAL_POLICY;
+
+5.15
+with t as (select empno empcode, sum(skill_experience) tot_exp from EMP_SKILL group by empno)
+select name, tot_exp from EMP natural join t;
+
+5.16
+create table EMP_PRJ as (select prj_name, budget_allocated, name from PRJ_DETAILS natural join WORK_EXP natural join EMP where lead_by_empcode = 110);
+
+5.17
+update emp set salary = case
+when designation = 'DEVELOPER' then salary * 1.05
+when designation = 'PROJECT LEADER' then salary * 1.1
+else salary
+end;
+
+5.18
+create view EMP_SKILL_EXPERIENCE as (select name, skillname, skill_experience from EMP_SKILL es natural join SKILL join EMP e on e.empcode = es.empno where skill_experience >= 20); 
+
+5.19
+create view EMP_DESIGNATION as select empcode, name, salary from EMP where designation in ('DEVELOPER', 'PROJECT LEADER');
+
+5.20
+select name, (select count(*) from WORK_EXP i where i.empcode = o.empcode) n_projects from EMP o;

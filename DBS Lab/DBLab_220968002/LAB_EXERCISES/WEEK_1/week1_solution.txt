@@ -1,0 +1,55 @@
+SQL> Create table EMP(EMPCODE Number(3) Constraint PK_EMPNO Primary key,
+  2  NAME varchar2(10),
+  3  QUALIFICATION varchar2(7) Constraint VALID_QUALIF Check(QUALIFICATION IN('BTECH','MTECH','MSC','MCA','PHD')),
+  4  PHONE Number(10),
+  5  EMAIL varchar2(10) Constraint EMAIL_DOMAIN Check(EMAIL LIKE '%digisol.com'),
+  6  DESIGNATION varchar2(20) Constraint VALID_DESIGNATION Check(DESIGNATION IN('DEVELOPER','PROJECT LEADER','PROJECT MANAGER','TECHNICAL HEAD','PROJECT DIRECTOR','PROJECT LEADER','CEO')),
+  7  SALARY NUMBER(7) Constraint SALARY_RANGE Check(SALARY between 97000 AND 300000));
+
+Table created.
+
+SQL> Create table SKILL(SKILLID char(3) Constraint UNQ_SKILLID Unique,
+  2  SKILLNAME varchar(20) Constraint UNQ_SKILNAME Unique);
+
+Table created.
+
+SQL> Create table EMP_SKILL(EMPNO Number(3) Constraint FK_EMPNO References EMP,
+  2  SKILLID char(3) Constraint FK_SKILLID References SKILL(SKILLID) ON DELETE CASCADE,
+  3  SKILL_EXPERIENCE Number(3) Check(SKILL_EXPERIENCE >0));
+
+Table created.
+
+SQL> Create table PRJ_DETAILS(PRJID char(3) Constraint PK_PRJID PRIMARY KEY Constraint STARTSWITH_P Check(PRJID LIKE 'P%'), PRJ_NAME varchar2(10),
+  2  START_DATE Date, END_DATE Date , ACTUAL_END_DATE Date , LEAD_BY_EMPCODE Number(3) CONSTRAINT FK_LEAD_EMP References EMP, BUDGET_ALLOCATED Number(10,1),
+  3  Actual_Budget Number(10,1),Constraint END_DATE_GARTER_START_DATE Check(END_DATE > START_DATE) ,CONSTRAINT ACTUAL_DATE_CHECK Check(ACTUAL_END_DATE >=END_DATE) );
+
+Table created.
+
+SQL> Create table CLIENT(CLIENT_ID char(3) Constraint PK_CLIENTID PRIMARY KEY Constraint STARTSWITH_C Check(ClIENT_ID Like 'C%'), NAME varchar2(10),
+  2  Phone Char(14) Constraint PHONE_FORMAT Check(Phone IN ('+91-%','+81-%','+31-%','+48-%','+44-%')));
+
+Table created.
+
+SQL> Create table WORK_EXP(EMPCODE Number(3) Constraint EMPCODE_FK References EMP, PRJID Char(3) Constraint PRJID_FK references PRJ_DETAILS,
+  2  WORK_EXPERIENCE Number(2) Constraint INVALID_WKEXP Check(WORK_EXPERIENCE >=0) NOT NULL,CLIENT_ID Char(3) Constraint Client_id References ClIENT on delete set null,
+  3  Rating Char(1) Constraint Invalid_rating Check(Rating in('A','B','C')),PRIMARY KEY(EMPCODE,PRJID));
+
+Table created.
+
+SQL> Create table FAMILY_DEPENDENTS(EMPNO references EMP, DEP_NAME varchar(20) , RELATIONSHIP varchar(16), AGE Number(3) CONSTRAINT VALID_AGE
+  2  Check(AGE between 1 and 130),PRIMARY KEY(EMPNO, DEP_NAME));
+
+Table created.
+
+SQL> Create table MEDICAL_POLICY(EMPNO References EMP, POLICYNO varchar2(6) Check(POLICYNO LIKE 'MED'), PREMIUM Number(5) Check(PREMIUM >0),
+  2  POLICYDATE Date,CONSTRAINT MED_POL_PK PRIMARY KEY(EMPNO,POLICYNO));
+
+Table created.
+
+SQL> Create table PAY_CHECK(EMPCODE References EMP,PAY_DATE Date, REGULAR_INCREMENT Number(4) CONSTRAINT VALID_REGU_INCENTIVE CHECK
+  2  (REGULAR_INCREMENT IN (2000,3000,5000,7000,9000)),PERFROMANCE_INCENTIVE Number(5), DA Number(7),PF Number(6),OTHER_INCENTIVES Number(4),
+  3  ADVANCE_TAX Number(5),PRIMARY KEY(EMPCODE,PAY_DATE));
+
+Table created.
+
+SQL> spool off

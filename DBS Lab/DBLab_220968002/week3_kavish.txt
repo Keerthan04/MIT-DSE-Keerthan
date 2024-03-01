@@ -1,0 +1,165 @@
+insert all
+into emp2 values(106,'prasad','PHD',1234567890,'prasad@digisol.com','CEO',100000,null)
+into emp2 values(110,'bhaskar','MTECH',7620221300,'bhaskar@digisol.com','DIRECTOR',200000,106)
+into emp2 values(105,'manish','MCA',7620221311,'manish@digisol.com','DEVELOPER',100000,106)
+into emp2 values(102,'Vijay','BTECH',7620221322,'vijay@digisol.com','MANAGER',150000,110)
+into emp2 values(101,'Ravi','MTECH',7620221333,'ravi@digisol.com','PROJECT LEADER',120000,102)
+into emp2 values(100,'Rajesh','BTECH',7620221344,'rajesh@digisol.com','DEVELOPER',130000,101)
+into emp2 values(108,'ajay','BTECH',7620221355,'ajay@digisol.com','TECHNICAL HEAD',150000,102)
+into emp2 values(111,'RAJ','MSC',7620221366,'raj@digisol.com','PROJECT LEADER',160000,110)
+into emp2 values(109,'armaan','MSC',7620221377,'armaan@digisol.com','DEVELOPER',100000,110)
+into emp2 values(118,'rakesh','MTECH',7620221388,'rakesh@digisol.com','DEVELOPER',100000,102)
+into emp2 values(117,'raman','MTECH',7620221399,'raman@digisol.com','DEVELOPER',100000,108)
+select * from dual;
+
+insert all
+into skill2 values('S1','full stack')
+into skill2 values('S2','python')
+into skill2 values('S3','java')
+into skill2 values('S4','c++')
+into skill2 values('S6','oracle')
+into skill2 values('S7','android')
+into skill2 values('S8','azure')
+into skill2 values('S9','dot net')
+into skill2 values('S10','ios')
+select * from dual;
+
+insert all
+into emp_skill_2 values(100,'S1',15)
+into emp_skill_2 values(100,'S3',10)
+into emp_skill_2 values(101,'S1',6)
+into emp_skill_2 values(101,'S2',10)
+into emp_skill_2 values(102,'S4',18)
+into emp_skill_2 values(110,'S1',14)
+into emp_skill_2 values(110,'S6',20)
+into emp_skill_2 values(106,'S2',10)
+into emp_skill_2 values(106,'S6',12)
+into emp_skill_2 values(106,'S8',10)
+into emp_skill_2 values(108,'S9',5)
+into emp_skill_2 values(108,'S6',18)
+into emp_skill_2 values(105,'S7',12)
+into emp_skill_2 values(105,'S10',11)
+into emp_skill_2 values(101,'S6',7)
+select * from dual;
+
+insert all
+into client2 values('C1','ABC','+48-87489389','aaa@abc.com')
+into client2 values('C2','LTS','+91-78389397','bbb@lts.com')
+into client2 values('C3','RK','+44-67838934','ccc@rk.com')
+into client2 values('C4','MMA','+91-77839093','ddd@mma.com')
+into client2 values('C5','AKS','+91-66822903','eee@aks.com')
+into client2 values('C6','GKS','+91-75628982','fff@gks.com')
+into client2 values('C7','BAB','+91-64839839','ggg@bb.com')
+into client2 values('C8','ABT','+91-67554667','hhh@abt.com')
+select * from dual;
+
+insert all
+into family_dependents values(100,'AJITH','SON',12)
+into family_dependents values(100,'PRITHVI','DAUGHTER',9)
+into family_dependents values(101,'AARYA','DAUGHTER',17)
+into family_dependents values(101,'AKANKSH','SON',11)
+into family_dependents values(101,'ANKITHA','SPOUSE',43)
+select * from dual;
+
+alter session set NLS_DATE_FORMAT = 'DD-MM-YYYY';
+insert all
+into prj_details values('P1','SPYDER','10-01-2020','11-10-2022','11-11-2022',102,2000000,1990000)
+into prj_details values('P2','APOLLO','01-01-2019','10-07-2020','30-12-2021',108,3000000,3600000)
+into prj_details values('P3','UNICORN','03-09-2021','10-10-2023','10-11-2023',106,7500000,8000000)
+into prj_details values('P4','ZEUS','28-02-2020','09-06-2021','10-01-2022',110,5500000,5000000)
+into prj_details values('P5','JUPITOR','07-08-2018','04-02-2020','01-11-2020',110,9000000,9000000)
+into prj_details values('P6','MARS','21-02-2019','07-08-2020','07-09-2020',110,7000000,7500000)
+into prj_details values('P7','XXX','07-09-2018','04-03-2020','01-12-2020',102,8000000,8500000)
+select * from dual;
+
+insert all
+into work_exp_2 values(100,'P1',20,'C1','A')
+into work_exp_2 values(100,'P3',15,'C3','A')
+into work_exp_2 values(101,'P1',16,'C1','A')
+into work_exp_2 values(102,'P2',18,'C2','B')
+into work_exp_2 values(102,'P1',18,'C1','A')
+into work_exp_2 values(108,'P2',12,'C2','C')
+into work_exp_2 values(106,'P3',20,'C3','C')
+into work_exp_2 values(106,'P4',10,'C4','C')
+into work_exp_2 values(105,'P2',19,'C2','B')
+into work_exp_2 values(110,'P4',12,'C4','B')
+into work_exp_2 values(110,'P5',16,'C7','A')
+into work_exp_2 values(105,'P5',5,'C5','B')
+into work_exp_2 values(111,'P5',5,'C5','C')
+select * from dual;
+
+insert all
+into medical_policy values(100,'MED001',10000,'10-12-2020')
+into medical_policy values(101,'MED003',12000,'15-12-2020')
+into medical_policy values(100,'MED001',10000,'10-01-2021')
+into medical_policy values(101,'MED003',12000,'15-01-2021')
+into medical_policy values(106,'MED004',9000,'21-01-2021')
+select * from dual;
+
+insert all
+into pay_check values(100,'01-12-2020',2000,null,null,null,2500,5000)
+into pay_check values(101,'01-12-2020',3000,null,null,null,5000,7000)
+into pay_check values(102,'01-12-2020',3000,null,null,null,3600,7000)
+into pay_check values(100,'01-12-2021',3000,null,null,null,450,4000)
+into pay_check values(101,'01-01-2021',5000,null,null,null,2100,4000)
+into pay_check values(102,'01-01-2021',5000,null,null,null,null,9000)
+into pay_check values(106,'02-01-2021',7000,null,null,null,900,3000)
+select * from dual;
+
+
+
+
+
+SQL> update emp2 set email='rajesh@digital.com' where empcode=100;
+update emp2 set email='rajesh@digital.com' where empcode=100
+*
+ERROR at line 1:
+ORA-02290: check constraint (DSE083.EMAIL_DOMAIN2) violated 
+
+
+SQL> update work_exp_2 set prjid='P9' where empcode=111;
+update work_exp_2 set prjid='P9' where empcode=111
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (DSE083.SYS_C0077658) violated - parent key not 
+found 
+
+
+SQL> commit;
+
+Commit complete.
+
+SQL> delete from client2 where clientID='C1';
+
+1 row deleted.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> delete from family_dependents where empno=100;
+
+2 rows deleted.
+
+SQL> ROLLBACK;
+
+Rollback complete.
+
+
+SQL> update emp2 set salary=salary*1.01 where designation='DEVELOPER';
+
+5 rows updated.
+
+SQL> update emp2 set REPORTS_TO=106 where empcode=108;
+
+1 row updated.
+
+SQL> update emp2 set REPORTS_TO=122 where empcode=108;
+update emp2 set REPORTS_TO=122 where empcode=108
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (DSE083.FK_REPORTS_TO_EMPCODE) violated - 
+parent key not found 
+
+
+SQL> spool off
