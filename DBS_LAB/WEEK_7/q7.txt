@@ -1,0 +1,74 @@
+SET SERVEROUTPUT ON
+DECLARE
+    CURSOR c IS
+        SELECT name, salary, regular_increment, PERFROMANCE_INCENTIVE, advance_tax, other_incentives
+        FROM emp NATURAL JOIN pay_check
+        WHERE TO_CHAR(pay_date, 'MM-YY') = '01-21';
+
+    v_emprow emp%ROWTYPE;
+    v_paycheck pay_check%ROWTYPE;
+    v_ibs NUMBER;
+    v_da NUMBER;
+    v_pf NUMBER;
+    v_mgs NUMBER;
+BEGIN
+    FOR i IN c LOOP
+        v_ibs := i.salary + i.regular_increment;
+        v_da := 0.5 * v_ibs;
+        v_pf := 0.12 * v_ibs;
+        v_mgs := i.salary + i.regular_increment + v_da + v_pf;
+
+        dbms_output.put_line('Name: ' || i.name);
+        dbms_output.put_line('Basic_Salary: ' || i.salary);
+        dbms_output.put_line('Regular Increment: ' || i.regular_increment);
+        dbms_output.put_line('Increased basic salary: ' || v_ibs);
+        dbms_output.put_line('Performance incentive: ' || i.PERFROMANCE_INCENTIVE);
+        dbms_output.put_line('DA: ' || v_da);
+        dbms_output.put_line('PF: ' || v_pf);
+        dbms_output.put_line('Other incentive: ' || i.other_incentives);
+        dbms_output.put_line('Advance tax paid: ' || i.advance_tax);
+        dbms_output.put_line('Monthly Gross Salary: ' || v_mgs);
+        dbms_output.put_line('Monthly Take home salary: ' || (v_mgs - v_pf - i.advance_tax));
+        dbms_output.put_line('...');
+    END LOOP;
+
+END;
+/
+
+//output
+Name: RAVI
+Basic_Salary: 123000
+Regular Increment: 5000
+Increased basic salary: 128000
+Performance incentive:
+DA: 64000
+PF: 15360
+Other incentive: 2100
+Advance tax paid: 4000
+Monthly Gross Salary: 207360
+Monthly Take home salary: 188000
+...
+Name: VIJAY
+Basic_Salary: 120000
+Regular Increment: 5000
+Increased basic salary: 125000
+Performance incentive:
+DA: 62500
+PF: 15000
+Other incentive:
+Advance tax paid: 9000
+Monthly Gross Salary: 202500
+Monthly Take home salary: 178500
+...
+Name: PRSAD
+Basic_Salary: 220000
+Regular Increment: 7000
+Increased basic salary: 227000
+Performance incentive:
+DA: 113500
+PF: 27240
+Other incentive: 900
+Advance tax paid: 3000
+Monthly Gross Salary: 367740
+Monthly Take home salary: 337500
+...

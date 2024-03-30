@@ -1,0 +1,31 @@
+set serveroutput on 
+declare
+
+v_empcode number(3) :=100;
+v_name emp.name%type;
+v_sal emp.salary%type;
+v_ri  pay_check.regular_increment%type;
+v_pi  pay_check.PERFROMANCE_INCENTIVE%type;
+v_oi  pay_check.other_incentives%type;
+v_at  pay_check.advance_tax%type;
+v_da  pay_check.da%type;
+v_pf  pay_check.pf%type;
+monthly_gross_sal number(8);
+monthly_take_sal  number(8);
+increased_basic_sal  number(8);
+
+begin
+select distinct name,salary into v_name,v_sal FROM emp where empcode =100;
+select regular_increment,PERFROMANCE_INCENTIVE,other_incentives,advance_tax into v_ri,v_pi,v_oi,v_at from pay_check where empcode = v_empcode and pay_date=to_date('01-01-2021','dd-mm-yyyy');
+increased_basic_sal:= v_sal + v_ri;
+v_da:=0.50*increased_basic_sal;
+v_pf:=0.12*increased_basic_sal;
+monthly_gross_sal:=v_sal+v_ri+v_pi+v_da+v_pf+v_oi;
+monthly_take_sal:= monthly_gross_sal-v_pi-v_at;
+dbms_output.put_line(' Employee Name: '||v_name || 
+' salary: '|| v_sal ||' Regular Increment: '|| v_ri || ' Increased Basic Salary: '||increased_basic_sal || ' Performance Incentive: '|| v_pi ||' DA: '||v_da || ' PF: ' ||v_pf || ' Other Incentive: '|| v_oi || ' Advanced tax paid: ' || v_at ||' Monthly gross salary: '|| monthly_gross_sal || ' Monthly take home salary: '|| monthly_take_sal);
+End;
+/ 
+
+
+

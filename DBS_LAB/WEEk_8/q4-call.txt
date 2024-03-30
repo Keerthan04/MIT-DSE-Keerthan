@@ -1,0 +1,17 @@
+SET SERVEROUTPUT ON;
+
+DECLARE
+    project_id_input prj_details.prjid%type;
+    total_incentive_output NUMBER;
+BEGIN
+    project_id_input := &project_id;
+    total_incentive_output := calculate_incentive(project_id_input);
+    DBMS_OUTPUT.PUT_LINE('Total Incentive for Project ' || project_id_input || ': ' || total_incentive_output);
+END;
+/
+
+//output
+Enter value for project_id: 'P2'
+old   5:     project_id_input := &project_id;
+new   5:     project_id_input := 'P2';
+Total Incentive for Project P2 : 50000

@@ -1,0 +1,42 @@
+set serveroutput on 
+declare
+prj_id prj_details.prjid%type;
+name emp.name%type;
+reportname emp.name%type;
+reportemail emp.email%type;
+vreports_to emp.reports_to%type;
+additional_budget number(20);
+
+begin
+prj_id:=&project_id;
+select e.name,e.reports_to into name,vreports_to from emp e join prj_details p on e.empcode = p.lead_by_empcode where p.prjid = prj_id;
+addbud(prj_id,additional_budget);
+if vreports_to is not null then
+  select e.name,e.email into reportname,reportemail from emp e where e.empcode = vreports_to;
+else
+  reportname := 'N/A';//as the ceo has null as reports to
+  reportemail := 'N/A';
+end if;
+dbms_output.put_line('Name of Project Leader: '||name);
+dbms_output.put_line('Name and email of Employee to whom Project leader reports to: '||reportname|| '  '||reportemail);
+dbms_output.put_line('Additional Budget Needed: '||additional_budget);
+
+end;
+/
+
+
+//output
+Enter value for project_id: 'P2'
+old  10: prj_id:=&project_id;
+new  10: prj_id:='P2';
+Name of Project Leader: AJAY
+Name and email of Employee to whom Project leader reports to: ABHI
+abhih@digisol.com
+Additional Budget Needed: 2890456
+
+Enter value for project_id: 'P3'
+old  10: prj_id:=&project_id;
+new  10: prj_id:='P3';
+Name of Project Leader: PRSAD
+Name and email of Employee to whom Project leader reports to: N/A  N/A
+Additional Budget Needed: 297240

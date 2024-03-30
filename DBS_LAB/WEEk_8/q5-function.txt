@@ -1,0 +1,15 @@
+create or replace function phone(phone_code in varchar) 
+return varchar 
+is
+code varchar(255) := concat(phone_code,'%') 
+names varchar(255) :=' ';
+cursor empphone is select name from emp where phone like code;
+
+begin 
+for emp_rec in empphone loop
+  names:= concat(concat(names,emp_rec.name),',');
+end loop;
+return names;
+
+end;
+/

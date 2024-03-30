@@ -1,0 +1,24 @@
+set serveroutput on
+declare 
+skill emp_skill.skill_experience%type;
+
+begin
+skill:=&skill_experience;
+work(skill);
+end;
+/
+
+//output
+Enter value for skill_experience: 13
+old   5: skill:=&skill_experience;
+new   5: skill:=13;
+human resource for skill experience 13 are:
+skill name: Oracle
+human resource: 2
+--------------------------------
+skill name: Full stack
+human resource: 2
+--------------------------------
+skill name: C++
+human resource: 1
+--------------------------------

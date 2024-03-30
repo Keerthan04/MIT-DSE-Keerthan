@@ -1,0 +1,38 @@
+set serveroutput on
+declare
+cursor work(client varchar2,rating varchar2) is select e.empcode,e.name,e.designation from emp e join work_exp w on e.empcode=w.empcode where w.client_id=client and w.rating=rating;
+client work_exp.client_id%type;
+rating work_exp.rating%type;
+
+begin
+client:= &client_id;
+rating:= &rating;
+
+for i in work(client,rating) loop
+dbms_output.put_line('empcode: '||i.empcode);
+dbms_output.put_line('name: '||i.name);
+dbms_output.put_line('designation: '||i.designation);
+dbms_output.put_line('------------------------------');
+end loop;
+end;
+/
+
+//output
+Enter value for client_id: 'C1'
+old   7: client:= &client_id;
+new   7: client:= 'C1';
+Enter value for rating: 'A'
+old   8: rating:= &rating;
+new   8: rating:= 'A';
+empcode: 101
+name: RAVI
+designation: PROJECT LEADER
+------------------------------
+empcode: 102
+name: VIJAY
+designation: PROJECT MANAGER
+------------------------------
+empcode: 100
+name: RAJESH
+designation: DEVELOPER
+------------------------------

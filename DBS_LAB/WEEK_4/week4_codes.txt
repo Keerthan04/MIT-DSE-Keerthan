@@ -1,0 +1,96 @@
+questions
+
+4.1
+select * from client;
+
+4.2
+select name,phone,email from emp where designation='DEVELOPER';
+
+4.3
+select name from emp where empcode=106;
+
+4.4
+select name,email from emp where designation='TECHNICAL HEAD' and qualification='BTECH';
+
+4.5
+select name from emp where salary>=100000 and salary<=200000;
+
+select name from emp where salary between 100000 and 200000;//takes >= and <=
+
+4.6
+select skillid,skillname from skill natural join emp_skill where empno=101;
+
+4.7
+select skillname from skill natural join emp_skill where empno=101;
+
+4.8
+select empcode from work_exp where (client_id='C1' or cilent_id='C2') and (Rating='A' or Rating='B');
+
+4.9
+select name from emp natural join work_exp where client_id='C2' and rating='B';
+
+4.10
+select dep_name,relationship,age from family_dependents join emp on family_dependents.empno=emp.empcode where name='RAVI';
+
+4.11
+select name,designation,salary*12 as Annual_salary from emp;
+
+4.12
+select name,dep_name from emp left join family_dependents on emp.empcode = family_dependents.empno;//since if not null we use left join
+
+4.13
+select name,prj_name from emp  join prj_details on emp.empcode= prj_details.lead_by_empcode where (actual_budget>=budget_allocated) and (actual_end_date>=end_date);//can compare dates like this
+
+4.14
+to do
+
+4.15
+select e.name,e.reports_to,e1.name,e1.phone from emp e join emp e1 on e1.empcode = e.reports_to;
+//joining on self and using diff table doing
+
+4.16
+select * from prj_details order by actual_end_date desc;
+
+4.17
+select e.name,s.skillname from emp_skill e1 join emp e on e1.empno=e.empcode join
+skill s on e1.skillid=s.skillid order by e1.empno,e1.skill_experience desc;//joining two tables on one table
+
+4.18
+select name,dep_name,age from emp join family_dependents on emp.empcode=family_dependents.empno where relationship='SON' order by name,age desc;//where and then order by
+
+4.19
+select name,prj_name from emp join prj_details on emp.empcode=prj_details.lead_by_empcode order by name,prj_name desc;
+
+4.20
+select e.name from work_exp e1 join emp e on e1.empcode=e.empcode join
+prj_details s on e1.prjid=s.prjid where prj_name='SPYDER'
+ UNION
+select e.name from work_exp e1 join emp e on e1.empcode=e.empcode join
+prj_details s on e1.prjid=s.prjid where prj_name='APOLLO';
+
+4.21
+select e.name from emp_skill e1 join emp e on e1.empno=e.empcode join
+skill s on e1.skillid=s.skillid where skillname='Oracle'
+ INTERSECT
+select e.name from emp_skill e1 join emp e on e1.empno=e.empcode join
+skill s on e1.skillid=s.skillid where skillname='AZURE';
+
+4.22
+select e.name from work_exp e1 join emp e on e1.empcode=e.empcode join
+prj_details s on e1.prjid=s.prjid
+ MINUS
+select e.name from work_exp e1 join emp e on e1.empcode=e.empcode join
+prj_details s on e1.prjid=s.prjid where prj_name='JUPITOR';
+
+4.23
+select name from emp where reports_to is null;
+
+4.24
+select name,email from emp where name like('RA%');
+
+4.25
+select prj_name from prj_details where start_date between '01-JAN-2020' and  '31-DEC-2020';//the fromat and shd be string
+
+4.26
+select empno from emp_skill where skillid in(select skillid from emp_skill where empno=101);
+ select empno from emp_skill where skillid in(select skillid from emp_skill where empno=101) minus select empno from emp_skill where empno=101;

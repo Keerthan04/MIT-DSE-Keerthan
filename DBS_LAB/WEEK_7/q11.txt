@@ -1,0 +1,56 @@
+set serveroutput on
+declare
+acc_no account.account_number%type;
+with_amu number(10);
+bal account.balance%type;
+new_bal account.balance%type;
+min_balance exception;
+cursor ac(acc_no varchar2) is select balance from account where account_number=acc_no;
+
+begin
+acc_no:=&account_number;
+with_amu:=&withdraw_amount;
+
+open ac(acc_no);
+fetch ac into bal;
+if(ac%notfound) then raise no_data_found;
+end if;
+if(ac%found) then
+new_bal:= bal-with_amu;
+case 
+when new_bal >1000 then
+update account set balance=new_bal where account_number=acc_no;
+dbms_output.put_line('current balance:'||bal);
+dbms_output.put_line('withdrawal of '||with_amu || 'is successful');
+dbms_output.put_line('updated current balance ' || new_bal);
+
+when new_bal <=1000 then
+dbms_output.put_line('current balance:'||bal);
+raise min_balance;
+end case;
+end if;
+close ac;
+
+exception 
+ when no_data_found then dbms_output.put_line('Entry of not existing Account number.');
+ when min_balance then dbms_output.put_line('insufficient fund to withdraw, try with lesser withdrawal amount');
+end;
+/
+
+//output
+Enter value for account_number: 'acc-0087'
+old  10: acc_no:=&account_number;
+new  10: acc_no:='acc-0087';
+Enter value for withdraw_amount: 6500
+old  11: with_amu:=&withdraw_amount;
+new  11: with_amu:=6500;
+Entry of not existing Account number.
+
+Enter value for account_number: 'acc-005'
+old  10: acc_no:=&account_number;
+new  10: acc_no:='acc-005';
+Enter value for withdraw_amount: 9000
+old  11: with_amu:=&withdraw_amount;
+new  11: with_amu:=9000;
+current balance:1200
+insufficient fund to withdraw, try with lesser withdrawal amount

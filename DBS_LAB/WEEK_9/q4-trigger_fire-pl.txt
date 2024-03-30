@@ -1,0 +1,25 @@
+set serveroutput on 
+declare
+vskillid skill.skillid%type;
+
+begin
+vskillid :=&skillid;
+delete from skill where skillid=vskillid;
+end;
+/
+
+
+//output
+Enter value for skillid: 'S10'
+old   5: vskillid :=&skillid;
+new   5: vskillid :='S10';
+declare
+*
+ERROR at line 1:
+ORA-20006: only one employee corresponding to skill so cant delete the record
+ORA-06512: at "SYSTEM.T4", line 7
+ORA-04088: error during execution of trigger 'SYSTEM.T4'
+ORA-06512: at line 6
+
+-- see there is fk and was alter table of fk_skilled so removied and added again with no on delete cascade 
+-- then since fk wont allow in empskill to keep such that the skill deleted and only one in empskill is not allowed to keep so shd see

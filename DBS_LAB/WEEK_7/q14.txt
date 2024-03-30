@@ -1,0 +1,38 @@
+set serveroutput on
+declare
+  cursor work is 
+    select e.name, sum(work_experience) total_work_exp 
+    from emp e 
+    join work_exp w on e.empcode=w.empcode 
+    group by e.name 
+    order by total_work_exp desc;
+  counter number := 0; 
+begin 
+  for i in work loop
+    counter := counter + 1;
+    dbms_output.put_line('name: '||i.name);
+    dbms_output.put_line('work exp: '|| i.total_work_exp);
+    dbms_output.put_line('-----------------------------');
+    if counter >= 5 then -- Break the loop when 5 records are processed
+      exit;
+    end if;
+  end loop;
+end;
+/
+
+//output
+name: VIJAY
+work exp: 36
+-----------------------------
+name: RAJESH
+work exp: 35
+-----------------------------
+name: PRSAD
+work exp: 30
+-----------------------------
+name: BHASKAR
+work exp: 28
+-----------------------------
+name: MANISH
+work exp: 24
+-----------------------------

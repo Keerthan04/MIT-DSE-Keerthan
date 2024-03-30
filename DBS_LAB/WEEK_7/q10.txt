@@ -1,0 +1,75 @@
+set serveroutput on
+declare
+cursor em is select name,designation from emp;
+email varchar2(40);
+
+begin
+for i in em loop
+email:= concat(concat(concat(i.name,'.'),i.designation),'@digisoul.com');
+dbms_output.put_line('Name '|| i.name);
+dbms_output.put_line('Designation '|| i.designation);
+dbms_output.put_line('Email '||email);
+dbms_output.put_line('--------------------');
+end loop;
+end;
+/ 
+
+
+//output
+
+Name PRSAD
+Designation CEO
+Email PRSAD.CEO@digisoul.com
+--------------------
+Name BHASKAR
+Designation PROJECT DIRECTOR
+Email BHASKAR.PROJECT DIRECTOR@digisoul.com
+--------------------
+Name RAVI
+Designation PROJECT LEADER
+Email RAVI.PROJECT LEADER@digisoul.com
+--------------------
+Name KEER
+Designation PROJECT LEADER
+Email KEER.PROJECT LEADER@digisoul.com
+--------------------
+Name RAJ
+Designation PROJECT LEADER
+Email RAJ.PROJECT LEADER@digisoul.com
+--------------------
+Name VIJAY
+Designation PROJECT MANAGER
+Email VIJAY.PROJECT MANAGER@digisoul.com
+--------------------
+Name ABHI
+Designation PROJECT MANAGER
+Email ABHI.PROJECT MANAGER@digisoul.com
+--------------------
+Name AJAY
+Designation TECHNICAL HEAD
+Email AJAY.TECHNICAL HEAD@digisoul.com
+--------------------
+Name RAJESH
+Designation DEVELOPER
+Email RAJESH.DEVELOPER@digisoul.com
+--------------------
+Name MANISH
+Designation DEVELOPER
+Email MANISH.DEVELOPER@digisoul.com
+--------------------
+Name RAKESH
+Designation DEVELOPER
+Email RAKESH.DEVELOPER@digisoul.com
+--------------------
+Name RAKESH
+Designation DEVELOPER
+Email RAKESH.DEVELOPER@digisoul.com
+--------------------
+Name RAJ
+Designation DEVELOPER
+Email RAJ.DEVELOPER@digisoul.com
+--------------------
+Name SHASH
+Designation DEVELOPER
+Email SHASH.DEVELOPER@digisoul.com
+--------------------

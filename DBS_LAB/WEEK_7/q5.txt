@@ -1,0 +1,37 @@
+set serveroutput on
+declare
+  v_empcode work_exp.empcode%type;
+  v_projectid work_exp.prjid%type;
+  v_rating work_exp.rating%type;
+  incentive number(5);
+  v_name emp.name%type;
+  v_sal emp.salary%type;
+  v_prjname prj_details.prj_name%type;
+  total_sal number(8);
+begin
+ v_empcode:= &empcode;
+ v_projectid:= & prjid;
+ select rating into v_rating from work_exp where empcode=v_empcode and prjid=v_projectid;
+case v_rating
+ when 'A' then 
+  incentive:=900;
+  update pay_check set OTHER_INCENTIVES=OTHER_INCENTIVES+incentive where empcode=v_empcode;  
+ when 'B' then 
+  incentive:=500;
+  update pay_check set OTHER_INCENTIVES=OTHER_INCENTIVES+incentive where empcode=v_empcode; 
+ when 'C' then 
+  incentive:=300;
+  update pay_check set OTHER_INCENTIVES=OTHER_INCENTIVES+incentive where empcode=v_empcode;  
+  
+end case;
+  select distinct name,salary into v_name,v_sal FROM emp
+  JOIN work_exp ON emp.empcode = work_exp.empcode WHERE work_exp.empcode = v_empcode AND work_exp.prjid = v_projectid;
+  select distinct prj_name into v_prjname from prj_details JOIN work_exp ON prj_details.prjid = work_exp.prjid WHERE work_exp.prjid = v_projectid;
+  total_sal:= v_sal+incentive;
+  dbms_output.put_line('Employee number: '||v_empcode || 
+' Employee Name: '||v_name || 
+' salary: '|| v_sal ||' Project Name: '|| v_prjname || ' rating: '||v_rating || ' Incentive: '|| incentive ||' Total Salary: '||total_sal);
+End;
+/ 
+
+ 

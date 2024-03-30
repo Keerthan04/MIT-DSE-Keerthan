@@ -1,0 +1,17 @@
+set serveroutput on 
+declare
+empno emp.empcode%type;
+vemail varchar(255);////the calling and returing ideally same dtype and size
+
+begin
+empno:=&empno;
+vemail:=email(empno);
+dbms_output.put_line('Email is: '||vemail);
+end;
+/
+
+//output
+Enter value for empno: 106
+old   6: empno:=&empno;
+new   6: empno:=106;
+Email is: PRSAD_106@digisol.com

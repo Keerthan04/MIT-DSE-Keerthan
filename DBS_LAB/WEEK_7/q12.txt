@@ -1,0 +1,47 @@
+set serveroutput on
+declare 
+
+cursor project(skill_exp number) is select s.skillname,count(s.skillname) human_resource_available from skill s natural join emp_skill e where e.skill_experience>=skill_exp group by s.skillname;
+skill emp_skill.skill_experience%type;
+
+begin
+skill:=&skill_experience;
+dbms_output.put_line('human resource for skill experience '||skill ||' are: ');
+for i in project(skill) loop
+dbms_output.put_line('skill name: '||i.skillname);
+dbms_output.put_line('human resource: '|| i.human_resource_available);
+dbms_output.put_line('--------------------------------');
+end loop;
+
+end;
+/
+
+//output
+Enter value for skill_experience: 8
+old   7: skill:=&skill_experience;
+new   7: skill:=8;
+human resource for skill experience 8 are:
+skill name: Oracle
+human resource: 3
+--------------------------------
+skill name: AZURE
+human resource: 1
+--------------------------------
+skill name: Java
+human resource: 1
+--------------------------------
+skill name: Full stack
+human resource: 2
+--------------------------------
+skill name: Python
+human resource: 2
+--------------------------------
+skill name: C++
+human resource: 1
+--------------------------------
+skill name: Android
+human resource: 1
+--------------------------------
+skill name: IOS
+human resource: 1
+--------------------------------

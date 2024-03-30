@@ -1,0 +1,23 @@
+set serveroutput on 
+declare
+acc_no account.account_number%type;
+with_amu number(10);
+bal account.balance%type;
+new_bal account.balance%type;
+
+begin
+acc_no:=&account_number;
+with_amu:=&withdraw_amount;
+acc(acc_no,with_amu,bal,new_bal);
+end;
+/
+
+//output
+Enter value for account_number: 'acc-005'
+old   8: acc_no:=&account_number;
+new   8: acc_no:='acc-005';
+Enter value for withdraw_amount: 800
+old   9: with_amu:=&withdraw_amount;
+new   9: with_amu:=800;
+current balance:1200
+insufficient fund to withdraw, try with lesser withdrawal amount

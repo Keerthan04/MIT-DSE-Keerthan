@@ -1,0 +1,28 @@
+Set serveroutput on
+Declare
+ inputString varchar(50);
+ countVowels number:=0;
+ countConsonants number:=0;
+ countNumbers number:=0;
+ countSpecial number:=0;
+ eachChar varchar(1);
+Begin
+ inputString:=&inputSting;
+ for i in 1.. LENGTH(inputString) loop
+  eachChar:=substr(inputString,i,1);
+  if(lower(eachChar) in ('a','e','i','o','u')) then
+   countVowels:=countVowels+1;
+  elsif(eachChar in('0','1','2','3','4','5','6','7','8','9')) then
+   countNumbers:= countNumbers+1;
+  elsif(ascii(upper(eachChar)) > ascii('A') and ascii(upper(eachChar)) < ascii('Z') and upper(eachChar) not in ('A','E','I','O','U')) then
+   countConsonants:= countConsonants+1;
+  else
+    countSpecial:=countSpecial+1;
+   end if;
+ end loop; 
+ dbms_output.put_line('Vowels count:'|| countVowels);
+ dbms_output.put_line('Consonants count:'|| countConsonants);
+ dbms_output.put_line('Numbers count:'|| countNumbers);
+ dbms_output.put_line('Special characters count:'|| countSpecial);
+End;
+/

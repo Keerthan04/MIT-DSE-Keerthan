@@ -1,0 +1,34 @@
+set serveroutput on 
+declare
+cursor bud is select e.name,p.prj_name,p.actual_budget,p.budget_allocated from emp e join prj_details p on e.empcode=p.lead_by_empcode where p.actual_budget<=p.budget_allocated;
+
+begin
+dbms_output.put_line('project heads and project where budget is managed well within the Budget allocated.');
+for i in bud loop
+dbms_output.put_line('leader '|| i.name);
+dbms_output.put_line('project name ' || i.prj_name);
+dbms_output.put_line('actual budget ' || i.actual_budget);
+dbms_output.put_line('budget allocated ' || i.budget_allocated);
+dbms_output.put_line('----------------------------------------');
+end loop;
+end;
+/
+
+output
+project heads and project where budget is managed well within the Budget
+allocated.
+leader BHASKAR
+project name ZEUS
+actual budget 5000000
+budget allocated 5500000
+----------------------------------------
+leader BHASKAR
+project name JUPITOR
+actual budget 9000000
+budget allocated 9000000
+----------------------------------------
+leader VIJAY
+project name SPYDER
+actual budget 1990000
+budget allocated 2000000
+----------------------------------------

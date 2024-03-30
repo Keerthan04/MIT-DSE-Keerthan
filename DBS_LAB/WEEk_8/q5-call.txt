@@ -1,0 +1,20 @@
+set serveroutput on
+declare
+phone_code varchar(255);
+names varchar(255);
+
+begin
+phone_code:=&phone_code;
+names:= phone(phone_code);
+dbms_output.put_line('Clients with this phone code are:');
+dbms_output.put_line(names);
+
+end;
+/
+
+//output
+Enter value for phone_code: '+91'
+old   6: phone_code:=&phone_code;
+new   6: phone_code:='+91';
+Clients with this phone code are:
+LTS,MMA,AKS,GKS,BAB,ABT,
